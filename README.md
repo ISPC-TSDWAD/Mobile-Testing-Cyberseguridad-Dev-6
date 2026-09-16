@@ -13,11 +13,11 @@ La aplicación móvil consume la misma API REST en Django construida durante el 
 | Integrante | Rol | Responsabilidad en el Sprint 1 |
 |:---|:---|:---|
 | Gonzalo Velasco | Scrum Master · Developer | Módulo de recursos, modelos de datos y gestión de la Wiki |
-| Jonathan Guillén | Developer | Configuración del proyecto, acceso y seguridad de red |
-| Ale Corva | Developer | Navegación principal y jerarquía de Activities |
-| Daniela Salvo | Developer | Módulo de usuarios y design tokens |
-| Gerardo Romero | Developer | Multimedia, contacto e institucional |
-| Roni Duncan Gonzales Martínez | Developer | Accesibilidad, compatibilidad y plan de pruebas |
+| Jonathan Guillén | Líder Técnico · Developer | Configuración del proyecto, manifiesto, seguridad de red y code reviews |
+| Ale Corva | Developer | Navegación base, pantalla de acceso y menú principal |
+| Daniela Salvo | Technical Writer & Designer | Módulo de usuarios, design tokens y ANEXO II de capturas |
+| Gerardo Romero | Developer | Multimedia, contacto, institucional e iconografía |
+| Roni Duncan Gonzales Martínez | QA Tester | Plan de Pruebas, accesibilidad y compatibilidad con API 21 |
 
 ---
 
@@ -99,7 +99,7 @@ app/src/main/
 
 ## Accesibilidad y usabilidad
 
-La interfaz aplica criterios de WCAG 2.1 nivel AA:
+La interfaz aplica criterios de WCAG 2.2 nivel AA:
 
 - Descripción textual en todo ícono e imagen informativa.
 - Área táctil mínima de 48 dp en controles y 72 dp en filas de listas.
@@ -123,18 +123,29 @@ El detalle completo de políticas y la fundamentación de la elección de JWT es
 
 ## Documentación
 
+### Wiki del proyecto
+
+| Página | Contenido |
+|:---|:---|
+| [Home](../../wiki) | Presentación, Project Charter, stack y equipo |
+| [Historias de Usuario](../../wiki/Historias-de-Usuario) | Product Backlog móvil, criterios de aceptación y tareas técnicas |
+| [Requerimientos](../../wiki/Requerimientos) | Requisitos funcionales y no funcionales, mapa de Activities y endpoints |
+| [Ceremonias Scrum](../../wiki/Scrum) | Sprint Planning, Dailies, Review, Retrospectiva y Definition of Done |
+| [Testing](../../wiki/Testing) | Plan de Pruebas, casos de prueba y reporte de bugs |
+| [Ciberseguridad](../../wiki/Ciberseguridad) | Políticas de seguridad y fundamentación de JWT |
+| [Arquitectura](../../wiki/Arquitectura) | Mapa de navegación y mapeo contra la API |
+
+### Documentos y evidencias
+
 | Documento | Ubicación |
 |:---|:---|
-| Wiki del proyecto | [Ir a la Wiki](../../wiki) |
-| Sprint 1 y ceremonias Scrum | [Sprint 1](../../wiki/Sprint-1) |
-| Historias de Usuario y tareas | [Historias de Usuario](../../wiki/Historias-de-Usuario) |
-| Plan de Pruebas y casos de prueba | [Testing](../../wiki/Testing) |
-| Políticas de seguridad y JWT | [Ciberseguridad](../../wiki/Ciberseguridad) |
-| Arquitectura y mapeo con la API | [Arquitectura](../../wiki/Arquitectura) |
+| Documentación formal del cliente móvil | [docs/EduTools_Documentacion_formal_Mobile_Ev2.md](docs/EduTools_Documentacion_formal_Mobile_Ev2.md) |
+| ANEXO II — capturas de las Activities | [Ver anexo](docs/EduTools_Documentacion_formal_Mobile_Ev2.md#anexo-ii--capturas-de-las-activities) |
+| Plan de seguridad (Evidencia 2) | [PDF](docs/Documentacion_Ciberseguridad_AppEduTools.pdf) · [documento colaborativo](https://docs.google.com/document/d/16HC2LHAWWaxBdfk89M1nlIFZkRZtYlht/edit) |
+| Planilla de casos de prueba | [docs/Test_Cases_Sprint1.csv](docs/Test_Cases_Sprint1.csv) |
+| Demo en video de la navegabilidad | [Ver en Drive](https://drive.google.com/file/d/193K4IP9BwwjeN6Mn-tMd8QOG3UiY6Efv/view?usp=drive_link) · [copia en el repositorio](docs/video) |
 | Backend, modelo relacional y script SQL | [ModPWeb--Dev6](https://github.com/ISPC-TSDWAD/ModPWeb--Dev6) |
-| Documento IEEE 830 | *(pegar enlace)* |
-| Demo en video de la navegabilidad | *(pegar enlace)* |
-| Descarga de la aplicación (release) | *(pegar enlace — Sprint 2)* |
+| Descarga de la aplicación (release) | *(Sprint 2)* |
 
 ---
 
