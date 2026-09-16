@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Paleta institucional de EduTools. -->
+<resources>
+
+    <color name="edu_primario">#123B6D</color>
+    <color name="edu_primario_oscuro">#0C2A4E</color>
+    <color name="edu_primario_claro">#E3ECF7</color>
+
+    <color name="edu_secundario">#0F7B6C</color>
+    <color name="edu_acento">#B45309</color>
+
+    <color name="edu_fondo">#F7F9FC</color>
+    <color name="edu_superficie">#FFFFFF</color>
+    <color name="edu_borde">#C9D3E0</color>
+
+    <color name="edu_texto">#1B1F24</color>
+    <color name="edu_texto_secundario">#4A5568</color>
+    <color name="edu_texto_inverso">#FFFFFF</color>
+
+    <color name="edu_error">#B00020</color>
+    <color name="edu_exito">#0F7B6C</color>
+
+</resources>

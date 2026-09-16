@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/edu_fondo">
+
+    <include layout="@layout/toolbar_edu" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <TextView
+                android:id="@+id/tvDetalleTitulo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:textColor="@color/edu_texto" />
+
+            <!-- Tipo -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="@string/recurso_tipo"
+                android:textAllCaps="true"
+                android:textSize="12sp"
+                android:textColor="@color/edu_texto_secundario" />
+
+            <TextView
+                android:id="@+id/tvDetalleTipo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/TextAppearance.EduTools.Cuerpo" />
+
+            <!-- Categoria -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/recurso_categoria"
+                android:textAllCaps="true"
+                android:textSize="12sp"
+                android:textColor="@color/edu_texto_secundario" />
+
+            <TextView
+                android:id="@+id/tvDetalleCategoria"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/TextAppearance.EduTools.Cuerpo" />
+
+            <!-- Asignatura -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/recurso_asignatura"
+                android:textAllCaps="true"
+                android:textSize="12sp"
+                android:textColor="@color/edu_texto_secundario" />
+
+            <TextView
+                android:id="@+id/tvDetalleAsignatura"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/TextAppearance.EduTools.Cuerpo" />
+
+            <!-- Descripcion -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/recurso_descripcion"
+                android:textAllCaps="true"
+                android:textSize="12sp"
+                android:textColor="@color/edu_texto_secundario" />
+
+            <TextView
+                android:id="@+id/tvDetalleDescripcion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/TextAppearance.EduTools.Cuerpo" />
+
+            <!-- Autor -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/recurso_autor"
+                android:textAllCaps="true"
+                android:textSize="12sp"
+                android:textColor="@color/edu_texto_secundario" />
+
+            <TextView
+                android:id="@+id/tvDetalleAutor"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/TextAppearance.EduTools.Cuerpo" />
+
+            <Button
+                android:id="@+id/btnEditarRecurso"
+                style="@style/Widget.EduTools.Boton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:text="@string/recurso_editar" />
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

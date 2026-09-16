@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/edu_fondo">
+
+    <include layout="@layout/toolbar_edu" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/multimedia_titulo"
+                android:textAppearance="@style/TextAppearance.EduTools.Titulo" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="16dp"
+                android:text="@string/multimedia_descripcion"
+                android:textAppearance="@style/TextAppearance.EduTools.Cuerpo" />
+
+            <!-- Recurso multimedia 1: video con controles nativos -->
+            <VideoView
+                android:id="@+id/videoPresentacion"
+                android:layout_width="match_parent"
+                android:layout_height="220dp"
+                android:background="@color/edu_texto"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/tvAvisoVideo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="16dp"
+                android:background="@color/edu_primario_claro"
+                android:text="@string/multimedia_sin_video"
+                android:textAppearance="@style/TextAppearance.EduTools.Secundario"
+                android:visibility="gone" />
+
+            <!-- Recurso multimedia 2: imagen institucional -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="28dp"
+                android:text="@string/multimedia_imagen_titulo"
+                android:textAppearance="@style/TextAppearance.EduTools.Titulo" />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_marginTop="12dp"
+                android:adjustViewBounds="true"
+                android:scaleType="fitCenter"
+                android:src="@drawable/img_paleta_institucional"
+                android:contentDescription="@string/cd_imagen_paleta" />
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

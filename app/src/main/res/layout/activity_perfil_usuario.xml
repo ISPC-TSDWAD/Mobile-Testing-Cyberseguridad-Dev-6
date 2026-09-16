@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/edu_fondo">
+
+    <include layout="@layout/toolbar_edu" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <ImageView
+                android:layout_width="72dp"
+                android:layout_height="72dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="16dp"
+                android:src="@drawable/ic_usuarios"
+                android:contentDescription="@string/cd_icono_usuarios" />
+
+            <TextView
+                android:id="@+id/tvPerfilNombre"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:textColor="@color/edu_texto" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="28dp"
+                android:text="@string/perfil_usuario"
+                android:textAllCaps="true"
+                android:textSize="12sp"
+                android:textColor="@color/edu_texto_secundario" />
+
+            <TextView
+                android:id="@+id/tvPerfilUsername"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/TextAppearance.EduTools.Cuerpo" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/perfil_correo"
+                android:textAllCaps="true"
+                android:textSize="12sp"
+                android:textColor="@color/edu_texto_secundario" />
+
+            <TextView
+                android:id="@+id/tvPerfilCorreo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/TextAppearance.EduTools.Cuerpo" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/perfil_rol"
+                android:textAllCaps="true"
+                android:textSize="12sp"
+                android:textColor="@color/edu_texto_secundario" />
+
+            <TextView
+                android:id="@+id/tvPerfilRol"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/TextAppearance.EduTools.Cuerpo" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/perfil_estado"
+                android:textAllCaps="true"
+                android:textSize="12sp"
+                android:textColor="@color/edu_texto_secundario" />
+
+            <TextView
+                android:id="@+id/tvPerfilEstado"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/TextAppearance.EduTools.Cuerpo" />
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
