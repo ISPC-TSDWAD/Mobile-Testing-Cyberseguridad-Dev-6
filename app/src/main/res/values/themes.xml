@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <style name="Theme.EduTools" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="colorPrimary">@color/edu_primario</item>
+        <item name="colorPrimaryVariant">@color/edu_primario_oscuro</item>
+        <item name="colorOnPrimary">@color/edu_texto_inverso</item>
+        <item name="colorSecondary">@color/edu_secundario</item>
+        <item name="colorOnSecondary">@color/edu_texto_inverso</item>
+        <item name="android:colorBackground">@color/edu_fondo</item>
+        <item name="colorSurface">@color/edu_superficie</item>
+        <item name="colorOnSurface">@color/edu_texto</item>
+        <item name="colorError">@color/edu_error</item>
+        <item name="android:statusBarColor" tools:targetApi="l">@color/edu_primario_oscuro</item>
+        <item name="android:textColorPrimary">@color/edu_texto</item>
+        <item name="android:textColorSecondary">@color/edu_texto_secundario</item>
+    </style>
+
+    <!-- Toolbar comun a todas las Activity. -->
+    <style name="Widget.EduTools.Toolbar" parent="Widget.MaterialComponents.Toolbar.Primary">
+        <item name="android:background">@color/edu_primario</item>
+        <item name="titleTextColor">@color/edu_texto_inverso</item>
+        <item name="android:elevation">4dp</item>
+    </style>
+
+    <!-- Tipografia. -->
+    <style name="TextAppearance.EduTools.Titulo" parent="TextAppearance.MaterialComponents.Headline6">
+        <item name="android:textColor">@color/edu_texto</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="TextAppearance.EduTools.Cuerpo" parent="TextAppearance.MaterialComponents.Body1">
+        <item name="android:textColor">@color/edu_texto</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:lineSpacingMultiplier">1.25</item>
+    </style>
+
+    <style name="TextAppearance.EduTools.Secundario" parent="TextAppearance.MaterialComponents.Body2">
+        <item name="android:textColor">@color/edu_texto_secundario</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <!-- Botones y tarjetas. -->
+    <style name="Widget.EduTools.Boton" parent="Widget.MaterialComponents.Button">
+        <item name="android:minHeight">48dp</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:paddingStart">24dp</item>
+        <item name="android:paddingEnd">24dp</item>
+    </style>
+
+    <style name="Widget.EduTools.Boton.Secundario" parent="Widget.MaterialComponents.Button.OutlinedButton">
+        <item name="android:minHeight">48dp</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="Widget.EduTools.Tarjeta" parent="Widget.MaterialComponents.CardView">
+        <item name="cardCornerRadius">12dp</item>
+        <item name="cardElevation">2dp</item>
+        <item name="cardBackgroundColor">@color/edu_superficie</item>
+        <item name="android:minHeight">72dp</item>
+    </style>
+
+</resources>
