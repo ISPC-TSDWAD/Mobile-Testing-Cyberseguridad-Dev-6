@@ -1,0 +1,36 @@
+# ===== Android Studio / Gradle =====
+*.iml
+.gradle/
+local.properties
+.idea/
+.DS_Store
+build/
+captures/
+.externalNativeBuild/
+.cxx/
+*.apk
+*.aab
+*.ap_
+*.dex
+*.class
+
+# ===== Claves y firmas (nunca deben subirse: Plan de Seguridad PS-01) =====
+*.jks
+*.keystore
+keystore.properties
+signing.properties
+
+# ===== Variables de entorno =====
+.env
+*.env
+!.env_modelo
+
+# ===== Salidas de compilacion =====
+app/build/
+app/release/
+app/debug/
+
+# ===== Logs y temporales =====
+*.log
+*.hprof
+.navigation/
