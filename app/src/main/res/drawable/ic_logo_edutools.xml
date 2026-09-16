@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Logotipo propio de EduTools: libro abierto sobre marco de pantalla. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="96dp"
+    android:height="96dp"
+    android:viewportWidth="96"
+    android:viewportHeight="96">
+
+    <path
+        android:fillColor="#123B6D"
+        android:pathData="M12,16 h72 a4,4 0 0 1 4,4 v48 a4,4 0 0 1 -4,4 h-72 a4,4 0 0 1 -4,-4 v-48 a4,4 0 0 1 4,-4 z" />
+
+    <path
+        android:fillColor="#F7F9FC"
+        android:pathData="M16,24 h64 v36 h-64 z" />
+
+    <path
+        android:fillColor="#123B6D"
+        android:pathData="M48,30 L48,56 L26,56 L26,30 Z" />
+
+    <path
+        android:fillColor="#0F7B6C"
+        android:pathData="M48,30 L70,30 L70,56 L48,56 Z" />
+
+    <path
+        android:fillColor="#F7F9FC"
+        android:pathData="M46,29 h4 v28 h-4 z" />
+
+    <path
+        android:fillColor="#123B6D"
+        android:pathData="M36,76 h24 v6 h-24 z" />
+
+</vector>

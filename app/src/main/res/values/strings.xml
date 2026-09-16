@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">EduTools</string>
+
+    <!-- ===== Titulos de Activity ===== -->
+    <string name="title_login">Iniciar sesión</string>
+    <string name="title_main">EduTools</string>
+    <string name="title_recursos">Recursos pedagógicos</string>
+    <string name="title_recurso_detalle">Detalle del recurso</string>
+    <string name="title_recurso_form">Nuevo recurso</string>
+    <string name="title_usuarios">Usuarios</string>
+    <string name="title_perfil">Perfil del usuario</string>
+    <string name="title_multimedia">Guía multimedia</string>
+    <string name="title_contacto">Contacto</string>
+    <string name="title_acerca">Quiénes somos</string>
+
+    <!-- ===== Login ===== -->
+    <string name="login_subtitulo">Sandbox pedagógico para equipos de educación a distancia</string>
+    <string name="login_usuario">Usuario o correo institucional</string>
+    <string name="login_password">Contraseña</string>
+    <string name="login_ingresar">Ingresar</string>
+    <string name="login_acerca">Conocer el proyecto</string>
+
+    <!-- ===== Home ===== -->
+    <string name="home_bienvenida">Hola, %1$s</string>
+    <string name="home_rol">Rol: %1$s</string>
+    <string name="home_menu_titulo">¿Qué querés hacer?</string>
+    <string name="home_recursos">Recursos pedagógicos</string>
+    <string name="home_recursos_desc">Explorar y cargar plantillas del repositorio</string>
+    <string name="home_usuarios">Usuarios</string>
+    <string name="home_usuarios_desc">Gestionar asesores y maquetadores del equipo</string>
+    <string name="home_multimedia">Guía multimedia</string>
+    <string name="home_multimedia_desc">Video e imágenes de los estándares institucionales</string>
+    <string name="home_contacto">Contacto</string>
+    <string name="home_contacto_desc">Escribir a la mesa de ayuda de EduTools</string>
+    <string name="home_acerca">Quiénes somos</string>
+    <string name="home_acerca_desc">Equipo DEV6 y propósito del proyecto</string>
+    <string name="home_cerrar_sesion">Cerrar sesión</string>
+
+    <!-- ===== Recursos ===== -->
+    <string name="recursos_cantidad">%1$d recursos disponibles</string>
+    <string name="recursos_nuevo">Nuevo recurso</string>
+    <string name="recurso_tipo">Tipo</string>
+    <string name="recurso_categoria">Categoría</string>
+    <string name="recurso_asignatura">Asignatura</string>
+    <string name="recurso_descripcion">Descripción</string>
+    <string name="recurso_contenido">Contenido HTML</string>
+    <string name="recurso_autor">Creado por</string>
+    <string name="recurso_editar">Editar recurso</string>
+
+    <!-- ===== Formulario de recurso ===== -->
+    <string name="form_titulo">Título del recurso</string>
+    <string name="form_descripcion">Descripción</string>
+    <string name="form_tipo">Tipo de recurso</string>
+    <string name="form_categoria">Categoría</string>
+    <string name="form_asignatura">Asignatura</string>
+    <string name="form_url">URL de referencia</string>
+    <string name="form_guardar">Guardar</string>
+    <string name="form_cancelar">Cancelar</string>
+
+    <!-- ===== Usuarios ===== -->
+    <string name="usuarios_cantidad">%1$d usuarios registrados</string>
+    <string name="perfil_rol">Rol</string>
+    <string name="perfil_correo">Correo</string>
+    <string name="perfil_usuario">Nombre de usuario</string>
+    <string name="perfil_estado">Estado</string>
+
+    <!-- ===== Multimedia ===== -->
+    <string name="multimedia_titulo">Estándares institucionales en video</string>
+    <string name="multimedia_descripcion">Recorrido por los componentes pedagógicos que EduTools replica en el sandbox: video CTA, acordeón, infografía, lectura y actividad.</string>
+    <string name="multimedia_imagen_titulo">Paleta y tipografía institucional</string>
+    <string name="multimedia_sin_video">El video no está disponible en este momento.</string>
+
+    <!-- ===== Contacto ===== -->
+    <string name="contacto_intro">Escribinos y el equipo DEV6 responde dentro de las 48 horas hábiles.</string>
+    <string name="contacto_nombre">Nombre y apellido</string>
+    <string name="contacto_correo">Correo electrónico</string>
+    <string name="contacto_asunto">Asunto</string>
+    <string name="contacto_mensaje">Mensaje</string>
+    <string name="contacto_enviar">Enviar consulta</string>
+    <string name="contacto_datos">Mesa de ayuda: soporte@edutools.edu.ar</string>
+
+    <!-- ===== Acerca de ===== -->
+    <string name="acerca_intro">EduTools centraliza los recursos del montaje de aulas virtuales y ofrece un sandbox que emula la hoja de estilos institucional.</string>
+    <string name="acerca_equipo">Equipo DEV6</string>
+    <string name="acerca_integrantes">Jonathan Guillén · Ale Corva · Gonzalo Velasco · Daniela Salvo · Gerardo Romero · Roni Duncan Gonzales Martínez</string>
+    <string name="acerca_version">Versión 0.1.0 · ISPC</string>
+
+    <!-- ===== Accesibilidad (contentDescription) ===== -->
+    <string name="cd_logo">Logotipo de EduTools</string>
+    <string name="cd_icono_recursos">Icono de recursos pedagógicos</string>
+    <string name="cd_icono_usuarios">Icono de usuarios</string>
+    <string name="cd_icono_multimedia">Icono de contenido multimedia</string>
+    <string name="cd_icono_contacto">Icono de contacto</string>
+    <string name="cd_icono_acerca">Icono de información del proyecto</string>
+    <string name="cd_imagen_paleta">Muestra de la paleta de colores y la tipografía institucional de EduTools</string>
+    <string name="cd_video">Reproductor del video con el recorrido por los estándares institucionales</string>
+
+
+</resources>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Imagen institucional original del equipo DEV6: muestra de los design tokens
+    de EduTools (paleta + jerarquia tipografica representada por barras).
+    Se define como vector para que escale sin perdida en cualquier densidad.
+-->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="320dp"
+    android:height="200dp"
+    android:viewportWidth="320"
+    android:viewportHeight="200">
+
+    <!-- Fondo -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M0,0 h320 v200 h-320 z" />
+
+    <!-- Barra superior institucional -->
+    <path
+        android:fillColor="#123B6D"
+        android:pathData="M0,0 h320 v28 h-320 z" />
+
+    <!-- Muestras de color -->
+    <path android:fillColor="#123B6D" android:pathData="M20,48 h52 v52 h-52 z" />
+    <path android:fillColor="#0F7B6C" android:pathData="M84,48 h52 v52 h-52 z" />
+    <path android:fillColor="#B45309" android:pathData="M148,48 h52 v52 h-52 z" />
+    <path android:fillColor="#E3ECF7" android:pathData="M212,48 h52 v52 h-52 z" />
+    <path android:fillColor="#1B1F24" android:pathData="M276,48 h24 v52 h-24 z" />
+
+    <!-- Jerarquia tipografica representada con barras de distinto peso -->
+    <path android:fillColor="#1B1F24" android:pathData="M20,120 h180 v14 h-180 z" />
+    <path android:fillColor="#4A5568" android:pathData="M20,144 h240 v8 h-240 z" />
+    <path android:fillColor="#4A5568" android:pathData="M20,160 h220 v8 h-220 z" />
+    <path android:fillColor="#C9D3E0" android:pathData="M20,176 h140 v6 h-140 z" />
+
+</vector>
