@@ -89,6 +89,8 @@
     <string name="acerca_equipo">Equipo DEV6</string>
     <string name="acerca_integrantes">Jonathan Guillén · Ale Corva · Gonzalo Velasco · Daniela Salvo · Gerardo Romero · Roni Duncan Gonzales Martínez</string>
     <string name="acerca_version">Versión 0.1.0 · ISPC</string>
+    <string name="acerca_btn_copiar">Copiar email de soporte</string>
+    <string name="acerca_email_copiado">Correo de soporte copiado al portapapeles (soporte@edutools.edu.ar)</string>
 
     <!-- ===== Accesibilidad (contentDescription) ===== -->
     <string name="cd_logo">Logotipo de EduTools</string>
