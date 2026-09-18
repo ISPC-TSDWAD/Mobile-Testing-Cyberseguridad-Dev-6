@@ -80,6 +80,9 @@
     <string name="contacto_mensaje">Mensaje</string>
     <string name="contacto_enviar">Enviar consulta</string>
     <string name="contacto_datos">Mesa de ayuda: soporte@edutools.edu.ar</string>
+    <string name="contacto_error_campos">Por favor completá todos los campos antes de enviar.</string>
+    <string name="contacto_error_email">Por favor ingresá un correo electrónico válido.</string>
+    <string name="contacto_exito">Consulta enviada con éxito. Te responderemos a la brevedad.</string>
 
     <!-- ===== Acerca de ===== -->
     <string name="acerca_intro">EduTools centraliza los recursos del montaje de aulas virtuales y ofrece un sandbox que emula la hoja de estilos institucional.</string>
