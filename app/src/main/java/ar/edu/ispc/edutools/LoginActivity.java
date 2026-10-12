@@ -7,6 +7,8 @@ import android.widget.EditText;
 
 import androidx.annotation.Nullable;
 
+import ar.edu.ispc.edutools.util.Validador;
+
 /**
  * Pantalla de acceso. Raiz de la navegacion de la aplicacion.
  * El nombre ingresado viaja a MainActivity como extra del Intent.
@@ -27,10 +29,7 @@ public class LoginActivity extends BaseActivity {
         Button btnAcerca = findViewById(R.id.btnAcercaDesdeLogin);
 
         btnIngresar.setOnClickListener(v -> {
-            String usuario = etUsuario.getText().toString().trim();
-            if (usuario.isEmpty()) {
-                usuario = "invitado";
-            }
+            String usuario = Validador.normalizarUsuario(etUsuario.getText().toString());
 
             Intent intent = new Intent(LoginActivity.this, MainActivity.class);
             intent.putExtra(EXTRA_USUARIO, usuario);
