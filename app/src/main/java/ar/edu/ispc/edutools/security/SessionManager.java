@@ -11,6 +11,11 @@ public class SessionManager {
         this.storage = TokenStorageProvider.get(context);
     }
 
+    /** Para los tests: se le pasa el almacenamiento directamente. */
+    public SessionManager(TokenStorage storage) {
+        this.storage = storage;
+    }
+
     public void guardarSesion(String access, String refresh) {
         storage.saveTokens(access, refresh);
     }

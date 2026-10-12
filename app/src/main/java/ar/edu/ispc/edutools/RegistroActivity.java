@@ -9,17 +9,23 @@ import androidx.annotation.Nullable;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 
+import ar.edu.ispc.edutools.net.ApiCallback;
+import ar.edu.ispc.edutools.net.ApiClient;
+import ar.edu.ispc.edutools.net.NuevoUsuarioRequest;
+import ar.edu.ispc.edutools.net.UsuarioApi;
+import ar.edu.ispc.edutools.net.UsuarioDto;
 import ar.edu.ispc.edutools.util.Validador;
 
 /**
  * Pantalla de Registro de usuario (Issue #23).
- * El boton Registrar valida los campos (Issue #24) y muestra confirmacion.
- * El envio real a POST /api/users/ (solo admin) lo conecta Jonathan en #25.
+ * El boton Registrar valida los campos (Issue #24) y envia los datos
+ * a POST api/users/ (solo admin, Issue #25).
  */
 public class RegistroActivity extends BaseActivity {
 
     private TextInputLayout tilUsername, tilNombre, tilApellido, tilEmail, tilPassword, tilPassword2;
     private TextInputEditText etUsername, etNombre, etApellido, etEmail, etPassword, etPassword2;
+    private Button btnRegistrar;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -41,7 +47,7 @@ public class RegistroActivity extends BaseActivity {
         etPassword = findViewById(R.id.etRegPassword);
         etPassword2 = findViewById(R.id.etRegPassword2);
 
-        Button btnRegistrar = findViewById(R.id.btnRegistrar);
+        btnRegistrar = findViewById(R.id.btnRegistrar);
         Button btnCancelar = findViewById(R.id.btnCancelarRegistro);
 
         btnRegistrar.setOnClickListener(v -> registrar());
@@ -53,9 +59,25 @@ public class RegistroActivity extends BaseActivity {
         if (!validar()) {
             return;
         }
-        // TODO #25 (Jonathan): enviar los datos a POST /api/users/ con UsuarioApi.
-        Toast.makeText(this, getString(R.string.registro_exito, username), Toast.LENGTH_LONG).show();
-        finish();
+
+        NuevoUsuarioRequest pedido = new NuevoUsuarioRequest(username, texto(etPassword),
+                texto(etEmail).trim(), texto(etNombre).trim(), texto(etApellido).trim());
+
+        btnRegistrar.setEnabled(false);   // evita enviar dos veces
+        ApiClient.create(this, UsuarioApi.class).crear(pedido).enqueue(new ApiCallback<UsuarioDto>() {
+            @Override
+            public void onExito(UsuarioDto creado) {
+                Toast.makeText(RegistroActivity.this,
+                        getString(R.string.registro_exito, username), Toast.LENGTH_LONG).show();
+                finish();
+            }
+
+            @Override
+            public void onError(String mensaje) {
+                btnRegistrar.setEnabled(true);
+                Toast.makeText(RegistroActivity.this, mensaje, Toast.LENGTH_LONG).show();
+            }
+        });
     }
 
     /** Marca el error en cada campo con problema. Devuelve true si todo esta bien. */

@@ -8,6 +8,10 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 import androidx.cardview.widget.CardView;
 
+import ar.edu.ispc.edutools.model.UsuarioItem;
+import ar.edu.ispc.edutools.security.SessionManager;
+import ar.edu.ispc.edutools.util.JwtUtil;
+
 /**
  * Home de la aplicacion. Padre de todos los modulos, concentra la navegacion
  * principal mediante tarjetas. Recibe por Intent el usuario cargado en el login.
@@ -34,7 +38,10 @@ public class MainActivity extends BaseActivity {
         TextView tvBienvenida = findViewById(R.id.tvBienvenida);
         TextView tvRol = findViewById(R.id.tvRol);
         tvBienvenida.setText(getString(R.string.home_bienvenida, usuario));
-        tvRol.setText(getString(R.string.home_rol, "Asesor Pedagógico"));
+        // El rol sale del token que guardo el login (Issue #19).
+        final SessionManager sesion = new SessionManager(this);
+        String rol = JwtUtil.getRol(sesion.getAccessToken());
+        tvRol.setText(getString(R.string.home_rol, UsuarioItem.nombreDeRol(rol)));
 
         // Navegacion hacia los modulos hijos.
         CardView cardRecursos = findViewById(R.id.cardRecursos);
@@ -51,6 +58,7 @@ public class MainActivity extends BaseActivity {
         cardAcerca.setOnClickListener(v -> abrir(AcercaDeActivity.class));
 
         btnCerrarSesion.setOnClickListener(v -> {
+            sesion.cerrarSesion();   // borra los tokens guardados
             Intent intent = new Intent(MainActivity.this, LoginActivity.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(intent);

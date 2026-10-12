@@ -21,6 +21,9 @@ El reporte queda en `app/build/reports/tests/testDebugUnitTest/index.html`.
 | `Validador` (`util/`) | email, usuario del login, título y URL del recurso | 14 |
 | `UsuarioItem` (`model/`) | etiquetas legibles de rol y estado, getters | 6 |
 | `Recurso` (`model/`) | etiquetas legibles del tipo de recurso, getters | 6 |
+| `JwtUtil` (`util/`) | lee `rol` e `is_staff` del payload del token | 7 |
+| `AuthRepository` (`net/`) | login contra MockWebServer: 200 guarda los tokens, 401/500 y sin red muestran error | 5 |
+| `UsuarioApi` (`net/`) | CRUD de usuarios contra MockWebServer: rutas, token, 403, 201 y 204 | 5 |
 
 Total: 26 tests.
 
@@ -39,6 +42,23 @@ La regla de HTTPS viene de que la app tiene el tráfico sin cifrar deshabilitado
 
 Los únicos roles que existen en el backend son `admin`, `asesor` y `maquetador`. El rol "docente" no existe: `UsuarioItem.getRolLegible()` lo devuelve tal cual, sin etiqueta propia, y hay un test que lo deja asentado.
 
-## Nota
+## Login y usuarios con la red (Issue #25)
 
-`LoginActivity` usa `Validador.normalizarUsuario` para el nombre ingresado (antes la lógica estaba escrita adentro del botón y no se podía probar).
+Estas pruebas usan `MockWebServer`: un servidor falso que corre en la PC, así que no tocan el backend real ni necesitan internet.
+
+| Test | Qué comprueba |
+|---|---|
+| `login200_guardaLosTokens` | la respuesta 200 deja `access` y `refresh` guardados en el `SessionManager` |
+| `login_hacePostAApiTokenConBarraFinalYJson` | el pedido es `POST /api/token/` con el usuario en JSON |
+| `login401_muestraErrorYNoGuardaNada` | con credenciales malas se muestra el mensaje de `ApiErrorMapper` y no se guarda ningún token |
+| `login500_muestraErrorDelServidor` | error del servidor, sin token guardado |
+| `sinConexion_muestraSinConexion` | si el servidor no responde se muestra "Sin conexión" |
+| `listar_leeLosUsuariosYEnviaElToken` | `GET /api/users/` lee la lista y manda `Authorization: Bearer` |
+| `listar403_...` | un asesor recibe 403 al listar usuarios |
+| `crear_hacePostSinMandarRolNiIsStaff` | el alta no manda `rol` ni `is_staff` (el servidor los ignora, Issue #18) |
+| `editar_...` / `eliminar_...` | `PATCH` y `DELETE` a `/api/users/{id}/` (con barra final) |
+
+`JwtUtil` solo sirve para mostrar u ocultar botones (por ejemplo el "+" de Usuarios es solo para admin). La seguridad real la hace el servidor, que revisa la firma del token en cada pedido.
+
+Los tests de `JwtUtil` arman tokens de prueba con firma falsa, porque `JwtUtil` no verifica la firma.
+

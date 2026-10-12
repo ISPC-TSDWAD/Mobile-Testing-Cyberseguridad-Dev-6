@@ -96,6 +96,25 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="@style/TextAppearance.EduTools.Cuerpo" />
 
+            <!-- Solo se muestran si quien mira es admin. -->
+            <Button
+                android:id="@+id/btnEditarUsuario"
+                style="@style/Widget.EduTools.Boton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="28dp"
+                android:text="@string/usuario_editar"
+                android:visibility="gone" />
+
+            <Button
+                android:id="@+id/btnEliminarUsuario"
+                style="@style/Widget.EduTools.Boton.Secundario"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="@string/usuario_eliminar"
+                android:visibility="gone" />
+
         </LinearLayout>
     </ScrollView>
 </LinearLayout>
