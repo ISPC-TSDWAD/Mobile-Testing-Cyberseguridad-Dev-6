@@ -16,6 +16,8 @@ Se pasó **Accessibility Scanner** (Google) en un Samsung SM-A546E con la app co
 
 ![Inicio: ajuste de texto](scanner-1-toolbar-ajuste-de-texto.jpg)
 
-## Pendiente
+## Re-escaneo con la versión corregida
 
-Volver a pasar el escáner con la versión corregida y sumar las capturas "después" para confirmar que ya no marca estos tres puntos.
+Se volvió a pasar Accessibility Scanner con la app corregida instalada en el celular (12/10, 19:13): el escáner informa "No hay sugerencias".
+
+![Re-escaneo: sin sugerencias](scanner-despues-sin-sugerencias.png)
