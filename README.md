@@ -108,6 +108,8 @@ La interfaz aplica criterios de WCAG 2.2 nivel AA:
 - El estado de un usuario se comunica con texto, no únicamente con color.
 - Cada fila de lista se anuncia en un solo foco con toda su información.
 
+El resultado de Accessibility Scanner y las correcciones están en [docs/accesibilidad](docs/accesibilidad/INFORME_ACCESIBILIDAD.md); las pruebas en dispositivo, en [docs/pruebas/PRUEBAS_MANUALES.md](docs/pruebas/PRUEBAS_MANUALES.md).
+
 ---
 
 ## Seguridad
