@@ -66,6 +66,14 @@
     <string name="perfil_usuario">Nombre de usuario</string>
     <string name="perfil_estado">Estado</string>
     <string name="usuarios_nuevo">Registrar usuario</string>
+    <string name="usuarios_cargando">Cargando usuarios…</string>
+    <string name="usuario_editar">Editar</string>
+    <string name="usuario_eliminar">Eliminar</string>
+    <string name="usuario_editar_titulo">Editar usuario</string>
+    <string name="usuario_guardar">Guardar</string>
+    <string name="usuario_actualizado">Datos actualizados.</string>
+    <string name="usuario_eliminar_confirmar">¿Eliminar a %1$s? Esta acción no se puede deshacer.</string>
+    <string name="usuario_eliminado">Usuario eliminado.</string>
 
     <!-- ===== Registro (Issue #23) ===== -->
     <string name="title_registro">Registro de usuario</string>
