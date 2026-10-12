@@ -112,7 +112,7 @@ La interfaz aplica criterios de WCAG 2.2 nivel AA:
 
 ## Seguridad
 
-- Tráfico en texto plano prohibido por configuración; la única excepción documentada es el host de desarrollo local, que debe eliminarse antes del release.
+- Tráfico en texto plano prohibido por configuración; sin excepciones: se eliminó la del host de desarrollo local.
 - Copia de seguridad de la aplicación deshabilitada (`allowBackup="false"`).
 - Ninguna Activity interna se exporta.
 - Claves de firma, keystores y archivos de entorno excluidos del control de versiones.
