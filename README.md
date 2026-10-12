@@ -125,6 +125,23 @@ El detalle completo de políticas y la fundamentación de la elección de JWT es
 
 ## Documentación
 
+### Accesos rápidos para la defensa
+
+| Qué | Dónde |
+|:---|:---|
+| Retrospectiva del Sprint 2 (IdeaBoardz) | [Abrir el tablero](https://ideaboardz.com/for/Retrospectiva%20Sprint%202%20-%20DEV6%20EduTools/5836322) |
+| Backend desplegado (HTTPS) | [dev6.pythonanywhere.com](https://dev6.pythonanywhere.com) · el login es `POST /api/token/` |
+| Decodificar el JWT (claims `rol` e `is_staff`) | [jwt.io](https://jwt.io) |
+| Rutas, roles y errores de la API | [Endpoints-API](../../wiki/Endpoints-API) · [docs/api/ENDPOINTS.md](docs/api/ENDPOINTS.md) |
+| Evidencia de seguridad (403, claims, HTTPS) | [Ciberseguridad](../../wiki/Ciberseguridad) |
+| Ceremonias Scrum del Sprint 2 | [Scrum](../../wiki/Scrum) |
+| Plan de pruebas y resultados | [Testing](../../wiki/Testing) · [Pruebas manuales](docs/pruebas/PRUEBAS_MANUALES.md) · [Pruebas unitarias](docs/pruebas/PRUEBAS_UNITARIAS.md) · [Espresso](docs/pruebas/EVIDENCIA_ESPRESSO.md) |
+| Informe de accesibilidad | [docs/accesibilidad/INFORME_ACCESIBILIDAD.md](docs/accesibilidad/INFORME_ACCESIBILIDAD.md) |
+| Guion del video de seguridad | [docs/seguridad/GUION_VIDEO_SEGURIDAD.md](docs/seguridad/GUION_VIDEO_SEGURIDAD.md) |
+| Backend: despliegue y configuración | [docs/backend/BACKEND.md](docs/backend/BACKEND.md) |
+| Issues, Milestone y Pull Requests | [Issues](../../issues) · [Milestones](../../milestones) · [Pull Requests](../../pulls) |
+| Repositorio del backend | [ModPWeb--Dev6](https://github.com/ISPC-TSDWAD/ModPWeb--Dev6) |
+
 ### Wiki del proyecto
 
 | Página | Contenido |
