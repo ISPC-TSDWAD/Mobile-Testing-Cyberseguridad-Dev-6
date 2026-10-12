@@ -9,17 +9,28 @@ import androidx.annotation.Nullable;
 
 import com.google.android.material.textfield.TextInputLayout;
 
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
+import ar.edu.ispc.edutools.net.ApiClient;
+import ar.edu.ispc.edutools.net.AuthApi;
+import ar.edu.ispc.edutools.net.AuthRepository;
+import ar.edu.ispc.edutools.net.ResultadoLogin;
+import ar.edu.ispc.edutools.security.SessionManager;
 import ar.edu.ispc.edutools.util.Validador;
 
 /**
  * Pantalla de acceso. Raiz de la navegacion de la aplicacion.
  * El nombre ingresado viaja a MainActivity como extra del Intent.
- * Validaciones del formulario: Issue #24. El login real con JWT: Issue #25.
+ * Validaciones del formulario: Issue #24. Login real con JWT: Issue #25.
  */
 public class LoginActivity extends BaseActivity {
 
     /** Clave del extra con el nombre del usuario que inicio sesion. */
     public static final String EXTRA_USUARIO = "ar.edu.ispc.edutools.EXTRA_USUARIO";
+
+    // El pedido a la red se hace en un hilo aparte para no trabar la pantalla.
+    private final ExecutorService hilo = Executors.newSingleThreadExecutor();
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -47,15 +58,41 @@ public class LoginActivity extends BaseActivity {
                 return;
             }
 
-            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-            intent.putExtra(EXTRA_USUARIO, usuario.trim());
-            startActivity(intent);
-            // El login no debe quedar en la pila: al presionar atras desde el
-            // Home, la aplicacion se cierra en lugar de volver al formulario.
-            finish();
+            btnIngresar.setEnabled(false);
+            final String nombre = usuario.trim();
+            final AuthRepository repo = new AuthRepository(
+                    ApiClient.create(this, AuthApi.class), new SessionManager(this));
+
+            hilo.execute(() -> {
+                ResultadoLogin resultado = repo.login(nombre, password);
+                runOnUiThread(() -> {
+                    btnIngresar.setEnabled(true);
+                    if (resultado.isExito()) {
+                        irAlHome(nombre);
+                    } else {
+                        // Por ejemplo el 401 de ApiErrorMapper.
+                        tilPassword.setError(resultado.getMensaje());
+                    }
+                });
+            });
         });
 
         btnAcerca.setOnClickListener(v ->
                 startActivity(new Intent(LoginActivity.this, AcercaDeActivity.class)));
+    }
+
+    private void irAlHome(String nombre) {
+        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+        intent.putExtra(EXTRA_USUARIO, nombre);
+        startActivity(intent);
+        // El login no debe quedar en la pila: al presionar atras desde el
+        // Home, la aplicacion se cierra en lugar de volver al formulario.
+        finish();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        hilo.shutdown();
     }
 }

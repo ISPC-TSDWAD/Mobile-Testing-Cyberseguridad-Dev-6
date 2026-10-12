@@ -108,11 +108,13 @@ La interfaz aplica criterios de WCAG 2.2 nivel AA:
 - El estado de un usuario se comunica con texto, no únicamente con color.
 - Cada fila de lista se anuncia en un solo foco con toda su información.
 
+El resultado de Accessibility Scanner y las correcciones están en [docs/accesibilidad](docs/accesibilidad/INFORME_ACCESIBILIDAD.md); las pruebas en dispositivo, en [docs/pruebas/PRUEBAS_MANUALES.md](docs/pruebas/PRUEBAS_MANUALES.md).
+
 ---
 
 ## Seguridad
 
-- Tráfico en texto plano prohibido por configuración; la única excepción documentada es el host de desarrollo local, que debe eliminarse antes del release.
+- Tráfico en texto plano prohibido por configuración; sin excepciones: se eliminó la del host de desarrollo local.
 - Copia de seguridad de la aplicación deshabilitada (`allowBackup="false"`).
 - Ninguna Activity interna se exporta.
 - Claves de firma, keystores y archivos de entorno excluidos del control de versiones.
