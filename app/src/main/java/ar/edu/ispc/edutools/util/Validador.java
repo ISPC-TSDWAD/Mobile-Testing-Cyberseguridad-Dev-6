@@ -57,4 +57,28 @@ public final class Validador {
         return u.startsWith("https://") && u.length() > "https://".length()
                 && !u.contains(" ");
     }
+
+    // ---------- Formularios de Acceso, Contacto y Registro (Issues #23 y #24) ----------
+    // La regla de contrasena fuerte (esPasswordFuerte) la agrega Daniela (#26).
+
+    /** Mismas reglas que Django: letras, numeros y @ . + - _ (hasta 150). */
+    private static final Pattern USERNAME = Pattern.compile("^[A-Za-z0-9@.+_-]{1,150}$");
+
+    /** Campo obligatorio: no puede ser null, vacio ni solo espacios. */
+    public static boolean esObligatorioCompleto(String texto) {
+        return texto != null && !texto.trim().isEmpty();
+    }
+
+    /** El nombre de usuario no puede tener espacios ni simbolos raros. */
+    public static boolean esUsernameValido(String username) {
+        if (username == null) {
+            return false;
+        }
+        return USERNAME.matcher(username.trim()).matches();
+    }
+
+    /** La contrasena y su repeticion tienen que ser iguales. */
+    public static boolean coincidenPasswords(String password, String repeticion) {
+        return password != null && password.equals(repeticion);
+    }
 }

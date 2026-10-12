@@ -65,6 +65,24 @@
     <string name="perfil_correo">Correo</string>
     <string name="perfil_usuario">Nombre de usuario</string>
     <string name="perfil_estado">Estado</string>
+    <string name="usuarios_nuevo">Registrar usuario</string>
+
+    <!-- ===== Registro (Issue #23) ===== -->
+    <string name="title_registro">Registro de usuario</string>
+    <string name="registro_intro">Completá los datos para registrar a una persona del equipo. Todos los campos son obligatorios.</string>
+    <string name="registro_username">Nombre de usuario</string>
+    <string name="registro_nombre">Nombre</string>
+    <string name="registro_apellido">Apellido</string>
+    <string name="registro_email">Correo electrónico</string>
+    <string name="registro_password">Contraseña</string>
+    <string name="registro_password2">Repetir contraseña</string>
+    <string name="registro_crear">Registrar</string>
+    <string name="registro_exito">Usuario %1$s registrado correctamente.</string>
+    <string name="registro_error_username">Usá solo letras, números y @ . + - _ (sin espacios).</string>
+    <string name="registro_error_password2">Las contraseñas no coinciden.</string>
+
+    <!-- ===== Validaciones comunes (Issue #24) ===== -->
+    <string name="error_obligatorio">Este campo es obligatorio.</string>
 
     <!-- ===== Multimedia ===== -->
     <string name="multimedia_titulo">Estándares institucionales en video</string>

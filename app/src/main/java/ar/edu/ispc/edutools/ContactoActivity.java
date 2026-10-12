@@ -1,24 +1,24 @@
 package ar.edu.ispc.edutools;
 
 import android.os.Bundle;
-import android.text.TextUtils;
-import android.util.Patterns;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
+import com.google.android.material.textfield.TextInputLayout;
+
+import ar.edu.ispc.edutools.util.Validador;
+
 /**
  * Pantalla de contacto con la mesa de ayuda de EduTools.
- * Activity hija de MainActivity.
+ * Activity hija de MainActivity. Validaciones: Issue #24.
  */
 public class ContactoActivity extends BaseActivity {
 
-    private EditText etNombre;
-    private EditText etCorreo;
-    private EditText etAsunto;
-    private EditText etMensaje;
+    private EditText etNombre, etCorreo, etAsunto, etMensaje;
+    private TextInputLayout tilNombre, tilCorreo, tilAsunto, tilMensaje;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -31,28 +31,39 @@ public class ContactoActivity extends BaseActivity {
         etAsunto = findViewById(R.id.etContactoAsunto);
         etMensaje = findViewById(R.id.etContactoMensaje);
 
+        tilNombre = findViewById(R.id.tilContactoNombre);
+        tilCorreo = findViewById(R.id.tilContactoCorreo);
+        tilAsunto = findViewById(R.id.tilContactoAsunto);
+        tilMensaje = findViewById(R.id.tilContactoMensaje);
+
         Button btnEnviar = findViewById(R.id.btnEnviarConsulta);
         btnEnviar.setOnClickListener(v -> procesarEnvio());
     }
 
     private void procesarEnvio() {
-        String nombre = etNombre != null ? etNombre.getText().toString().trim() : "";
-        String correo = etCorreo != null ? etCorreo.getText().toString().trim() : "";
-        String asunto = etAsunto != null ? etAsunto.getText().toString().trim() : "";
-        String mensaje = etMensaje != null ? etMensaje.getText().toString().trim() : "";
-
-        if (TextUtils.isEmpty(nombre) || TextUtils.isEmpty(correo)
-                || TextUtils.isEmpty(asunto) || TextUtils.isEmpty(mensaje)) {
-            Toast.makeText(this, getString(R.string.contacto_error_campos), Toast.LENGTH_SHORT).show();
-            return;
-        }
-
-        if (!Patterns.EMAIL_ADDRESS.matcher(correo).matches()) {
-            Toast.makeText(this, getString(R.string.contacto_error_email), Toast.LENGTH_SHORT).show();
+        // Cada error se muestra en su campo (TextInputLayout.setError) y TalkBack lo anuncia.
+        boolean ok = marcar(tilNombre, Validador.esObligatorioCompleto(texto(etNombre)),
+                R.string.error_obligatorio);
+        ok &= marcar(tilCorreo, Validador.esEmailValido(texto(etCorreo)),
+                R.string.contacto_error_email);
+        ok &= marcar(tilAsunto, Validador.esObligatorioCompleto(texto(etAsunto)),
+                R.string.error_obligatorio);
+        ok &= marcar(tilMensaje, Validador.esObligatorioCompleto(texto(etMensaje)),
+                R.string.error_obligatorio);
+        if (!ok) {
             return;
         }
 
         Toast.makeText(this, getString(R.string.contacto_exito), Toast.LENGTH_LONG).show();
         finish();
+    }
+
+    private boolean marcar(TextInputLayout campo, boolean valido, int idMensaje) {
+        campo.setError(valido ? null : getString(idMensaje));
+        return valido;
+    }
+
+    private static String texto(EditText campo) {
+        return campo.getText() == null ? "" : campo.getText().toString();
     }
 }

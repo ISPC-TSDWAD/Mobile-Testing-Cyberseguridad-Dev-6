@@ -60,6 +60,12 @@
             android:label="@string/title_perfil"
             android:parentActivityName=".UsuariosActivity" />
 
+        <activity
+            android:name=".RegistroActivity"
+            android:exported="false"
+            android:label="@string/title_registro"
+            android:parentActivityName=".UsuariosActivity" />
+
         <!-- ================= MULTIMEDIA / INSTITUCIONAL ================= -->
         <activity
             android:name=".MultimediaActivity"
