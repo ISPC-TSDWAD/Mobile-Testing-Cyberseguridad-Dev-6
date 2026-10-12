@@ -144,6 +144,10 @@ El detalle completo de políticas y la fundamentación de la elección de JWT es
 | Plan de seguridad (Evidencia 2) | [PDF](docs/Documentacion_Ciberseguridad_AppEduTools.pdf) · [documento colaborativo](https://docs.google.com/document/d/16HC2LHAWWaxBdfk89M1nlIFZkRZtYlht/edit) |
 | Planilla de casos de prueba | [docs/Test_Cases_Sprint1.csv](docs/Test_Cases_Sprint1.csv) |
 | Demo en video de la navegabilidad | [Ver en Drive](https://drive.google.com/file/d/193K4IP9BwwjeN6Mn-tMd8QOG3UiY6Efv/view?usp=drive_link) · [copia en el repositorio](docs/video) |
+| Backend: cómo se conecta, roles, seguridad y despliegue | [docs/backend/BACKEND.md](docs/backend/BACKEND.md) |
+| Lista de endpoints de la API | [docs/api/ENDPOINTS.md](docs/api/ENDPOINTS.md) |
+| Correcciones de seguridad del backend | [docs/seguridad/CORRECCIONES_BACKEND.md](docs/seguridad/CORRECCIONES_BACKEND.md) |
+| Pruebas unitarias de la app | [docs/pruebas/PRUEBAS_UNITARIAS.md](docs/pruebas/PRUEBAS_UNITARIAS.md) |
 | Backend, modelo relacional y script SQL | [ModPWeb--Dev6](https://github.com/ISPC-TSDWAD/ModPWeb--Dev6) |
 | Descarga de la aplicación (release) | *(Sprint 2)* |
 
