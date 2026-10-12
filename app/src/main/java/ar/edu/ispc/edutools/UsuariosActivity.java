@@ -35,6 +35,9 @@ public class UsuariosActivity extends BaseActivity implements UsuarioAdapter.OnU
         rv.setLayoutManager(new LinearLayoutManager(this));
         rv.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
         rv.setAdapter(new UsuarioAdapter(usuarios, this));
+
+        findViewById(R.id.fabNuevoUsuario).setOnClickListener(v ->
+                startActivity(new Intent(this, RegistroActivity.class)));
     }
 
     @Override

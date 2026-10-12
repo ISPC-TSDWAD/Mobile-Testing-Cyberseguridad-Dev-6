@@ -101,4 +101,38 @@ public class ValidadorTest {
         assertFalse(Validador.esUrlValida("https://mi sitio.com"));
         assertFalse(Validador.esUrlValida("javascript:alert(1)"));
     }
+
+    // ---------- alta de usuario ----------
+
+    @Test
+    public void username_valido_y_con_simbolos_permitidos() {
+        assertTrue(Validador.esUsernameValido("gvelasco"));
+        assertTrue(Validador.esUsernameValido("ana.perez_2026"));
+    }
+
+    @Test
+    public void username_con_espacios_vacio_o_null_es_invalido() {
+        assertFalse(Validador.esUsernameValido("gonzalo velasco"));
+        assertFalse(Validador.esUsernameValido(""));
+        assertFalse(Validador.esUsernameValido(null));
+    }
+
+    @Test
+    public void campo_obligatorio_con_texto_es_valido() {
+        assertTrue(Validador.esObligatorioCompleto("Consulta"));
+    }
+
+    @Test
+    public void campo_obligatorio_vacio_espacios_o_null_es_invalido() {
+        assertFalse(Validador.esObligatorioCompleto(""));
+        assertFalse(Validador.esObligatorioCompleto("   "));
+        assertFalse(Validador.esObligatorioCompleto(null));
+    }
+
+    @Test
+    public void passwords_iguales_coinciden_y_distintas_no() {
+        assertTrue(Validador.coincidenPasswords("Clave2026", "Clave2026"));
+        assertFalse(Validador.coincidenPasswords("Clave2026", "clave2026"));
+        assertFalse(Validador.coincidenPasswords(null, null));
+    }
 }
