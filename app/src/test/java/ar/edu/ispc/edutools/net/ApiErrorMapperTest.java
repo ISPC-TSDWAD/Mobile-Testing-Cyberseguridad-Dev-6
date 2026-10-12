@@ -20,6 +20,20 @@ public class ApiErrorMapperTest {
     }
 
     @Test
+    public void error400_conComillasEscapadas_lasMuestraBien() {
+        assertEquals("rol: \"docente\" no es una elección válida.",
+                ApiErrorMapper.mensaje(400,
+                        "{\"rol\":[\"\\\"docente\\\" no es una elección válida.\"]}"));
+    }
+
+    @Test
+    public void error401_conDetailEnIngles_muestraMensajeEnEspanol() {
+        assertEquals("Sesión vencida o credenciales inválidas",
+                ApiErrorMapper.mensaje(401,
+                        "{\"detail\":\"No active account found with the given credentials\"}"));
+    }
+
+    @Test
     public void error400_sinCuerpo_mensajeGenerico() {
         assertEquals("Los datos enviados no son válidos", ApiErrorMapper.mensaje(400, null));
         assertEquals("Los datos enviados no son válidos", ApiErrorMapper.mensaje(400, ""));

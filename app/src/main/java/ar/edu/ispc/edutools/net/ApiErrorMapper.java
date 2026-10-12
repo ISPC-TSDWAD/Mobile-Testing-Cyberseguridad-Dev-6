@@ -11,13 +11,16 @@ public final class ApiErrorMapper {
 
     private static final int LARGO_MAXIMO = 200;
 
+    /** Texto JSON entre comillas, admite comillas escapadas (\"). */
+    private static final String TEXTO = "((?:[^\"\\\\]|\\\\.)+)";
+
     /** Formato de DRF: {"detail": "mensaje"} (tambien acepta message o error). */
     private static final Pattern DETALLE =
-            Pattern.compile("\"(?:detail|message|error)\"\\s*:\\s*\"([^\"]+)\"");
+            Pattern.compile("\"(?:detail|message|error)\"\\s*:\\s*\"" + TEXTO + "\"");
 
     /** Formato de DRF para campos: {"campo": ["mensaje"]}. */
     private static final Pattern CAMPO =
-            Pattern.compile("\"([A-Za-z_]+)\"\\s*:\\s*\\[\\s*\"([^\"]+)\"");
+            Pattern.compile("\"([A-Za-z_]+)\"\\s*:\\s*\\[\\s*\"" + TEXTO + "\"");
 
     private ApiErrorMapper() { }
 
@@ -50,13 +53,18 @@ public final class ApiErrorMapper {
         }
         Matcher d = DETALLE.matcher(cuerpo);
         if (d.find()) {
-            return recortar(d.group(1));
+            return recortar(desescapar(d.group(1)));
         }
         Matcher c = CAMPO.matcher(cuerpo);
         if (c.find()) {
-            return recortar(c.group(1) + ": " + c.group(2));
+            return recortar(c.group(1) + ": " + desescapar(c.group(2)));
         }
         return null;
+    }
+
+    /** Convierte las comillas y barras escapadas de JSON en texto normal. */
+    private static String desescapar(String texto) {
+        return texto.replace("\\\"", "\"").replace("\\\\", "\\");
     }
 
     private static String recortar(String texto) {
