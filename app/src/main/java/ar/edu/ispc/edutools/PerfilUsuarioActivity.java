@@ -70,8 +70,13 @@ public class PerfilUsuarioActivity extends BaseActivity {
         if (usuario == null) {
             return;
         }
-        setTitle(usuario.getNombreCompleto());
-        tvNombre.setText(usuario.getNombreCompleto());
+        // El titulo es fijo: el nombre ya se muestra abajo y asi no se repite el mismo texto (TalkBack).
+        setTitle(R.string.perfil_titulo);
+        if (usuario.getUsername() != null && usuario.getUsername().equals(usuario.getNombreCompleto())) {
+            tvNombre.setText(R.string.perfil_sin_nombre);
+        } else {
+            tvNombre.setText(usuario.getNombreCompleto());
+        }
         tvUsername.setText(usuario.getUsername());
         tvCorreo.setText(usuario.getCorreo());
         tvRol.setText(usuario.getRolLegible());

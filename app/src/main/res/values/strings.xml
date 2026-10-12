@@ -63,6 +63,8 @@
     <string name="usuarios_cantidad">%1$d usuarios registrados</string>
     <string name="perfil_rol">Rol</string>
     <string name="perfil_correo">Correo</string>
+    <string name="perfil_titulo">Perfil de usuario</string>
+    <string name="perfil_sin_nombre">Sin nombre cargado</string>
     <string name="perfil_usuario">Nombre de usuario</string>
     <string name="perfil_estado">Estado</string>
     <string name="usuarios_nuevo">Registrar usuario</string>
