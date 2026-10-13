@@ -12,7 +12,11 @@ import androidx.annotation.Nullable;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import ar.edu.ispc.edutools.model.DatosDemo;
+import ar.edu.ispc.edutools.model.ItemCatalogo;
 import ar.edu.ispc.edutools.model.Recurso;
 import ar.edu.ispc.edutools.net.ApiCallback;
 import ar.edu.ispc.edutools.net.ApiClient;
@@ -25,7 +29,8 @@ import retrofit2.Response;
 
 /**
  * Formulario de alta y edición de recursos pedagógicos.
- * Activity hija de RecursosActivity. Valida los datos con Validador y
+ * Activity hija de RecursosActivity. Carga los catálogos reales de la API
+ * (categorías y asignaturas), valida los datos con Validador y
  * envía POST para crear o PUT para editar.
  */
 public class RecursoFormActivity extends BaseActivity {
@@ -48,6 +53,11 @@ public class RecursoFormActivity extends BaseActivity {
     private Spinner spAsignatura;
     private Button btnGuardar;
 
+    private final List<ItemCatalogo> categoriasList = new ArrayList<>();
+    private final List<ItemCatalogo> asignaturasList = new ArrayList<>();
+    private ArrayAdapter<ItemCatalogo> adapterCategorias;
+    private ArrayAdapter<ItemCatalogo> adapterAsignaturas;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -68,9 +78,15 @@ public class RecursoFormActivity extends BaseActivity {
         btnGuardar = findViewById(R.id.btnGuardarRecurso);
         Button btnCancelar = findViewById(R.id.btnCancelarRecurso);
 
-        cargarSpinner(spTipo, DatosDemo.tiposDeRecurso());
-        cargarSpinner(spCategoria, DatosDemo.categorias());
-        cargarSpinner(spAsignatura, DatosDemo.asignaturas());
+        cargarSpinnerStrings(spTipo, DatosDemo.tiposDeRecurso());
+
+        adapterCategorias = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, categoriasList);
+        adapterCategorias.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spCategoria.setAdapter(adapterCategorias);
+
+        adapterAsignaturas = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, asignaturasList);
+        adapterAsignaturas.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spAsignatura.setAdapter(adapterAsignaturas);
 
         // Modo edición si se pasa un recurso en el Intent
         Intent intent = getIntent();
@@ -81,6 +97,8 @@ public class RecursoFormActivity extends BaseActivity {
         } else {
             setTitle(R.string.title_recurso_form);
         }
+
+        cargarCatalogosDesdeApi();
 
         btnGuardar.setOnClickListener(v -> guardarRecurso());
         btnCancelar.setOnClickListener(v -> finish());
@@ -108,13 +126,74 @@ public class RecursoFormActivity extends BaseActivity {
             }
         }
 
-        // Categoría y Asignatura (1-indexados)
-        if (r.getCategoria() > 0 && r.getCategoria() <= spCategoria.getCount()) {
-            spCategoria.setSelection(r.getCategoria() - 1);
+        // Si tenemos datos del recurso, poblamos temporalmente los adapters con la opción actual
+        if (categoriasList.isEmpty() && r.getCategoria() > 0) {
+            String nombreCat = r.getCategoriaNombre().isEmpty() ? "Categoría " + r.getCategoria() : r.getCategoriaNombre();
+            categoriasList.add(new ItemCatalogo(r.getCategoria(), nombreCat));
+            adapterCategorias.notifyDataSetChanged();
+            spCategoria.setSelection(0);
         }
-        if (r.getAsignatura() > 0 && r.getAsignatura() <= spAsignatura.getCount()) {
-            spAsignatura.setSelection(r.getAsignatura() - 1);
+
+        if (asignaturasList.isEmpty() && r.getAsignatura() > 0) {
+            String nombreAsig = r.getAsignaturaNombre().isEmpty() ? "Asignatura " + r.getAsignatura() : r.getAsignaturaNombre();
+            asignaturasList.add(new ItemCatalogo(r.getAsignatura(), nombreAsig));
+            adapterAsignaturas.notifyDataSetChanged();
+            spAsignatura.setSelection(0);
         }
+    }
+
+    private void cargarCatalogosDesdeApi() {
+        api.listarCategorias().enqueue(new ApiCallback<List<ItemCatalogo>>() {
+            @Override
+            public void onExito(List<ItemCatalogo> lista) {
+                if (isFinishing() || lista == null || lista.isEmpty()) {
+                    return;
+                }
+                categoriasList.clear();
+                categoriasList.addAll(lista);
+                adapterCategorias.notifyDataSetChanged();
+
+                if (recursoExistente != null && recursoExistente.getCategoria() > 0) {
+                    for (int i = 0; i < categoriasList.size(); i++) {
+                        if (categoriasList.get(i).getId() == recursoExistente.getCategoria()) {
+                            spCategoria.setSelection(i);
+                            break;
+                        }
+                    }
+                }
+            }
+
+            @Override
+            public void onError(String mensaje) {
+                // Si falla la red, se mantiene la opción previa
+            }
+        });
+
+        api.listarAsignaturas().enqueue(new ApiCallback<List<ItemCatalogo>>() {
+            @Override
+            public void onExito(List<ItemCatalogo> lista) {
+                if (isFinishing() || lista == null || lista.isEmpty()) {
+                    return;
+                }
+                asignaturasList.clear();
+                asignaturasList.addAll(lista);
+                adapterAsignaturas.notifyDataSetChanged();
+
+                if (recursoExistente != null && recursoExistente.getAsignatura() > 0) {
+                    for (int i = 0; i < asignaturasList.size(); i++) {
+                        if (asignaturasList.get(i).getId() == recursoExistente.getAsignatura()) {
+                            spAsignatura.setSelection(i);
+                            break;
+                        }
+                    }
+                }
+            }
+
+            @Override
+            public void onError(String mensaje) {
+                // Si falla la red, se mantiene la opción previa
+            }
+        });
     }
 
     private void guardarRecurso() {
@@ -144,8 +223,20 @@ public class RecursoFormActivity extends BaseActivity {
 
         int tipoPos = spTipo.getSelectedItemPosition();
         String tipo = tipoPos >= 0 && tipoPos < TIPOS_SLUGS.length ? TIPOS_SLUGS[tipoPos] : "video";
-        int categoriaId = spCategoria.getSelectedItemPosition() + 1;
-        int asignaturaId = spAsignatura.getSelectedItemPosition() + 1;
+
+        int categoriaId = 1;
+        if (spCategoria.getSelectedItem() instanceof ItemCatalogo) {
+            categoriaId = ((ItemCatalogo) spCategoria.getSelectedItem()).getId();
+        } else if (recursoExistente != null && recursoExistente.getCategoria() > 0) {
+            categoriaId = recursoExistente.getCategoria();
+        }
+
+        int asignaturaId = 1;
+        if (spAsignatura.getSelectedItem() instanceof ItemCatalogo) {
+            asignaturaId = ((ItemCatalogo) spAsignatura.getSelectedItem()).getId();
+        } else if (recursoExistente != null && recursoExistente.getAsignatura() > 0) {
+            asignaturaId = recursoExistente.getAsignatura();
+        }
 
         btnGuardar.setEnabled(false);
 
@@ -168,6 +259,9 @@ public class RecursoFormActivity extends BaseActivity {
                 public void onExito(Recurso cuerpo) {
                     Toast.makeText(RecursoFormActivity.this,
                             R.string.recurso_actualizado, Toast.LENGTH_SHORT).show();
+                    Intent data = new Intent();
+                    data.putExtra(RecursosActivity.EXTRA_RECURSO, cuerpo != null ? cuerpo : recursoAEnviar);
+                    setResult(RESULT_OK, data);
                     finish();
                 }
 
@@ -217,7 +311,7 @@ public class RecursoFormActivity extends BaseActivity {
         finish();
     }
 
-    private void cargarSpinner(Spinner spinner, String[] opciones) {
+    private void cargarSpinnerStrings(Spinner spinner, String[] opciones) {
         ArrayAdapter<String> adapter = new ArrayAdapter<>(
                 this, android.R.layout.simple_spinner_item, opciones);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);

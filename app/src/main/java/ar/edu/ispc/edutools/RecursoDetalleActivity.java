@@ -6,6 +6,8 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 
@@ -20,13 +22,33 @@ import retrofit2.Response;
 
 /**
  * Detalle de un recurso pedagógico. Activity hija de RecursosActivity.
- * Recibe el objeto Recurso serializado en el Intent.
+ * Recibe el objeto Recurso serializado en el Intent y se mantiene sincronizada
+ * con el backend al volver de editar.
  */
 public class RecursoDetalleActivity extends BaseActivity {
 
     private Recurso recurso;
     private RecursoApi api;
     private SessionManager sessionManager;
+
+    private TextView tvTitulo;
+    private TextView tvTipo;
+    private TextView tvCategoria;
+    private TextView tvAsignatura;
+    private TextView tvDescripcion;
+    private TextView tvAutor;
+
+    private final ActivityResultLauncher<Intent> launcherEditar =
+            registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {
+                if (result.getResultCode() == RESULT_OK && result.getData() != null) {
+                    Recurso actualizado = (Recurso) result.getData()
+                            .getSerializableExtra(RecursosActivity.EXTRA_RECURSO);
+                    if (actualizado != null) {
+                        recurso = actualizado;
+                        mostrarDatos();
+                    }
+                }
+            });
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -37,12 +59,12 @@ public class RecursoDetalleActivity extends BaseActivity {
         api = ApiClient.create(this, RecursoApi.class);
         sessionManager = new SessionManager(this);
 
-        TextView tvTitulo = findViewById(R.id.tvDetalleTitulo);
-        TextView tvTipo = findViewById(R.id.tvDetalleTipo);
-        TextView tvCategoria = findViewById(R.id.tvDetalleCategoria);
-        TextView tvAsignatura = findViewById(R.id.tvDetalleAsignatura);
-        TextView tvDescripcion = findViewById(R.id.tvDetalleDescripcion);
-        TextView tvAutor = findViewById(R.id.tvDetalleAutor);
+        tvTitulo = findViewById(R.id.tvDetalleTitulo);
+        tvTipo = findViewById(R.id.tvDetalleTipo);
+        tvCategoria = findViewById(R.id.tvDetalleCategoria);
+        tvAsignatura = findViewById(R.id.tvDetalleAsignatura);
+        tvDescripcion = findViewById(R.id.tvDetalleDescripcion);
+        tvAutor = findViewById(R.id.tvDetalleAutor);
         Button btnEditar = findViewById(R.id.btnEditarRecurso);
         Button btnEliminar = findViewById(R.id.btnEliminarRecurso);
 
@@ -53,22 +75,64 @@ public class RecursoDetalleActivity extends BaseActivity {
         }
 
         if (recurso != null) {
-            setTitle(recurso.getTitulo());
-            tvTitulo.setText(recurso.getTitulo());
-            tvTipo.setText(recurso.getTipoLegible());
-            tvCategoria.setText(recurso.getCategoriaNombre());
-            tvAsignatura.setText(recurso.getAsignaturaNombre());
-            tvDescripcion.setText(recurso.getDescripcion());
-            tvAutor.setText(recurso.getCreadoPor() != null ? String.valueOf(recurso.getCreadoPor()) : "");
+            mostrarDatos();
 
             btnEditar.setOnClickListener(v -> {
                 Intent intent = new Intent(RecursoDetalleActivity.this, RecursoFormActivity.class);
                 intent.putExtra(RecursosActivity.EXTRA_RECURSO, recurso);
-                startActivity(intent);
+                launcherEditar.launch(intent);
             });
 
             btnEliminar.setOnClickListener(v -> confirmarEliminar());
         }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (recurso != null) {
+            cargarDetalleDesdeApi(recurso.getId());
+        }
+    }
+
+    private void mostrarDatos() {
+        if (recurso == null) {
+            return;
+        }
+        setTitle(recurso.getTitulo());
+        tvTitulo.setText(recurso.getTitulo());
+        tvTipo.setText(recurso.getTipoLegible());
+        tvCategoria.setText(recurso.getCategoriaNombre());
+        tvAsignatura.setText(recurso.getAsignaturaNombre());
+        tvDescripcion.setText(recurso.getDescripcion());
+        tvAutor.setText(recurso.getCreadoPor() != null ? String.valueOf(recurso.getCreadoPor()) : "");
+    }
+
+    private void cargarDetalleDesdeApi(int id) {
+        api.detalle(id).enqueue(new ApiCallback<Recurso>() {
+            @Override
+            public void onResponse(Call<Recurso> call, Response<Recurso> respuesta) {
+                if (respuesta.code() == 401) {
+                    manejarSesionVencida();
+                    return;
+                }
+                super.onResponse(call, respuesta);
+            }
+
+            @Override
+            public void onExito(Recurso cuerpo) {
+                if (isFinishing() || cuerpo == null) {
+                    return;
+                }
+                recurso = cuerpo;
+                mostrarDatos();
+            }
+
+            @Override
+            public void onError(String mensaje) {
+                // Si falla la red, se mantienen los datos cargados previamente
+            }
+        });
     }
 
     private void confirmarEliminar() {

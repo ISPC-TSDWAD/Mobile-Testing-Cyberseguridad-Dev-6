@@ -36,4 +36,12 @@ public interface RecursoApi {
     /** Elimina un recurso pedagógico por su ID. Responde 204 No Content sin cuerpo. */
     @DELETE("api/pedagogia/recursos/{id}/")
     Call<Void> eliminar(@Path("id") int id);
+
+    /** Lista las categorías pedagógicas disponibles. */
+    @GET("api/pedagogia/categorias/")
+    Call<List<ar.edu.ispc.edutools.model.ItemCatalogo>> listarCategorias();
+
+    /** Lista las asignaturas pedagógicas disponibles. */
+    @GET("api/pedagogia/asignaturas/")
+    Call<List<ar.edu.ispc.edutools.model.ItemCatalogo>> listarAsignaturas();
 }
