@@ -1,0 +1,1095 @@
+{
+  "info": {
+    "name": "EduTools API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{token}}",
+        "type": "string"
+      }
+    ]
+  },
+  "item": [
+    {
+      "name": "Auth",
+      "item": [
+        {
+          "name": "Login admin (200)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Código de estado 200\", () => pm.response.to.have.status(200));",
+                  "pm.test(\"Content-Type es JSON\", () => pm.expect(pm.response.headers.get(\"Content-Type\") || \"\").to.include(\"application/json\"));",
+                  "pm.test(\"Tiempo de respuesta < 800 ms\", () => pm.expect(pm.response.responseTime).to.be.below(800));",
+                  "pm.test(\"Campos y tipos del cuerpo\", () => {",
+                  "  const j = pm.response.json();",
+                  "  pm.expect(j).to.have.property(\"access\"); pm.expect(j.access).to.be.a(\"string\");",
+                  "  pm.expect(j).to.have.property(\"refresh\"); pm.expect(j.refresh).to.be.a(\"string\");",
+                  "  pm.expect(j).to.have.property(\"is_staff\"); pm.expect(j.is_staff).to.be.a(\"boolean\");",
+                  "  pm.expect(j).to.have.property(\"rol\"); pm.expect(j.rol).to.be.a(\"string\");",
+                  "});",
+                  "pm.test(\"Rol válido\", () => pm.expect([\"admin\",\"asesor\",\"maquetador\"]).to.include(pm.response.json().rol));",
+                  "pm.environment.set(\"token\", pm.response.json().access);",
+                  "pm.environment.set(\"refresh\", pm.response.json().refresh);"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "auth": {
+              "type": "noauth"
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"{{username}}\",\n  \"password\": \"{{password}}\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/token/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "token",
+                ""
+              ]
+            }
+          }
+        },
+        {
+          "name": "Login asesor (200)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Código de estado 200\", () => pm.response.to.have.status(200));",
+                  "pm.test(\"Content-Type es JSON\", () => pm.expect(pm.response.headers.get(\"Content-Type\") || \"\").to.include(\"application/json\"));",
+                  "pm.test(\"Tiempo de respuesta < 800 ms\", () => pm.expect(pm.response.responseTime).to.be.below(800));",
+                  "pm.test(\"Campos y tipos del cuerpo\", () => {",
+                  "  const j = pm.response.json();",
+                  "  pm.expect(j).to.have.property(\"access\"); pm.expect(j.access).to.be.a(\"string\");",
+                  "  pm.expect(j).to.have.property(\"refresh\"); pm.expect(j.refresh).to.be.a(\"string\");",
+                  "  pm.expect(j).to.have.property(\"is_staff\"); pm.expect(j.is_staff).to.be.a(\"boolean\");",
+                  "  pm.expect(j).to.have.property(\"rol\"); pm.expect(j.rol).to.be.a(\"string\");",
+                  "});",
+                  "pm.test(\"Rol válido\", () => pm.expect([\"admin\",\"asesor\",\"maquetador\"]).to.include(pm.response.json().rol));",
+                  "pm.environment.set(\"tokenAsesor\", pm.response.json().access);"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "auth": {
+              "type": "noauth"
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"{{usernameAsesor}}\",\n  \"password\": \"{{passwordAsesor}}\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/token/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "token",
+                ""
+              ]
+            }
+          }
+        },
+        {
+          "name": "Login credenciales incorrectas (401)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Código de estado 401\", () => pm.response.to.have.status(401));",
+                  "pm.test(\"Content-Type es JSON\", () => pm.expect(pm.response.headers.get(\"Content-Type\") || \"\").to.include(\"application/json\"));",
+                  "pm.test(\"Tiempo de respuesta < 800 ms\", () => pm.expect(pm.response.responseTime).to.be.below(800));",
+                  "pm.test(\"Trae mensaje detail (string)\", () => pm.expect(pm.response.json().detail).to.be.a(\"string\"));"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "auth": {
+              "type": "noauth"
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"{{username}}\",\n  \"password\": \"{{$randomPassword}}\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/token/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "token",
+                ""
+              ]
+            }
+          }
+        },
+        {
+          "name": "Login sin password (400)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Código de estado 400\", () => pm.response.to.have.status(400));",
+                  "pm.test(\"Content-Type es JSON\", () => pm.expect(pm.response.headers.get(\"Content-Type\") || \"\").to.include(\"application/json\"));",
+                  "pm.test(\"Tiempo de respuesta < 800 ms\", () => pm.expect(pm.response.responseTime).to.be.below(800));",
+                  "pm.test(\"El error indica el campo password\", () => pm.expect(pm.response.json()).to.have.property(\"password\"));"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "auth": {
+              "type": "noauth"
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"{{username}}\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/token/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "token",
+                ""
+              ]
+            }
+          }
+        },
+        {
+          "name": "Refresh token (200)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Código de estado 200\", () => pm.response.to.have.status(200));",
+                  "pm.test(\"Content-Type es JSON\", () => pm.expect(pm.response.headers.get(\"Content-Type\") || \"\").to.include(\"application/json\"));",
+                  "pm.test(\"Tiempo de respuesta < 800 ms\", () => pm.expect(pm.response.responseTime).to.be.below(800));",
+                  "pm.test(\"Campos y tipos del cuerpo\", () => {",
+                  "  const j = pm.response.json();",
+                  "  pm.expect(j).to.have.property(\"access\"); pm.expect(j.access).to.be.a(\"string\");",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "auth": {
+              "type": "noauth"
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"refresh\": \"{{refresh}}\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/token/refresh/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "token",
+                "refresh",
+                ""
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Usuarios",
+      "item": [
+        {
+          "name": "Mi usuario - GET me (200)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Código de estado 200\", () => pm.response.to.have.status(200));",
+                  "pm.test(\"Content-Type es JSON\", () => pm.expect(pm.response.headers.get(\"Content-Type\") || \"\").to.include(\"application/json\"));",
+                  "pm.test(\"Tiempo de respuesta < 800 ms\", () => pm.expect(pm.response.responseTime).to.be.below(800));",
+                  "pm.test(\"Campos y tipos del cuerpo\", () => {",
+                  "  const j = pm.response.json();",
+                  "  pm.expect(j).to.have.property(\"id\"); pm.expect(j.id).to.be.a(\"number\");",
+                  "  pm.expect(j).to.have.property(\"username\"); pm.expect(j.username).to.be.a(\"string\");",
+                  "  pm.expect(j).to.have.property(\"email\"); pm.expect(j.email).to.be.a(\"string\");",
+                  "  pm.expect(j).to.have.property(\"first_name\"); pm.expect(j.first_name).to.be.a(\"string\");",
+                  "  pm.expect(j).to.have.property(\"last_name\"); pm.expect(j.last_name).to.be.a(\"string\");",
+                  "  pm.expect(j).to.have.property(\"is_staff\"); pm.expect(j.is_staff).to.be.a(\"boolean\");",
+                  "  pm.expect(j).to.have.property(\"is_active\"); pm.expect(j.is_active).to.be.a(\"boolean\");",
+                  "  pm.expect(j).to.have.property(\"rol\"); pm.expect(j.rol).to.be.a(\"string\");",
+                  "});",
+                  "pm.test(\"Nunca devuelve la contraseña\", () => pm.expect(pm.response.json()).to.not.have.property(\"password\"));",
+                  "pm.environment.set(\"userId\", pm.response.json().id);"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/users/me/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "users",
+                "me",
+                ""
+              ]
+            }
+          }
+        },
+        {
+          "name": "Mi usuario sin token (401)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Código de estado 401\", () => pm.response.to.have.status(401));",
+                  "pm.test(\"Content-Type es JSON\", () => pm.expect(pm.response.headers.get(\"Content-Type\") || \"\").to.include(\"application/json\"));",
+                  "pm.test(\"Tiempo de respuesta < 800 ms\", () => pm.expect(pm.response.responseTime).to.be.below(800));",
+                  "pm.test(\"Trae mensaje detail (string)\", () => pm.expect(pm.response.json().detail).to.be.a(\"string\"));"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "auth": {
+              "type": "noauth"
+            },
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/users/me/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "users",
+                "me",
+                ""
+              ]
+            }
+          }
+        },
+        {
+          "name": "Listar usuarios como admin (200)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Código de estado 200\", () => pm.response.to.have.status(200));",
+                  "pm.test(\"Content-Type es JSON\", () => pm.expect(pm.response.headers.get(\"Content-Type\") || \"\").to.include(\"application/json\"));",
+                  "pm.test(\"Tiempo de respuesta < 800 ms\", () => pm.expect(pm.response.responseTime).to.be.below(800));",
+                  "const lista = () => { const d = pm.response.json(); return Array.isArray(d) ? d : d.results; };",
+                  "pm.test(\"Devuelve una lista no vacía\", () => { pm.expect(lista()).to.be.an(\"array\").that.is.not.empty; });"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/users/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "users",
+                ""
+              ]
+            }
+          }
+        },
+        {
+          "name": "Listar usuarios como asesor (403)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Código de estado 403\", () => pm.response.to.have.status(403));",
+                  "pm.test(\"Content-Type es JSON\", () => pm.expect(pm.response.headers.get(\"Content-Type\") || \"\").to.include(\"application/json\"));",
+                  "pm.test(\"Tiempo de respuesta < 800 ms\", () => pm.expect(pm.response.responseTime).to.be.below(800));",
+                  "pm.test(\"Trae mensaje detail (string)\", () => pm.expect(pm.response.json().detail).to.be.a(\"string\"));"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{tokenAsesor}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/users/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "users",
+                ""
+              ]
+            }
+          }
+        },
+        {
+          "name": "Usuario inexistente (404)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Código de estado 404\", () => pm.response.to.have.status(404));",
+                  "pm.test(\"Content-Type es JSON\", () => pm.expect(pm.response.headers.get(\"Content-Type\") || \"\").to.include(\"application/json\"));",
+                  "pm.test(\"Tiempo de respuesta < 800 ms\", () => pm.expect(pm.response.responseTime).to.be.below(800));",
+                  "pm.test(\"detail = No encontrado.\", () => pm.expect(pm.response.json().detail).to.eql(\"No encontrado.\"));"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/users/99999999/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "users",
+                "99999999",
+                ""
+              ]
+            }
+          }
+        },
+        {
+          "name": "Cambiar contraseña con la actual incorrecta (400)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Código de estado 400\", () => pm.response.to.have.status(400));",
+                  "pm.test(\"Content-Type es JSON\", () => pm.expect(pm.response.headers.get(\"Content-Type\") || \"\").to.include(\"application/json\"));",
+                  "pm.test(\"Tiempo de respuesta < 800 ms\", () => pm.expect(pm.response.responseTime).to.be.below(800));",
+                  "pm.test(\"Trae mensaje detail (string)\", () => pm.expect(pm.response.json().detail).to.be.a(\"string\"));"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"actual\": \"{{$randomPassword}}\",\n  \"nueva\": \"{{$randomPassword}}\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/users/change-password/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "users",
+                "change-password",
+                ""
+              ]
+            }
+          }
+        },
+        {
+          "name": "Set-role con rol inexistente (400)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Código de estado 400\", () => pm.response.to.have.status(400));",
+                  "pm.test(\"Content-Type es JSON\", () => pm.expect(pm.response.headers.get(\"Content-Type\") || \"\").to.include(\"application/json\"));",
+                  "pm.test(\"Tiempo de respuesta < 800 ms\", () => pm.expect(pm.response.responseTime).to.be.below(800));",
+                  "pm.test(\"El error indica el campo rol\", () => pm.expect(pm.response.json()).to.have.property(\"rol\"));"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"rol\": \"docente\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/users/{{userId}}/set-role/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "users",
+                "{{userId}}",
+                "set-role",
+                ""
+              ]
+            }
+          }
+        },
+        {
+          "name": "Set-role como asesor (403)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Código de estado 403\", () => pm.response.to.have.status(403));",
+                  "pm.test(\"Content-Type es JSON\", () => pm.expect(pm.response.headers.get(\"Content-Type\") || \"\").to.include(\"application/json\"));",
+                  "pm.test(\"Tiempo de respuesta < 800 ms\", () => pm.expect(pm.response.responseTime).to.be.below(800));",
+                  "pm.test(\"Trae mensaje detail (string)\", () => pm.expect(pm.response.json().detail).to.be.a(\"string\"));"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{tokenAsesor}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"rol\": \"admin\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/users/{{userId}}/set-role/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "users",
+                "{{userId}}",
+                "set-role",
+                ""
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Recursos",
+      "item": [
+        {
+          "name": "Categorías - GET lista (guarda categoriaId)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Código de estado 200\", () => pm.response.to.have.status(200));",
+                  "pm.test(\"Content-Type es JSON\", () => pm.expect(pm.response.headers.get(\"Content-Type\") || \"\").to.include(\"application/json\"));",
+                  "pm.test(\"Tiempo de respuesta < 800 ms\", () => pm.expect(pm.response.responseTime).to.be.below(800));",
+                  "const lista = () => { const d = pm.response.json(); return Array.isArray(d) ? d : d.results; };",
+                  "pm.test(\"Hay al menos una categoría\", () => pm.expect(lista()).to.be.an(\"array\").that.is.not.empty);",
+                  "pm.environment.set(\"categoriaId\", lista()[0].id);"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/pedagogia/categorias/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "pedagogia",
+                "categorias",
+                ""
+              ]
+            }
+          }
+        },
+        {
+          "name": "Asignaturas - GET lista (guarda asignaturaId)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Código de estado 200\", () => pm.response.to.have.status(200));",
+                  "pm.test(\"Content-Type es JSON\", () => pm.expect(pm.response.headers.get(\"Content-Type\") || \"\").to.include(\"application/json\"));",
+                  "pm.test(\"Tiempo de respuesta < 800 ms\", () => pm.expect(pm.response.responseTime).to.be.below(800));",
+                  "const lista = () => { const d = pm.response.json(); return Array.isArray(d) ? d : d.results; };",
+                  "pm.test(\"Hay al menos una asignatura\", () => pm.expect(lista()).to.be.an(\"array\").that.is.not.empty);",
+                  "pm.environment.set(\"asignaturaId\", lista()[0].id);"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/pedagogia/asignaturas/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "pedagogia",
+                "asignaturas",
+                ""
+              ]
+            }
+          }
+        },
+        {
+          "name": "1. POST crear recurso (201, guarda recursoId)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Código de estado 201\", () => pm.response.to.have.status(201));",
+                  "pm.test(\"Content-Type es JSON\", () => pm.expect(pm.response.headers.get(\"Content-Type\") || \"\").to.include(\"application/json\"));",
+                  "pm.test(\"Tiempo de respuesta < 800 ms\", () => pm.expect(pm.response.responseTime).to.be.below(800));",
+                  "pm.test(\"Campos y tipos del cuerpo\", () => {",
+                  "  const j = pm.response.json();",
+                  "  pm.expect(j).to.have.property(\"id\"); pm.expect(j.id).to.be.a(\"number\");",
+                  "  pm.expect(j).to.have.property(\"titulo\"); pm.expect(j.titulo).to.be.a(\"string\");",
+                  "  pm.expect(j).to.have.property(\"descripcion\"); pm.expect(j.descripcion).to.be.a(\"string\");",
+                  "  pm.expect(j).to.have.property(\"tipo\"); pm.expect(j.tipo).to.be.a(\"string\");",
+                  "  pm.expect(j).to.have.property(\"categoria\"); pm.expect(j.categoria).to.be.a(\"number\");",
+                  "  pm.expect(j).to.have.property(\"asignatura\"); pm.expect(j.asignatura).to.be.a(\"number\");",
+                  "  pm.expect(j).to.have.property(\"es_plantilla_base\"); pm.expect(j.es_plantilla_base).to.be.a(\"boolean\");",
+                  "  pm.expect(j).to.have.property(\"activo\"); pm.expect(j.activo).to.be.a(\"boolean\");",
+                  "  pm.expect(j).to.have.property(\"creado_en\"); pm.expect(j.creado_en).to.be.a(\"string\");",
+                  "});",
+                  "pm.test(\"tipo = lectura\", () => pm.expect(pm.response.json().tipo).to.eql(\"lectura\"));",
+                  "pm.environment.set(\"recursoId\", pm.response.json().id);"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"titulo\": \"Recurso Newman {{$timestamp}}\",\n  \"descripcion\": \"Creado por Newman\",\n  \"tipo\": \"lectura\",\n  \"categoria\": {{categoriaId}},\n  \"asignatura\": {{asignaturaId}}\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/pedagogia/recursos/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "pedagogia",
+                "recursos",
+                ""
+              ]
+            }
+          }
+        },
+        {
+          "name": "2. GET lista de recursos (200)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Código de estado 200\", () => pm.response.to.have.status(200));",
+                  "pm.test(\"Content-Type es JSON\", () => pm.expect(pm.response.headers.get(\"Content-Type\") || \"\").to.include(\"application/json\"));",
+                  "pm.test(\"Tiempo de respuesta < 800 ms\", () => pm.expect(pm.response.responseTime).to.be.below(800));",
+                  "const lista = () => { const d = pm.response.json(); return Array.isArray(d) ? d : d.results; };",
+                  "pm.test(\"Es una lista\", () => pm.expect(lista()).to.be.an(\"array\"));",
+                  "pm.test(\"Incluye el recurso creado\", () => pm.expect(lista().map(r => r.id)).to.include(Number(pm.environment.get(\"recursoId\"))));"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/pedagogia/recursos/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "pedagogia",
+                "recursos",
+                ""
+              ]
+            }
+          }
+        },
+        {
+          "name": "3. GET recurso por id (200)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Código de estado 200\", () => pm.response.to.have.status(200));",
+                  "pm.test(\"Content-Type es JSON\", () => pm.expect(pm.response.headers.get(\"Content-Type\") || \"\").to.include(\"application/json\"));",
+                  "pm.test(\"Tiempo de respuesta < 800 ms\", () => pm.expect(pm.response.responseTime).to.be.below(800));",
+                  "pm.test(\"Campos y tipos del cuerpo\", () => {",
+                  "  const j = pm.response.json();",
+                  "  pm.expect(j).to.have.property(\"id\"); pm.expect(j.id).to.be.a(\"number\");",
+                  "  pm.expect(j).to.have.property(\"titulo\"); pm.expect(j.titulo).to.be.a(\"string\");",
+                  "  pm.expect(j).to.have.property(\"descripcion\"); pm.expect(j.descripcion).to.be.a(\"string\");",
+                  "  pm.expect(j).to.have.property(\"tipo\"); pm.expect(j.tipo).to.be.a(\"string\");",
+                  "  pm.expect(j).to.have.property(\"categoria\"); pm.expect(j.categoria).to.be.a(\"number\");",
+                  "  pm.expect(j).to.have.property(\"asignatura\"); pm.expect(j.asignatura).to.be.a(\"number\");",
+                  "  pm.expect(j).to.have.property(\"es_plantilla_base\"); pm.expect(j.es_plantilla_base).to.be.a(\"boolean\");",
+                  "  pm.expect(j).to.have.property(\"activo\"); pm.expect(j.activo).to.be.a(\"boolean\");",
+                  "  pm.expect(j).to.have.property(\"creado_en\"); pm.expect(j.creado_en).to.be.a(\"string\");",
+                  "});",
+                  "pm.test(\"Es el recurso pedido\", () => pm.expect(pm.response.json().id).to.eql(Number(pm.environment.get(\"recursoId\"))));"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/pedagogia/recursos/{{recursoId}}/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "pedagogia",
+                "recursos",
+                "{{recursoId}}",
+                ""
+              ]
+            }
+          }
+        },
+        {
+          "name": "4. PUT editar recurso (200)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Código de estado 200\", () => pm.response.to.have.status(200));",
+                  "pm.test(\"Content-Type es JSON\", () => pm.expect(pm.response.headers.get(\"Content-Type\") || \"\").to.include(\"application/json\"));",
+                  "pm.test(\"Tiempo de respuesta < 800 ms\", () => pm.expect(pm.response.responseTime).to.be.below(800));",
+                  "pm.test(\"Campos y tipos del cuerpo\", () => {",
+                  "  const j = pm.response.json();",
+                  "  pm.expect(j).to.have.property(\"id\"); pm.expect(j.id).to.be.a(\"number\");",
+                  "  pm.expect(j).to.have.property(\"titulo\"); pm.expect(j.titulo).to.be.a(\"string\");",
+                  "  pm.expect(j).to.have.property(\"descripcion\"); pm.expect(j.descripcion).to.be.a(\"string\");",
+                  "  pm.expect(j).to.have.property(\"tipo\"); pm.expect(j.tipo).to.be.a(\"string\");",
+                  "  pm.expect(j).to.have.property(\"categoria\"); pm.expect(j.categoria).to.be.a(\"number\");",
+                  "  pm.expect(j).to.have.property(\"asignatura\"); pm.expect(j.asignatura).to.be.a(\"number\");",
+                  "  pm.expect(j).to.have.property(\"es_plantilla_base\"); pm.expect(j.es_plantilla_base).to.be.a(\"boolean\");",
+                  "  pm.expect(j).to.have.property(\"activo\"); pm.expect(j.activo).to.be.a(\"boolean\");",
+                  "  pm.expect(j).to.have.property(\"creado_en\"); pm.expect(j.creado_en).to.be.a(\"string\");",
+                  "});",
+                  "pm.test(\"El título cambió\", () => pm.expect(pm.response.json().titulo).to.include(\"editado\"));"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"titulo\": \"Recurso Newman editado {{$timestamp}}\",\n  \"descripcion\": \"Creado por Newman\",\n  \"tipo\": \"lectura\",\n  \"categoria\": {{categoriaId}},\n  \"asignatura\": {{asignaturaId}}\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/pedagogia/recursos/{{recursoId}}/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "pedagogia",
+                "recursos",
+                "{{recursoId}}",
+                ""
+              ]
+            }
+          }
+        },
+        {
+          "name": "5. DELETE recurso (204)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Código de estado 204\", () => pm.response.to.have.status(204));",
+                  "pm.test(\"Tiempo de respuesta < 800 ms\", () => pm.expect(pm.response.responseTime).to.be.below(800));"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/pedagogia/recursos/{{recursoId}}/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "pedagogia",
+                "recursos",
+                "{{recursoId}}",
+                ""
+              ]
+            }
+          }
+        },
+        {
+          "name": "6. GET recurso borrado (404)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Código de estado 404\", () => pm.response.to.have.status(404));",
+                  "pm.test(\"Content-Type es JSON\", () => pm.expect(pm.response.headers.get(\"Content-Type\") || \"\").to.include(\"application/json\"));",
+                  "pm.test(\"Tiempo de respuesta < 800 ms\", () => pm.expect(pm.response.responseTime).to.be.below(800));",
+                  "pm.test(\"detail = No encontrado.\", () => pm.expect(pm.response.json().detail).to.eql(\"No encontrado.\"));"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/pedagogia/recursos/{{recursoId}}/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "pedagogia",
+                "recursos",
+                "{{recursoId}}",
+                ""
+              ]
+            }
+          }
+        },
+        {
+          "name": "Negativo: POST payload inválido (400)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Código de estado 400\", () => pm.response.to.have.status(400));",
+                  "pm.test(\"Content-Type es JSON\", () => pm.expect(pm.response.headers.get(\"Content-Type\") || \"\").to.include(\"application/json\"));",
+                  "pm.test(\"Tiempo de respuesta < 800 ms\", () => pm.expect(pm.response.responseTime).to.be.below(800));",
+                  "pm.test(\"El error indica el campo titulo\", () => pm.expect(pm.response.json()).to.have.property(\"titulo\"));"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"descripcion\": \"sin titulo\",\n  \"tipo\": \"no_existe\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/pedagogia/recursos/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "pedagogia",
+                "recursos",
+                ""
+              ]
+            }
+          }
+        },
+        {
+          "name": "Negativo: GET recursos sin token (401)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Código de estado 401\", () => pm.response.to.have.status(401));",
+                  "pm.test(\"Content-Type es JSON\", () => pm.expect(pm.response.headers.get(\"Content-Type\") || \"\").to.include(\"application/json\"));",
+                  "pm.test(\"Tiempo de respuesta < 800 ms\", () => pm.expect(pm.response.responseTime).to.be.below(800));",
+                  "pm.test(\"Trae mensaje detail (string)\", () => pm.expect(pm.response.json().detail).to.be.a(\"string\"));"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "auth": {
+              "type": "noauth"
+            },
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/pedagogia/recursos/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "pedagogia",
+                "recursos",
+                ""
+              ]
+            }
+          }
+        },
+        {
+          "name": "Negativo: GET recurso inexistente (404)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Código de estado 404\", () => pm.response.to.have.status(404));",
+                  "pm.test(\"Content-Type es JSON\", () => pm.expect(pm.response.headers.get(\"Content-Type\") || \"\").to.include(\"application/json\"));",
+                  "pm.test(\"Tiempo de respuesta < 800 ms\", () => pm.expect(pm.response.responseTime).to.be.below(800));",
+                  "pm.test(\"detail = No encontrado.\", () => pm.expect(pm.response.json().detail).to.eql(\"No encontrado.\"));"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/pedagogia/recursos/99999999/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "pedagogia",
+                "recursos",
+                "99999999",
+                ""
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
