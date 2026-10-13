@@ -115,6 +115,14 @@
                 android:layout_marginTop="32dp"
                 android:text="@string/recurso_editar" />
 
+            <Button
+                android:id="@+id/btnEliminarRecurso"
+                style="@style/Widget.EduTools.Boton.Secundario"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="@string/recurso_eliminar" />
+
         </LinearLayout>
     </ScrollView>
 </LinearLayout>
