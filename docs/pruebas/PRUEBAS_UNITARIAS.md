@@ -31,7 +31,7 @@ El reporte queda en `app/build/reports/tests/testDebugUnitTest/index.html`.
 
 Los tests de `ApiErrorMapper` (14, incluidos el 429 del límite de intentos y el 409 de dato en uso), `AuthInterceptor` (3) y la capa de red de Gonzalo se suman a esta tabla en `app/src/test`.
 
-Total: 81 tests, todos pasan (`testDebugUnitTest`, 13/10).
+Total: 93 tests, todos pasan (`testDebugUnitTest`, 14/10).
 
 ## Validador
 
