@@ -45,7 +45,8 @@ public class MultimediaActivity extends BaseActivity {
 
             Uri uri = Uri.parse("android.resource://" + getPackageName() + "/" + idVideo);
             videoView.setVideoURI(uri);
-            videoView.setOnPreparedListener(mp -> videoView.start());
+            // Muestra el primer fotograma como miniatura sin iniciar reproduccion automatica
+            videoView.setOnPreparedListener(mp -> videoView.seekTo(1));
         } else {
             videoView.setVisibility(View.GONE);
             tvAvisoVideo.setVisibility(View.VISIBLE);
