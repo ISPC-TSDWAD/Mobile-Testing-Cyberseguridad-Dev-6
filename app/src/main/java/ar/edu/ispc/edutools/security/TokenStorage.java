@@ -13,5 +13,12 @@ public interface TokenStorage {
 
     String getRefreshToken();
 
+    /** Guarda el nombre de usuario de la sesion (para mostrarlo en el Home al reabrir la app). */
+    default void saveUsername(String username) { }
+
+    default String getUsername() {
+        return null;
+    }
+
     void clear();
 }
