@@ -37,4 +37,14 @@ public class ContactoFlujoTest {
         contacto.verificarErrorCorreo("Por favor ingresá un correo electrónico válido.")
                 .verificarSinErrorEnNombreAsuntoYMensaje();
     }
+
+    /** HUM-08, TC-21: validar una consulta no cierra la pantalla ni borra el mensaje. */
+    @Test
+    public void contactoValido_conservaConsultaEnPantallaSinEnviar() {
+        ContactoScreen contacto = new ContactoScreen()
+                .completar("Juan Perez", "juan@example.com", "Consulta", "Hola");
+        contacto.tocarEnviar();
+        contacto.verificarSinErrorEnNombreAsuntoYMensaje()
+                .verificarConsultaSinEnviar("Hola");
+    }
 }

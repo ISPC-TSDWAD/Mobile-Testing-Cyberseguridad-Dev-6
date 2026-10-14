@@ -1,5 +1,7 @@
 package ar.edu.ispc.edutools;
 
+import android.content.Context;
+
 import androidx.test.core.app.ApplicationProvider;
 import androidx.test.espresso.accessibility.AccessibilityChecks;
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
@@ -30,7 +32,7 @@ public class LoginFlujoTest {
     /** Si el celular tiene una sesion guardada, la app entra directo al Home: se limpia antes. */
     @BeforeClass
     public static void cerrarSesionGuardada() {
-        new SessionManager(ApplicationProvider.getApplicationContext()).cerrarSesion();
+        new SessionManager(ApplicationProvider.<Context>getApplicationContext()).cerrarSesion();
     }
 
     @Rule

@@ -18,14 +18,9 @@ import java.util.List;
 import ar.edu.ispc.edutools.model.DatosDemo;
 import ar.edu.ispc.edutools.model.ItemCatalogo;
 import ar.edu.ispc.edutools.model.Recurso;
-import ar.edu.ispc.edutools.net.ApiCallback;
 import ar.edu.ispc.edutools.net.ApiClient;
-import ar.edu.ispc.edutools.net.ApiErrorMapper;
 import ar.edu.ispc.edutools.net.RecursoApi;
-import ar.edu.ispc.edutools.security.SessionManager;
 import ar.edu.ispc.edutools.util.Validador;
-import retrofit2.Call;
-import retrofit2.Response;
 
 /**
  * Formulario de alta y edición de recursos pedagógicos.
@@ -41,7 +36,6 @@ public class RecursoFormActivity extends BaseActivity {
 
     private Recurso recursoExistente;
     private RecursoApi api;
-    private SessionManager sessionManager;
 
     private TextInputLayout tilTitulo;
     private TextInputLayout tilUrl;
@@ -65,7 +59,6 @@ public class RecursoFormActivity extends BaseActivity {
         configurarToolbar(true);
 
         api = ApiClient.create(this, RecursoApi.class);
-        sessionManager = new SessionManager(this);
 
         tilTitulo = findViewById(R.id.tilFormTitulo);
         tilUrl = findViewById(R.id.tilFormUrl);
@@ -143,7 +136,7 @@ public class RecursoFormActivity extends BaseActivity {
     }
 
     private void cargarCatalogosDesdeApi() {
-        api.listarCategorias().enqueue(new ApiCallback<List<ItemCatalogo>>() {
+        api.listarCategorias().enqueue(new CallbackConSesion<List<ItemCatalogo>>() {
             @Override
             public void onExito(List<ItemCatalogo> lista) {
                 if (isFinishing() || lista == null || lista.isEmpty()) {
@@ -165,11 +158,11 @@ public class RecursoFormActivity extends BaseActivity {
 
             @Override
             public void onError(String mensaje) {
-                // Si falla la red, se mantiene la opción previa
+                Toast.makeText(RecursoFormActivity.this, mensaje, Toast.LENGTH_LONG).show();
             }
         });
 
-        api.listarAsignaturas().enqueue(new ApiCallback<List<ItemCatalogo>>() {
+        api.listarAsignaturas().enqueue(new CallbackConSesion<List<ItemCatalogo>>() {
             @Override
             public void onExito(List<ItemCatalogo> lista) {
                 if (isFinishing() || lista == null || lista.isEmpty()) {
@@ -191,7 +184,7 @@ public class RecursoFormActivity extends BaseActivity {
 
             @Override
             public void onError(String mensaje) {
-                // Si falla la red, se mantiene la opción previa
+                Toast.makeText(RecursoFormActivity.this, mensaje, Toast.LENGTH_LONG).show();
             }
         });
     }
@@ -224,18 +217,24 @@ public class RecursoFormActivity extends BaseActivity {
         int tipoPos = spTipo.getSelectedItemPosition();
         String tipo = tipoPos >= 0 && tipoPos < TIPOS_SLUGS.length ? TIPOS_SLUGS[tipoPos] : "video";
 
-        int categoriaId = 1;
+        int categoriaId = -1;
         if (spCategoria.getSelectedItem() instanceof ItemCatalogo) {
             categoriaId = ((ItemCatalogo) spCategoria.getSelectedItem()).getId();
         } else if (recursoExistente != null && recursoExistente.getCategoria() > 0) {
             categoriaId = recursoExistente.getCategoria();
         }
 
-        int asignaturaId = 1;
+        int asignaturaId = -1;
         if (spAsignatura.getSelectedItem() instanceof ItemCatalogo) {
             asignaturaId = ((ItemCatalogo) spAsignatura.getSelectedItem()).getId();
         } else if (recursoExistente != null && recursoExistente.getAsignatura() > 0) {
             asignaturaId = recursoExistente.getAsignatura();
+        }
+
+        if (categoriaId <= 0 || asignaturaId <= 0) {
+            Toast.makeText(this, R.string.recursos_catalogos_no_disponibles, Toast.LENGTH_LONG).show();
+            cargarCatalogosDesdeApi();
+            return;
         }
 
         btnGuardar.setEnabled(false);
@@ -245,15 +244,7 @@ public class RecursoFormActivity extends BaseActivity {
             Recurso recursoAEnviar = new Recurso(recursoExistente.getId(), titulo.trim(),
                     descripcion.trim(), tipo, categoriaId, asignaturaId, url.trim());
 
-            api.actualizar(recursoExistente.getId(), recursoAEnviar).enqueue(new ApiCallback<Recurso>() {
-                @Override
-                public void onResponse(Call<Recurso> call, Response<Recurso> respuesta) {
-                    if (respuesta.code() == 401) {
-                        manejarSesionVencida();
-                        return;
-                    }
-                    super.onResponse(call, respuesta);
-                }
+            api.actualizar(recursoExistente.getId(), recursoAEnviar).enqueue(new CallbackConSesion<Recurso>() {
 
                 @Override
                 public void onExito(Recurso cuerpo) {
@@ -276,15 +267,7 @@ public class RecursoFormActivity extends BaseActivity {
             Recurso nuevoRecurso = new Recurso(titulo.trim(), descripcion.trim(),
                     tipo, categoriaId, asignaturaId, url.trim());
 
-            api.crear(nuevoRecurso).enqueue(new ApiCallback<Recurso>() {
-                @Override
-                public void onResponse(Call<Recurso> call, Response<Recurso> respuesta) {
-                    if (respuesta.code() == 401) {
-                        manejarSesionVencida();
-                        return;
-                    }
-                    super.onResponse(call, respuesta);
-                }
+            api.crear(nuevoRecurso).enqueue(new CallbackConSesion<Recurso>() {
 
                 @Override
                 public void onExito(Recurso cuerpo) {
@@ -302,14 +285,6 @@ public class RecursoFormActivity extends BaseActivity {
         }
     }
 
-    private void manejarSesionVencida() {
-        sessionManager.cerrarSesion();
-        Toast.makeText(this, ApiErrorMapper.mensaje(401, null), Toast.LENGTH_LONG).show();
-        Intent intent = new Intent(this, LoginActivity.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        startActivity(intent);
-        finish();
-    }
 
     private void cargarSpinnerStrings(Spinner spinner, String[] opciones) {
         ArrayAdapter<String> adapter = new ArrayAdapter<>(

@@ -17,7 +17,7 @@
 
     <!-- ===== Login ===== -->
     <string name="login_subtitulo">Sandbox pedagógico para equipos de educación a distancia</string>
-    <string name="login_usuario">Usuario o correo institucional</string>
+    <string name="login_usuario">Nombre de usuario</string>
     <string name="login_password">Contraseña</string>
     <string name="login_ingresar">Ingresar</string>
     <string name="login_acerca">Conocer el proyecto</string>
@@ -33,7 +33,7 @@
     <string name="home_multimedia">Guía multimedia</string>
     <string name="home_multimedia_desc">Video e imágenes de los estándares institucionales</string>
     <string name="home_contacto">Contacto</string>
-    <string name="home_contacto_desc">Escribir a la mesa de ayuda de EduTools</string>
+    <string name="home_contacto_desc">Validar una consulta en el formulario de demostración</string>
     <string name="home_acerca">Quiénes somos</string>
     <string name="home_acerca_desc">Equipo DEV6 y propósito del proyecto</string>
     <string name="home_cerrar_sesion">Cerrar sesión</string>
@@ -110,25 +110,25 @@
     <string name="multimedia_imagen_titulo">Paleta y tipografía institucional</string>
     <string name="multimedia_sin_video">El video no está disponible en este momento.</string>
 
+    <string name="recursos_catalogos_no_disponibles">Todavía no están disponibles las categorías y asignaturas. Se reintentará la carga; revisá las opciones antes de guardar.</string>
+
     <!-- ===== Contacto ===== -->
-    <string name="contacto_intro">Escribinos y el equipo DEV6 responde dentro de las 48 horas hábiles.</string>
+    <string name="contacto_intro">Formulario de demostración. Podés completar los campos y comprobar las validaciones; el envío de consultas todavía no está disponible.</string>
     <string name="contacto_nombre">Nombre y apellido</string>
     <string name="contacto_correo">Correo electrónico</string>
     <string name="contacto_asunto">Asunto</string>
     <string name="contacto_mensaje">Mensaje</string>
-    <string name="contacto_enviar">Enviar consulta</string>
-    <string name="contacto_datos">Mesa de ayuda: soporte@edutools.edu.ar</string>
-    <string name="contacto_error_campos">Por favor completá todos los campos antes de enviar.</string>
+    <string name="contacto_enviar">Validar consulta</string>
+    <string name="contacto_datos">El equipo DEV6 todavía no tiene un canal de soporte habilitado.</string>
+    <string name="contacto_error_campos">Por favor completá todos los campos antes de validar.</string>
     <string name="contacto_error_email">Por favor ingresá un correo electrónico válido.</string>
-    <string name="contacto_exito">Consulta enviada con éxito. Te responderemos a la brevedad.</string>
+    <string name="contacto_sin_envio">Los datos son válidos. La consulta no se envió ni se guardó.</string>
 
     <!-- ===== Acerca de ===== -->
     <string name="acerca_intro">EduTools centraliza los recursos del montaje de aulas virtuales y ofrece un sandbox que emula la hoja de estilos institucional.</string>
     <string name="acerca_equipo">Equipo DEV6</string>
     <string name="acerca_integrantes">Jonathan Guillén · Ale Corva · Gonzalo Velasco · Daniela Salvo · Gerardo Romero · Roni Duncan Gonzales Martínez</string>
     <string name="acerca_version">Versión 0.1.0 · ISPC</string>
-    <string name="acerca_btn_copiar">Copiar email de soporte</string>
-    <string name="acerca_email_copiado">Correo de soporte copiado al portapapeles (soporte@edutools.edu.ar)</string>
 
     <!-- ===== Accesibilidad (contentDescription) ===== -->
     <string name="cd_logo">Logotipo de EduTools</string>

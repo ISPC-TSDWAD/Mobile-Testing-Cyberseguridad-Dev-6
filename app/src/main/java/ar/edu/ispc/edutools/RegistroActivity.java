@@ -9,7 +9,6 @@ import androidx.annotation.Nullable;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 
-import ar.edu.ispc.edutools.net.ApiCallback;
 import ar.edu.ispc.edutools.net.ApiClient;
 import ar.edu.ispc.edutools.net.NuevoUsuarioRequest;
 import ar.edu.ispc.edutools.net.UsuarioApi;
@@ -64,7 +63,7 @@ public class RegistroActivity extends BaseActivity {
                 texto(etEmail).trim(), texto(etNombre).trim(), texto(etApellido).trim());
 
         btnRegistrar.setEnabled(false);   // evita enviar dos veces
-        ApiClient.create(this, UsuarioApi.class).crear(pedido).enqueue(new ApiCallback<UsuarioDto>() {
+        ApiClient.create(this, UsuarioApi.class).crear(pedido).enqueue(new CallbackConSesion<UsuarioDto>() {
             @Override
             public void onExito(UsuarioDto creado) {
                 Toast.makeText(RegistroActivity.this,

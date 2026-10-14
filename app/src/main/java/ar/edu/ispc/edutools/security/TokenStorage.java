@@ -2,8 +2,8 @@ package ar.edu.ispc.edutools.security;
 
 /**
  * Contrato para guardar los tokens JWT de la sesion.
- * Hoy se usa MemoryTokenStorage; la version cifrada (EncryptedSharedPreferences)
- * se enchufa cambiando una sola linea en TokenStorageProvider.
+ * TokenStorageProvider usa almacenamiento cifrado desde API 23 y memoria
+ * en API 21/22 o cuando el Keystore no esta disponible.
  */
 public interface TokenStorage {
 
