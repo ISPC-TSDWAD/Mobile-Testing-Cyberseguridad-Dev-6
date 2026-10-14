@@ -38,7 +38,6 @@
                 android:id="@+id/videoPresentacion"
                 android:layout_width="match_parent"
                 android:layout_height="220dp"
-                android:background="@color/edu_texto"
                 android:visibility="gone" />
 
             <TextView

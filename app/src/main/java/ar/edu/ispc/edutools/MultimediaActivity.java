@@ -33,18 +33,20 @@ public class MultimediaActivity extends BaseActivity {
         int idVideo = getResources().getIdentifier(NOMBRE_VIDEO, "raw", getPackageName());
 
         if (idVideo != 0) {
-            Uri uri = Uri.parse("android.resource://" + getPackageName() + "/" + idVideo);
-            videoView.setVideoURI(uri);
+            videoView.setVisibility(View.VISIBLE);
+            tvAvisoVideo.setVisibility(View.GONE);
+
+            // Accesibilidad: el reproductor se anuncia como elemento propio.
+            videoView.setContentDescription(getString(R.string.cd_video));
 
             MediaController controles = new MediaController(this);
             controles.setAnchorView(videoView);
             videoView.setMediaController(controles);
 
-            // Accesibilidad: el reproductor se anuncia como elemento propio.
-            videoView.setContentDescription(getString(R.string.cd_video));
-
-            videoView.setVisibility(View.VISIBLE);
-            tvAvisoVideo.setVisibility(View.GONE);
+            Uri uri = Uri.parse("android.resource://" + getPackageName() + "/" + idVideo);
+            videoView.setVideoURI(uri);
+            // Muestra el primer fotograma como miniatura sin iniciar reproduccion automatica
+            videoView.setOnPreparedListener(mp -> videoView.seekTo(1));
         } else {
             videoView.setVisibility(View.GONE);
             tvAvisoVideo.setVisibility(View.VISIBLE);

@@ -41,6 +41,9 @@
     <!-- ===== Recursos ===== -->
     <string name="recursos_cantidad">%1$d recursos disponibles</string>
     <string name="recursos_nuevo">Nuevo recurso</string>
+    <string name="recursos_cargando">Cargando recursos…</string>
+    <string name="recursos_vacio">No hay recursos disponibles.</string>
+    <string name="recursos_error_cargar">No se pudieron cargar los recursos.</string>
     <string name="recurso_tipo">Tipo</string>
     <string name="recurso_categoria">Categoría</string>
     <string name="recurso_asignatura">Asignatura</string>
@@ -48,6 +51,9 @@
     <string name="recurso_contenido">Contenido HTML</string>
     <string name="recurso_autor">Creado por</string>
     <string name="recurso_editar">Editar recurso</string>
+    <string name="recurso_eliminar">Eliminar</string>
+    <string name="recurso_eliminar_confirmar">¿Estás seguro de que querés eliminar \"%1$s\"? Esta acción no se puede deshacer.</string>
+    <string name="recurso_eliminado">Recurso eliminado correctamente.</string>
 
     <!-- ===== Formulario de recurso ===== -->
     <string name="form_titulo">Título del recurso</string>
@@ -58,6 +64,10 @@
     <string name="form_url">URL de referencia</string>
     <string name="form_guardar">Guardar</string>
     <string name="form_cancelar">Cancelar</string>
+    <string name="error_titulo_invalido">El título es obligatorio y no puede superar los 200 caracteres.</string>
+    <string name="error_url_invalida">La URL debe comenzar con https:// y no contener espacios.</string>
+    <string name="recurso_creado">Recurso creado correctamente.</string>
+    <string name="recurso_actualizado">Recurso actualizado correctamente.</string>
 
     <!-- ===== Usuarios ===== -->
     <string name="usuarios_cantidad">%1$d usuarios registrados</string>

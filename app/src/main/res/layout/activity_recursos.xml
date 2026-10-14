@@ -20,6 +20,23 @@
             android:padding="16dp"
             android:textAppearance="@style/TextAppearance.EduTools.Secundario" />
 
+        <ProgressBar
+            android:id="@+id/pbRecursos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="32dp"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/tvEstadoRecursos"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="24dp"
+            android:textAppearance="@style/TextAppearance.EduTools.Cuerpo"
+            android:visibility="gone" />
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvRecursos"
             android:layout_width="match_parent"
