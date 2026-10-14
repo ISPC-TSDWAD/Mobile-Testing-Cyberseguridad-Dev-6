@@ -3,12 +3,15 @@ package ar.edu.ispc.edutools;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.ViewCompat;
 
 import ar.edu.ispc.edutools.net.ApiCallback;
 import ar.edu.ispc.edutools.net.ApiErrorMapper;
@@ -72,6 +75,7 @@ public abstract class BaseActivity extends AppCompatActivity {
      * @param mostrarUp true en las Activity hijas; false en las raices.
      */
     protected void configurarToolbar(boolean mostrarUp) {
+        marcarEncabezados(findViewById(android.R.id.content));
         Toolbar toolbar = findViewById(R.id.toolbar);
         if (toolbar == null) {
             return;
@@ -82,6 +86,22 @@ public abstract class BaseActivity extends AppCompatActivity {
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(mostrarUp);
             actionBar.setDisplayShowHomeEnabled(mostrarUp);
+        }
+    }
+
+    /** Los titulos de seccion se pueden recorrer como encabezados desde TalkBack. */
+    private void marcarEncabezados(View vista) {
+        if (vista == null) {
+            return;
+        }
+        if ("encabezado".equals(vista.getTag())) {
+            ViewCompat.setAccessibilityHeading(vista, true);
+        }
+        if (vista instanceof ViewGroup) {
+            ViewGroup grupo = (ViewGroup) vista;
+            for (int i = 0; i < grupo.getChildCount(); i++) {
+                marcarEncabezados(grupo.getChildAt(i));
+            }
         }
     }
 

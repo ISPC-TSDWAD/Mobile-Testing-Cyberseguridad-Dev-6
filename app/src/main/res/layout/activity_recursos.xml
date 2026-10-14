@@ -15,6 +15,7 @@
 
         <TextView
             android:id="@+id/tvCantidadRecursos"
+            android:accessibilityLiveRegion="polite"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="16dp"
@@ -30,6 +31,7 @@
 
         <TextView
             android:id="@+id/tvEstadoRecursos"
+            android:accessibilityLiveRegion="polite"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"

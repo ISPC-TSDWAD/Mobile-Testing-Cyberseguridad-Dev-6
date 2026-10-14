@@ -41,7 +41,7 @@ Total: **87 tests, 0 fallas y 0 errores** (`testDebugUnitTest`, 13/10/2026). Inc
 
 JaCoCo genera HTML en `app/build/reports/jacoco/jacocoTestReport/html/index.html` y XML en `app/build/reports/jacoco/jacocoTestReport/jacocoTestReport.xml`.
 
-Resultado del 13/10/2026: **282 de 1039 líneas cubiertas (27,1%)** sobre el código Java de producción, incluidas Activities y adapters. No se excluyen pantallas para aumentar el porcentaje. Este reporte mide únicamente los tests JVM; las pantallas y el almacenamiento cifrado requieren pruebas instrumentadas y no están cubiertos por esta ejecución.
+Resultado actualizado del 14/10/2026: **282 de 1049 líneas cubiertas (26,9%)** sobre el código Java de producción, incluidas Activities y adapters. No se excluyen pantallas para aumentar el porcentaje. Este reporte mide únicamente los tests JVM; las pantallas y el almacenamiento cifrado requieren pruebas instrumentadas y no están cubiertos por esta ejecución. Los 87 tests JVM siguen pasando.
 
 El workflow [.github/workflows/android-tests.yml](../../.github/workflows/android-tests.yml) conserva tests, cobertura, lint y APK como artifacts. Está preparado localmente; el resultado de GitHub Actions queda pendiente hasta publicar el cambio y ejecutar el workflow.
 

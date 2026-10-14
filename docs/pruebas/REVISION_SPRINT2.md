@@ -80,3 +80,11 @@ La consulta a GitHub del 13/10 no mostró PR abiertos en la app. Esta revisión 
 ## Archivos locales preservados
 
 Antes de incorporar `develop`, se respaldaron los archivos locales sin seguimiento en `app/build/respaldo-revision-sprint2/testing/` y `app/build/respaldo-revision-sprint2/tests/`. Después se restituyeron sus contenidos en las rutas originales. El respaldo también contiene el texto descargado del ABP. Es una carpeta ignorada por Git; conservarla hasta acordar las diferencias con Roni y no ejecutar una limpieza de build mientras se necesite.
+
+## Actualización del 14/10/2026
+
+El estado de la tabla inicial corresponde a la revisión del 13/10. Después se ejecutaron Newman y la suite instrumentada en Moto g85 Android 16: 24 requests / 114 assertions (3 fallas de SLA) y 7 tests instrumentados aprobados. La planilla se consolidó en 28 casos con frecuencia, políticas y evidencia; matriz e informe se actualizaron. Se corrigieron encabezados, regiones de anuncio y la etiqueta cortada de Login. Cobertura JVM final: 282/1049 líneas (26,9%).
+
+Evidencias: [API](../testing/RESULTADOS_API.md), [Espresso](EVIDENCIA_ESPRESSO.md), [accesibilidad](../testing/Informe_Accesibilidad.md), [planilla](../testing/Planilla_Test_Cases.csv) y [contenido preparado para la Wiki](../testing/Testing_Wiki.md).
+
+Siguen pendientes: escucha manual con TalkBack, Scanner del resto del equipo, pantalla máxima, API 21, email verificado de Roni, publicación de Wiki y cierre de entrega en main. El recurso temporal usado en el recorrido fue eliminado. Los archivos privados y herramientas locales permanecen ignorados por Git.

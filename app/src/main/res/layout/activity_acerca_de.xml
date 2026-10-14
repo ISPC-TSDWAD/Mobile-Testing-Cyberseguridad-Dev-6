@@ -38,6 +38,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="28dp"
                 android:text="@string/acerca_equipo"
+                android:tag="encabezado"
                 android:textAppearance="@style/TextAppearance.EduTools.Titulo" />
 
             <TextView

@@ -181,7 +181,7 @@ Con JDK 17 y Android SDK 34 configurados en `local.properties` (archivo local, s
 ./gradlew testDebugUnitTest jacocoTestReport lintDebug assembleDebug assembleDebugAndroidTest
 ```
 
-En Windows usar `.\gradlew.bat`. La revisión local del 13/10/2026 ejecutó **87 tests JVM, con 0 fallas**. Los tests de interfaz se compilan; su ejecución requiere un dispositivo o emulador (ver [evidencia Espresso](docs/pruebas/EVIDENCIA_ESPRESSO.md)).
+En Windows usar `.\gradlew.bat`. La revisión local del 13/10/2026 ejecutó **87 tests JVM, con 0 fallas**. La verificación del 14/10/2026 ejecutó además 7 tests instrumentados en Moto g85 Android 16, con 0 fallas; la escucha de TalkBack y API 21 siguen pendientes (ver [evidencia Espresso](docs/pruebas/EVIDENCIA_ESPRESSO.md)).
 
 Reportes generados:
 

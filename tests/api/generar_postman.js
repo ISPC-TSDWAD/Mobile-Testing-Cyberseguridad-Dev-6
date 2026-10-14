@@ -1,5 +1,7 @@
 // Genera la coleccion Postman v2.1 y el entorno de EduTools (autor: Roni Duncan).
 // Uso: node tests/api/generar_postman.js
+console.error('Generador anterior deshabilitado: sobrescribe la coleccion de entrega. Usar la coleccion actual y ejecutar_newman.cjs; ver README.md.');
+process.exit(2);
 const fs = require('fs');
 
 const U = (p) => ({ raw: '{{baseUrl}}' + p, host: ['{{baseUrl}}'], path: p.split('/').slice(1) });

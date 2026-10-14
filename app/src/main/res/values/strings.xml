@@ -17,7 +17,7 @@
 
     <!-- ===== Login ===== -->
     <string name="login_subtitulo">Sandbox pedagógico para equipos de educación a distancia</string>
-    <string name="login_usuario">Usuario o correo institucional</string>
+    <string name="login_usuario">Nombre de usuario</string>
     <string name="login_password">Contraseña</string>
     <string name="login_ingresar">Ingresar</string>
     <string name="login_acerca">Conocer el proyecto</string>

@@ -1,0 +1,836 @@
+{
+  "collection": {
+    "info": {
+      "name": "EduTools API"
+    }
+  },
+  "metadata": {
+    "started": "2026-10-14T02:45:09.004Z",
+    "finished": "2026-10-14T02:45:21.951Z",
+    "baseUrl": "https://dev6.pythonanywhere.com",
+    "roles": [
+      "admin",
+      "asesor"
+    ],
+    "sanitized": true
+  },
+  "run": {
+    "stats": {
+      "iterations": {
+        "total": 1,
+        "pending": 0,
+        "failed": 0
+      },
+      "items": {
+        "total": 24,
+        "pending": 0,
+        "failed": 0
+      },
+      "scripts": {
+        "total": 48,
+        "pending": 0,
+        "failed": 0
+      },
+      "prerequests": {
+        "total": 24,
+        "pending": 0,
+        "failed": 0
+      },
+      "requests": {
+        "total": 24,
+        "pending": 0,
+        "failed": 0
+      },
+      "tests": {
+        "total": 24,
+        "pending": 0,
+        "failed": 0
+      },
+      "assertions": {
+        "total": 114,
+        "pending": 0,
+        "failed": 3
+      },
+      "testScripts": {
+        "total": 48,
+        "pending": 0,
+        "failed": 0
+      }
+    },
+    "executions": [
+      {
+        "item": {
+          "name": "AUTH-01 Login valido (200)"
+        },
+        "response": {
+          "code": 200,
+          "responseTime": 1902
+        },
+        "assertions": [
+          {
+            "assertion": "Tiempo de respuesta menor a 800 ms",
+            "failed": true
+          },
+          {
+            "assertion": "Content-Type JSON",
+            "failed": false
+          },
+          {
+            "assertion": "Codigo 200",
+            "failed": false
+          },
+          {
+            "assertion": "Content-Type JSON",
+            "failed": false
+          },
+          {
+            "assertion": "Trae access, refresh, is_staff y rol con sus tipos",
+            "failed": false
+          },
+          {
+            "assertion": "Cuenta administradora",
+            "failed": false
+          }
+        ],
+        "requestFailed": false
+      },
+      {
+        "item": {
+          "name": "AUTH-06 Login asesor (200)"
+        },
+        "response": {
+          "code": 200,
+          "responseTime": 1431
+        },
+        "assertions": [
+          {
+            "assertion": "Tiempo de respuesta menor a 800 ms",
+            "failed": true
+          },
+          {
+            "assertion": "Content-Type JSON",
+            "failed": false
+          },
+          {
+            "assertion": "Codigo 200",
+            "failed": false
+          },
+          {
+            "assertion": "Rol asesor",
+            "failed": false
+          },
+          {
+            "assertion": "Token access no vacio",
+            "failed": false
+          }
+        ],
+        "requestFailed": false
+      },
+      {
+        "item": {
+          "name": "AUTH-02 Login con credenciales invalidas (401)"
+        },
+        "response": {
+          "code": 401,
+          "responseTime": 1377
+        },
+        "assertions": [
+          {
+            "assertion": "Tiempo de respuesta menor a 800 ms",
+            "failed": true
+          },
+          {
+            "assertion": "Content-Type JSON",
+            "failed": false
+          },
+          {
+            "assertion": "Error estructurado",
+            "failed": false
+          },
+          {
+            "assertion": "Codigo 401",
+            "failed": false
+          },
+          {
+            "assertion": "Content-Type JSON",
+            "failed": false
+          },
+          {
+            "assertion": "Trae detail y no devuelve tokens",
+            "failed": false
+          }
+        ],
+        "requestFailed": false
+      },
+      {
+        "item": {
+          "name": "AUTH-03 Login sin campos (400)"
+        },
+        "response": {
+          "code": 400,
+          "responseTime": 170
+        },
+        "assertions": [
+          {
+            "assertion": "Tiempo de respuesta menor a 800 ms",
+            "failed": false
+          },
+          {
+            "assertion": "Content-Type JSON",
+            "failed": false
+          },
+          {
+            "assertion": "Error estructurado",
+            "failed": false
+          },
+          {
+            "assertion": "Codigo 400",
+            "failed": false
+          },
+          {
+            "assertion": "Indica los campos requeridos",
+            "failed": false
+          }
+        ],
+        "requestFailed": false
+      },
+      {
+        "item": {
+          "name": "AUTH-04 Renovar access con refresh (200)"
+        },
+        "response": {
+          "code": 200,
+          "responseTime": 182
+        },
+        "assertions": [
+          {
+            "assertion": "Tiempo de respuesta menor a 800 ms",
+            "failed": false
+          },
+          {
+            "assertion": "Content-Type JSON",
+            "failed": false
+          },
+          {
+            "assertion": "Codigo 200",
+            "failed": false
+          },
+          {
+            "assertion": "Content-Type JSON",
+            "failed": false
+          },
+          {
+            "assertion": "Devuelve un access nuevo",
+            "failed": false
+          }
+        ],
+        "requestFailed": false
+      },
+      {
+        "item": {
+          "name": "AUTH-05 Refresh invalido (401)"
+        },
+        "response": {
+          "code": 401,
+          "responseTime": 172
+        },
+        "assertions": [
+          {
+            "assertion": "Tiempo de respuesta menor a 800 ms",
+            "failed": false
+          },
+          {
+            "assertion": "Content-Type JSON",
+            "failed": false
+          },
+          {
+            "assertion": "Error estructurado",
+            "failed": false
+          },
+          {
+            "assertion": "Codigo 401",
+            "failed": false
+          },
+          {
+            "assertion": "No devuelve access",
+            "failed": false
+          }
+        ],
+        "requestFailed": false
+      },
+      {
+        "item": {
+          "name": "USR-01 Mi usuario (200)"
+        },
+        "response": {
+          "code": 200,
+          "responseTime": 181
+        },
+        "assertions": [
+          {
+            "assertion": "Tiempo de respuesta menor a 800 ms",
+            "failed": false
+          },
+          {
+            "assertion": "Content-Type JSON",
+            "failed": false
+          },
+          {
+            "assertion": "Codigo 200",
+            "failed": false
+          },
+          {
+            "assertion": "Content-Type JSON",
+            "failed": false
+          },
+          {
+            "assertion": "Campos y tipos del usuario, sin contrasena",
+            "failed": false
+          }
+        ],
+        "requestFailed": false
+      },
+      {
+        "item": {
+          "name": "USR-02 Listar usuarios como admin (200)"
+        },
+        "response": {
+          "code": 200,
+          "responseTime": 183
+        },
+        "assertions": [
+          {
+            "assertion": "Tiempo de respuesta menor a 800 ms",
+            "failed": false
+          },
+          {
+            "assertion": "Content-Type JSON",
+            "failed": false
+          },
+          {
+            "assertion": "Admin: 200 con lista / no admin: 403",
+            "failed": false
+          },
+          {
+            "assertion": "Es una lista y ningun usuario trae contrasena",
+            "failed": false
+          }
+        ],
+        "requestFailed": false
+      },
+      {
+        "item": {
+          "name": "USR-03 Listar usuarios sin token (401)"
+        },
+        "response": {
+          "code": 401,
+          "responseTime": 172
+        },
+        "assertions": [
+          {
+            "assertion": "Tiempo de respuesta menor a 800 ms",
+            "failed": false
+          },
+          {
+            "assertion": "Content-Type JSON",
+            "failed": false
+          },
+          {
+            "assertion": "Error estructurado",
+            "failed": false
+          },
+          {
+            "assertion": "Codigo 401",
+            "failed": false
+          },
+          {
+            "assertion": "Trae detail",
+            "failed": false
+          }
+        ],
+        "requestFailed": false
+      },
+      {
+        "item": {
+          "name": "USR-04 Token manipulado (401)"
+        },
+        "response": {
+          "code": 401,
+          "responseTime": 172
+        },
+        "assertions": [
+          {
+            "assertion": "Tiempo de respuesta menor a 800 ms",
+            "failed": false
+          },
+          {
+            "assertion": "Content-Type JSON",
+            "failed": false
+          },
+          {
+            "assertion": "Error estructurado",
+            "failed": false
+          },
+          {
+            "assertion": "Codigo 401",
+            "failed": false
+          },
+          {
+            "assertion": "No devuelve datos del usuario",
+            "failed": false
+          }
+        ],
+        "requestFailed": false
+      },
+      {
+        "item": {
+          "name": "USR-05 Listar usuarios como asesor (403)"
+        },
+        "response": {
+          "code": 403,
+          "responseTime": 180
+        },
+        "assertions": [
+          {
+            "assertion": "Tiempo de respuesta menor a 800 ms",
+            "failed": false
+          },
+          {
+            "assertion": "Content-Type JSON",
+            "failed": false
+          },
+          {
+            "assertion": "Error estructurado",
+            "failed": false
+          },
+          {
+            "assertion": "Codigo 403",
+            "failed": false
+          }
+        ],
+        "requestFailed": false
+      },
+      {
+        "item": {
+          "name": "REC-01 Listar categorias (200)"
+        },
+        "response": {
+          "code": 200,
+          "responseTime": 193
+        },
+        "assertions": [
+          {
+            "assertion": "Tiempo de respuesta menor a 800 ms",
+            "failed": false
+          },
+          {
+            "assertion": "Content-Type JSON",
+            "failed": false
+          },
+          {
+            "assertion": "Codigo 200",
+            "failed": false
+          },
+          {
+            "assertion": "Content-Type JSON",
+            "failed": false
+          },
+          {
+            "assertion": "Es una lista con id y nombre",
+            "failed": false
+          }
+        ],
+        "requestFailed": false
+      },
+      {
+        "item": {
+          "name": "REC-02 Listar asignaturas (200)"
+        },
+        "response": {
+          "code": 200,
+          "responseTime": 186
+        },
+        "assertions": [
+          {
+            "assertion": "Tiempo de respuesta menor a 800 ms",
+            "failed": false
+          },
+          {
+            "assertion": "Content-Type JSON",
+            "failed": false
+          },
+          {
+            "assertion": "Codigo 200",
+            "failed": false
+          },
+          {
+            "assertion": "Content-Type JSON",
+            "failed": false
+          },
+          {
+            "assertion": "Es una lista con id y nombre",
+            "failed": false
+          }
+        ],
+        "requestFailed": false
+      },
+      {
+        "item": {
+          "name": "REC-03 Crear recurso (201)"
+        },
+        "response": {
+          "code": 201,
+          "responseTime": 214
+        },
+        "assertions": [
+          {
+            "assertion": "Tiempo de respuesta menor a 800 ms",
+            "failed": false
+          },
+          {
+            "assertion": "Content-Type JSON",
+            "failed": false
+          },
+          {
+            "assertion": "Codigo 201",
+            "failed": false
+          },
+          {
+            "assertion": "Content-Type JSON",
+            "failed": false
+          },
+          {
+            "assertion": "Campos y tipos del recurso",
+            "failed": false
+          }
+        ],
+        "requestFailed": false
+      },
+      {
+        "item": {
+          "name": "REC-12 Asesor no puede eliminar plantilla base (403)"
+        },
+        "response": {
+          "code": 403,
+          "responseTime": 186
+        },
+        "assertions": [
+          {
+            "assertion": "Tiempo de respuesta menor a 800 ms",
+            "failed": false
+          },
+          {
+            "assertion": "Content-Type JSON",
+            "failed": false
+          },
+          {
+            "assertion": "Error estructurado",
+            "failed": false
+          },
+          {
+            "assertion": "Codigo 403",
+            "failed": false
+          }
+        ],
+        "requestFailed": false
+      },
+      {
+        "item": {
+          "name": "REC-13 Plantilla sigue existiendo tras el 403 (200)"
+        },
+        "response": {
+          "code": 200,
+          "responseTime": 188
+        },
+        "assertions": [
+          {
+            "assertion": "Tiempo de respuesta menor a 800 ms",
+            "failed": false
+          },
+          {
+            "assertion": "Content-Type JSON",
+            "failed": false
+          },
+          {
+            "assertion": "Codigo 200",
+            "failed": false
+          },
+          {
+            "assertion": "Sigue siendo plantilla base",
+            "failed": false
+          }
+        ],
+        "requestFailed": false
+      },
+      {
+        "item": {
+          "name": "REC-04 Obtener el recurso creado (200)"
+        },
+        "response": {
+          "code": 200,
+          "responseTime": 190
+        },
+        "assertions": [
+          {
+            "assertion": "Tiempo de respuesta menor a 800 ms",
+            "failed": false
+          },
+          {
+            "assertion": "Content-Type JSON",
+            "failed": false
+          },
+          {
+            "assertion": "Codigo 200",
+            "failed": false
+          },
+          {
+            "assertion": "Es el recurso que se creo",
+            "failed": false
+          }
+        ],
+        "requestFailed": false
+      },
+      {
+        "item": {
+          "name": "REC-05 Listar recursos (200)"
+        },
+        "response": {
+          "code": 200,
+          "responseTime": 246
+        },
+        "assertions": [
+          {
+            "assertion": "Tiempo de respuesta menor a 800 ms",
+            "failed": false
+          },
+          {
+            "assertion": "Content-Type JSON",
+            "failed": false
+          },
+          {
+            "assertion": "Codigo 200",
+            "failed": false
+          },
+          {
+            "assertion": "Content-Type JSON",
+            "failed": false
+          },
+          {
+            "assertion": "Es una lista y contiene el recurso creado",
+            "failed": false
+          }
+        ],
+        "requestFailed": false
+      },
+      {
+        "item": {
+          "name": "REC-06 Editar el recurso (200)"
+        },
+        "response": {
+          "code": 200,
+          "responseTime": 229
+        },
+        "assertions": [
+          {
+            "assertion": "Tiempo de respuesta menor a 800 ms",
+            "failed": false
+          },
+          {
+            "assertion": "Content-Type JSON",
+            "failed": false
+          },
+          {
+            "assertion": "Codigo 200 (admin/maquetador) o 201 (asesor: copia)",
+            "failed": false
+          },
+          {
+            "assertion": "Content-Type JSON",
+            "failed": false
+          },
+          {
+            "assertion": "Titulo actualizado",
+            "failed": false
+          }
+        ],
+        "requestFailed": false
+      },
+      {
+        "item": {
+          "name": "REC-07 Crear recurso con datos invalidos (400)"
+        },
+        "response": {
+          "code": 400,
+          "responseTime": 183
+        },
+        "assertions": [
+          {
+            "assertion": "Tiempo de respuesta menor a 800 ms",
+            "failed": false
+          },
+          {
+            "assertion": "Content-Type JSON",
+            "failed": false
+          },
+          {
+            "assertion": "Error estructurado",
+            "failed": false
+          },
+          {
+            "assertion": "Codigo 400",
+            "failed": false
+          },
+          {
+            "assertion": "Indica el campo que falta",
+            "failed": false
+          }
+        ],
+        "requestFailed": false
+      },
+      {
+        "item": {
+          "name": "REC-08 Listar recursos sin token (401)"
+        },
+        "response": {
+          "code": 401,
+          "responseTime": 171
+        },
+        "assertions": [
+          {
+            "assertion": "Tiempo de respuesta menor a 800 ms",
+            "failed": false
+          },
+          {
+            "assertion": "Content-Type JSON",
+            "failed": false
+          },
+          {
+            "assertion": "Error estructurado",
+            "failed": false
+          },
+          {
+            "assertion": "Codigo 401",
+            "failed": false
+          },
+          {
+            "assertion": "Trae detail y no devuelve recursos",
+            "failed": false
+          }
+        ],
+        "requestFailed": false
+      },
+      {
+        "item": {
+          "name": "REC-09 Recurso inexistente (404)"
+        },
+        "response": {
+          "code": 404,
+          "responseTime": 191
+        },
+        "assertions": [
+          {
+            "assertion": "Tiempo de respuesta menor a 800 ms",
+            "failed": false
+          },
+          {
+            "assertion": "Content-Type JSON",
+            "failed": false
+          },
+          {
+            "assertion": "Error estructurado",
+            "failed": false
+          },
+          {
+            "assertion": "Codigo 404",
+            "failed": false
+          },
+          {
+            "assertion": "Trae detail",
+            "failed": false
+          }
+        ],
+        "requestFailed": false
+      },
+      {
+        "item": {
+          "name": "REC-10 Eliminar el recurso (204)"
+        },
+        "response": {
+          "code": 204,
+          "responseTime": 224
+        },
+        "assertions": [
+          {
+            "assertion": "Tiempo de respuesta menor a 800 ms",
+            "failed": false
+          },
+          {
+            "assertion": "Codigo 204",
+            "failed": false
+          },
+          {
+            "assertion": "Sin cuerpo",
+            "failed": false
+          }
+        ],
+        "requestFailed": false
+      },
+      {
+        "item": {
+          "name": "REC-11 El recurso eliminado ya no existe (404)"
+        },
+        "response": {
+          "code": 404,
+          "responseTime": 193
+        },
+        "assertions": [
+          {
+            "assertion": "Tiempo de respuesta menor a 800 ms",
+            "failed": false
+          },
+          {
+            "assertion": "Content-Type JSON",
+            "failed": false
+          },
+          {
+            "assertion": "Error estructurado",
+            "failed": false
+          },
+          {
+            "assertion": "Codigo 404",
+            "failed": false
+          }
+        ],
+        "requestFailed": false
+      }
+    ],
+    "failures": [
+      {
+        "source": {
+          "name": "AUTH-01 Login valido (200)"
+        },
+        "error": {
+          "name": "AssertionError",
+          "test": "Tiempo de respuesta menor a 800 ms"
+        }
+      },
+      {
+        "source": {
+          "name": "AUTH-06 Login asesor (200)"
+        },
+        "error": {
+          "name": "AssertionError",
+          "test": "Tiempo de respuesta menor a 800 ms"
+        }
+      },
+      {
+        "source": {
+          "name": "AUTH-02 Login con credenciales invalidas (401)"
+        },
+        "error": {
+          "name": "AssertionError",
+          "test": "Tiempo de respuesta menor a 800 ms"
+        }
+      }
+    ]
+  }
+}

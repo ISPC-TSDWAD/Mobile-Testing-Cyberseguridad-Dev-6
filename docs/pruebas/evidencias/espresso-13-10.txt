@@ -1,0 +1,81 @@
+INSTRUMENTATION_STATUS: class=ar.edu.ispc.edutools.ContactoFlujoTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=5
+INSTRUMENTATION_STATUS: stream=
+ar.edu.ispc.edutools.ContactoFlujoTest:
+INSTRUMENTATION_STATUS: test=contactoConEmailMalFormado_marcaErrorSoloEnCorreo
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=ar.edu.ispc.edutools.ContactoFlujoTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=5
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=contactoConEmailMalFormado_marcaErrorSoloEnCorreo
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: class=ar.edu.ispc.edutools.ContactoFlujoTest
+INSTRUMENTATION_STATUS: current=2
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=5
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=contactoValido_conservaConsultaEnPantallaSinEnviar
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=ar.edu.ispc.edutools.ContactoFlujoTest
+INSTRUMENTATION_STATUS: current=2
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=5
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=contactoValido_conservaConsultaEnPantallaSinEnviar
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: class=ar.edu.ispc.edutools.LoginFlujoTest
+INSTRUMENTATION_STATUS: current=3
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=5
+INSTRUMENTATION_STATUS: stream=
+ar.edu.ispc.edutools.LoginFlujoTest:
+INSTRUMENTATION_STATUS: test=loginVacio_marcaErrorEnUsuarioYContrasena_yNoAvanza
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=ar.edu.ispc.edutools.LoginFlujoTest
+INSTRUMENTATION_STATUS: current=3
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=5
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=loginVacio_marcaErrorEnUsuarioYContrasena_yNoAvanza
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: class=ar.edu.ispc.edutools.LoginFlujoTest
+INSTRUMENTATION_STATUS: current=4
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=5
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=loginSoloConUsuario_marcaErrorSoloEnContrasena
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=ar.edu.ispc.edutools.LoginFlujoTest
+INSTRUMENTATION_STATUS: current=4
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=5
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=loginSoloConUsuario_marcaErrorSoloEnContrasena
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: class=ar.edu.ispc.edutools.RegistroFlujoTest
+INSTRUMENTATION_STATUS: current=5
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=5
+INSTRUMENTATION_STATUS: stream=
+ar.edu.ispc.edutools.RegistroFlujoTest:
+INSTRUMENTATION_STATUS: test=registroConContrasenasDistintas_marcaErrorEnLaRepeticion
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=ar.edu.ispc.edutools.RegistroFlujoTest
+INSTRUMENTATION_STATUS: current=5
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=5
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=registroConContrasenasDistintas_marcaErrorEnLaRepeticion
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_RESULT: stream=
+
+Time: 22,526
+
+OK (5 tests)
+
+
+INSTRUMENTATION_CODE: -1
