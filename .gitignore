@@ -34,3 +34,6 @@ app/debug/
 *.log
 *.hprof
 .navigation/
+
+# Entornos privados de pruebas (credenciales y tokens)
+tests/api/*.local.postman_environment.json

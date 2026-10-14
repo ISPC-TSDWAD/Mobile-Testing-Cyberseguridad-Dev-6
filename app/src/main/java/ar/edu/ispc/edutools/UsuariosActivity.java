@@ -15,7 +15,6 @@ import java.util.List;
 
 import ar.edu.ispc.edutools.adapter.UsuarioAdapter;
 import ar.edu.ispc.edutools.model.UsuarioItem;
-import ar.edu.ispc.edutools.net.ApiCallback;
 import ar.edu.ispc.edutools.net.ApiClient;
 import ar.edu.ispc.edutools.net.UsuarioApi;
 import ar.edu.ispc.edutools.net.UsuarioDto;
@@ -66,12 +65,7 @@ public class UsuariosActivity extends BaseActivity implements UsuarioAdapter.OnU
 
     private void cargarUsuarios() {
         tvCantidad.setText(R.string.usuarios_cargando);
-        api.listar().enqueue(new ApiCallback<List<UsuarioDto>>() {
-            @Override
-            public void onSesionVencida(String mensaje) {
-                cerrarSesionPorVencimiento();
-            }
-
+        api.listar().enqueue(new CallbackConSesion<List<UsuarioDto>>() {
             @Override
             public void onExito(List<UsuarioDto> lista) {
                 if (isFinishing()) {

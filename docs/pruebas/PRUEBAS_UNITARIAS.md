@@ -26,12 +26,26 @@ El reporte queda en `app/build/reports/tests/testDebugUnitTest/index.html`.
 | `SessionManager` (`security/`) | la sesión es válida solo con token sin vencer; cerrar sesión borra tokens y usuario | 5 |
 | `AuthRepository` (`net/`) | login contra MockWebServer: 200 guarda los tokens, 401/500 y sin red muestran error | 5 |
 | `UsuarioApi` (`net/`) | CRUD de usuarios contra MockWebServer: rutas, token, 403, 201 y 204 | 5 |
-| `CatalogoUtil` (`util/`) | el formulario de recursos nunca inventa una categoría o asignatura: sin selección ni dato previo devuelve -1 | 4 |
-| `ConsultaMail` (`util/`) | asunto y cuerpo del correo de la pantalla Contacto, con textos nulos o con espacios | 3 |
+| `ApiErrorMapper` (`net/`) | mensajes de errores HTTP y cuerpos de error, incluidos el 429 del límite de intentos y el 409 de dato en uso | 14 |
+| `AuthInterceptor` (`net/`) | agrega Bearer y deja de enviarlo al cerrar sesión | 3 |
+| `RecursoApi` (`net/`) | lista, alta, parseo, 401, 400 y 500 con MockWebServer | 5 |
+| `ApiCallback` (`net/`) | 401 resuelto o sin redirección, 403 conserva sesión, 204 sin cuerpo | 4 |
 
-Los tests de `ApiErrorMapper` (14, incluidos el 429 del límite de intentos y el 409 de dato en uso), `AuthInterceptor` (3) y la capa de red de Gonzalo se suman a esta tabla en `app/src/test`.
+Total: **90 tests, 0 fallas y 0 errores** (`testDebugUnitTest`, 14/10/2026). Incluye los 87 tests de `develop` y 3 tests nuevos de `ApiErrorMapper` (429 y 409).
 
-Total: 93 tests, todos pasan (`testDebugUnitTest`, 14/10).
+## Cobertura y comprobaciones automáticas
+
+```bash
+./gradlew testDebugUnitTest jacocoTestReport lintDebug assembleDebug assembleDebugAndroidTest
+```
+
+JaCoCo genera HTML en `app/build/reports/jacoco/jacocoTestReport/html/index.html` y XML en `app/build/reports/jacoco/jacocoTestReport/jacocoTestReport.xml`.
+
+Resultado actualizado del 14/10/2026: **282 de 1049 líneas cubiertas (26,9%)** sobre el código Java de producción, incluidas Activities y adapters. No se excluyen pantallas para aumentar el porcentaje. Este reporte mide únicamente los tests JVM; las pantallas y el almacenamiento cifrado requieren pruebas instrumentadas y no están cubiertos por esta ejecución. Los tests JVM siguen pasando.
+
+El workflow [.github/workflows/android-tests.yml](../../.github/workflows/android-tests.yml) conserva tests, cobertura, lint y APK como artifacts. Está preparado localmente; el resultado de GitHub Actions queda pendiente hasta publicar el cambio y ejecutar el workflow.
+
+Los casos y resultados de la corrección están en [REVISION_SPRINT2.md](REVISION_SPRINT2.md).
 
 ## Validador
 

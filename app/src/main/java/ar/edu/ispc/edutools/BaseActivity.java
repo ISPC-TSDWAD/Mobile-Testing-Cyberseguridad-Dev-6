@@ -3,21 +3,66 @@ package ar.edu.ispc.edutools;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.ViewCompat;
 
+import ar.edu.ispc.edutools.net.ApiCallback;
 import ar.edu.ispc.edutools.net.ApiErrorMapper;
 import ar.edu.ispc.edutools.security.SessionManager;
+import retrofit2.Call;
+import retrofit2.Response;
 
 /**
  * Activity base de EduTools Mobile. Centraliza la Toolbar y la navegacion Up.
  * El padre de cada pantalla se declara con android:parentActivityName en el manifest.
  */
 public abstract class BaseActivity extends AppCompatActivity {
+
+    private boolean redirigiendoAlLogin;
+
+    /** Borra la sesion vencida y evita volver a pantallas autenticadas con Atras. */
+    protected void cerrarSesionPorVencimiento() {
+        if (redirigiendoAlLogin || isFinishing() || isDestroyed()) {
+            return;
+        }
+        redirigiendoAlLogin = true;
+        new SessionManager(this).cerrarSesion();
+        Toast.makeText(this, ApiErrorMapper.mensaje(401, null), Toast.LENGTH_LONG).show();
+        Intent intent = new Intent(this, LoginActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
+        finish();
+    }
+
+    /** Para llamadas protegidas: un 401 cierra la sesion; un 403 conserva la sesion. */
+    protected abstract class CallbackConSesion<T> extends ApiCallback<T> {
+        @Override
+        public boolean onSesionVencida() {
+            cerrarSesionPorVencimiento();
+            return true;
+        }
+
+        @Override
+        public void onResponse(Call<T> call, Response<T> respuesta) {
+            if (!isFinishing() && !isDestroyed()) {
+                super.onResponse(call, respuesta);
+            }
+        }
+
+        @Override
+        public void onFailure(Call<T> call, Throwable error) {
+            if (!isFinishing() && !isDestroyed() && !call.isCanceled()) {
+                super.onFailure(call, error);
+            }
+        }
+    }
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -30,6 +75,7 @@ public abstract class BaseActivity extends AppCompatActivity {
      * @param mostrarUp true en las Activity hijas; false en las raices.
      */
     protected void configurarToolbar(boolean mostrarUp) {
+        marcarEncabezados(findViewById(android.R.id.content));
         Toolbar toolbar = findViewById(R.id.toolbar);
         if (toolbar == null) {
             return;
@@ -43,6 +89,22 @@ public abstract class BaseActivity extends AppCompatActivity {
         }
     }
 
+    /** Los titulos de seccion se pueden recorrer como encabezados desde TalkBack. */
+    private void marcarEncabezados(View vista) {
+        if (vista == null) {
+            return;
+        }
+        if ("encabezado".equals(vista.getTag())) {
+            ViewCompat.setAccessibilityHeading(vista, true);
+        }
+        if (vista instanceof ViewGroup) {
+            ViewGroup grupo = (ViewGroup) vista;
+            for (int i = 0; i < grupo.getChildCount(); i++) {
+                marcarEncabezados(grupo.getChildAt(i));
+            }
+        }
+    }
+
     /** Gestiona el toque sobre la flecha de la Toolbar. */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -51,18 +113,5 @@ public abstract class BaseActivity extends AppCompatActivity {
             return true;
         }
         return super.onOptionsItemSelected(item);
-    }
-
-    /**
-     * Respuesta unica ante un 401 en una pantalla con sesion: borra los tokens,
-     * avisa y vuelve al Login sin dejar pantallas atras.
-     */
-    protected void cerrarSesionPorVencimiento() {
-        new SessionManager(this).cerrarSesion();
-        Toast.makeText(this, ApiErrorMapper.mensaje(401, null), Toast.LENGTH_LONG).show();
-        Intent intent = new Intent(this, LoginActivity.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        startActivity(intent);
-        finish();
     }
 }

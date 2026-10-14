@@ -4,7 +4,7 @@ Cliente Android de **EduTools**, la plataforma de gestión y sandbox pedagógico
 
 La aplicación móvil consume la misma API REST en Django construida durante el módulo Programador Web, de modo que la información queda sincronizada entre el cliente web y el móvil.
 
-> **Estado actual: Sprint 2 (Evidencia 3).** La aplicación ya consume la API del backend por HTTPS: inicio de sesión real con JWT, roles leídos del token, CRUD de usuarios (solo admin), Registro con contraseña robusta y token guardado de forma cifrada. El CRUD de Recursos (listar, detalle, alta, edición y baja) también consume la API. El detalle está en la [Wiki](../../wiki).
+> **Estado actual: Sprint 2 (Evidencia 3).** La aplicación consume la API del backend por HTTPS: inicio de sesión real con JWT, roles leídos del token, CRUD de usuarios (solo admin), CRUD de recursos pedagógicos, Registro con contraseña robusta y token guardado de forma cifrada desde Android 6. En Android 5 la sesión se conserva solo en memoria. El detalle está en la [Wiki](../../wiki).
 
 ---
 
@@ -27,10 +27,10 @@ La aplicación móvil consume la misma API REST en Django construida durante el 
 |:---|:---|:---|
 | **Acceso** | Inicio de sesión · Registro | Login real con JWT · validación por campo · contraseña robusta · sesión cifrada que se restaura al abrir la app |
 | **Home** | Menú principal con acceso a los cinco módulos | Navegable |
-| **Recursos pedagógicos** | Listado · Detalle del recurso · Formulario de alta y edición | CRUD contra la API (alta y edición exigen categorías y asignaturas cargadas) |
+| **Recursos pedagógicos** | Listado · Detalle del recurso · Formulario de alta y edición | CRUD contra la API · catálogos reales · validación antes de guardar |
 | **Usuarios** | Listado de usuarios · Perfil · Alta y edición | CRUD contra la API (solo admin; el asesor recibe 403) |
-| **Guía multimedia** | Video de los estándares institucionales e imagen de la paleta | Video e imagen incluidos en la app |
-| **Contacto** | Formulario de consulta a la mesa de ayuda | Validación por campo · abre la app de correo con la consulta armada para soporte@edutools.edu.ar (no hay endpoint propio) |
+| **Guía multimedia** | Video de los estándares institucionales e imagen de la paleta | Video incluido · reproducción manual · imagen funcional |
+| **Contacto** | Formulario de demostración | Validación por campo · no envía ni guarda consultas · canal de soporte pendiente |
 | **Quiénes somos** | Identidad del proyecto y equipo | Funcional |
 
 ---
@@ -64,7 +64,7 @@ git clone https://github.com/ISPC-TSDWAD/Mobile-Testing-Cyberseguridad-Dev-6.git
 ```
 
 1. Abrir la carpeta en Android Studio y esperar la sincronización de Gradle.
-2. El video de presentación ya viene en `app/src/main/res/raw/presentacion_edutools.mp4`; no hay que agregar nada.
+2. El video de presentación ya está incluido en `app/src/main/res/raw/presentacion_edutools.mp4`.
 3. Seleccionar el dispositivo o emulador y ejecutar **Run ▸ app**.
 
 ### Generar el APK de depuración
@@ -81,10 +81,10 @@ El archivo queda en `app/build/outputs/apk/debug/app-debug.apk`.
 
 ```
 app/src/main/
-├── AndroidManifest.xml          10 Activities con su parentActivityName declarado
+├── AndroidManifest.xml          11 Activities; las hijas declaran parentActivityName
 ├── java/ar/edu/ispc/edutools/
 │   ├── BaseActivity.java        Toolbar y navegación Up centralizadas
-│   ├── *Activity.java           Las diez pantallas de la aplicación
+│   ├── *Activity.java           Las once pantallas de la aplicación
 │   ├── adapter/                 RecursoAdapter · UsuarioAdapter
 │   └── model/                   Recurso · UsuarioItem · DatosDemo
 └── res/
@@ -92,7 +92,7 @@ app/src/main/
     ├── values/                  strings · colors · themes (design tokens)
     ├── drawable/                Íconos vectoriales propios
     ├── xml/                     network_security_config.xml
-    └── raw/                     presentacion_edutools.mp4  ← agregar
+    └── raw/                     presentacion_edutools.mp4
 ```
 
 ---
@@ -118,6 +118,8 @@ El resultado de Accessibility Scanner y las correcciones están en [docs/accesib
 - Copia de seguridad de la aplicación deshabilitada (`allowBackup="false"`).
 - Ninguna Activity interna se exporta.
 - Claves de firma, keystores y archivos de entorno excluidos del control de versiones.
+- Los pedidos protegidos con respuesta 401 borran la sesión y vuelven al login; un 403 informa falta de permisos sin cerrar la sesión.
+- El refresh token se guarda, pero la renovación automática queda pendiente para Sprint 3. Al vencer el access, se solicita iniciar sesión nuevamente.
 
 El detalle completo de políticas y la fundamentación de la elección de JWT están en la [página de Ciberseguridad de la Wiki](../../wiki/Ciberseguridad).
 
@@ -161,14 +163,33 @@ El detalle completo de políticas y la fundamentación de la elección de JWT es
 | Documentación formal del cliente móvil | [docs/EduTools_Documentacion_formal_Mobile_Ev2.md](docs/EduTools_Documentacion_formal_Mobile_Ev2.md) |
 | ANEXO II — capturas de las Activities | [Ver anexo](docs/EduTools_Documentacion_formal_Mobile_Ev2.md#anexo-ii--capturas-de-las-activities) |
 | Plan de seguridad (Evidencia 2) | [PDF](docs/Documentacion_Ciberseguridad_AppEduTools.pdf) · [documento colaborativo](https://docs.google.com/document/d/16HC2LHAWWaxBdfk89M1nlIFZkRZtYlht/edit) |
-| Testing: plan de pruebas, accesibilidad y trazabilidad | [docs/testing](docs/testing/README.md) · colección Postman/Newman en [tests/api](tests/api/README.md) |
+| Planilla de casos de prueba | [docs/testing/Planilla_Test_Cases.csv](docs/testing/Planilla_Test_Cases.csv) |
 | Demo en video de la navegabilidad | [Ver en Drive](https://drive.google.com/file/d/193K4IP9BwwjeN6Mn-tMd8QOG3UiY6Efv/view?usp=drive_link) · [copia en el repositorio](docs/video) |
 | Backend: cómo se conecta, roles, seguridad y despliegue | [docs/backend/BACKEND.md](docs/backend/BACKEND.md) |
 | Lista de endpoints de la API | [docs/api/ENDPOINTS.md](docs/api/ENDPOINTS.md) |
 | Correcciones de seguridad del backend | [docs/seguridad/CORRECCIONES_BACKEND.md](docs/seguridad/CORRECCIONES_BACKEND.md) |
 | Pruebas unitarias de la app | [docs/pruebas/PRUEBAS_UNITARIAS.md](docs/pruebas/PRUEBAS_UNITARIAS.md) |
 | Backend, modelo relacional y script SQL | [ModPWeb--Dev6](https://github.com/ISPC-TSDWAD/ModPWeb--Dev6) |
-| Descarga de la aplicación (release) | *(Sprint 2)* |
+| Descarga de la aplicación (release) | Pendiente de publicación; el APK debug se genera en `app/build/outputs/apk/debug/app-debug.apk` |
+| Revisión y pendientes de entrega Sprint 2 | [docs/pruebas/REVISION_SPRINT2.md](docs/pruebas/REVISION_SPRINT2.md) |
+
+### Pruebas y reportes
+
+Con JDK 17 y Android SDK 34 configurados en `local.properties` (archivo local, sin versionar):
+
+```bash
+./gradlew testDebugUnitTest jacocoTestReport lintDebug assembleDebug assembleDebugAndroidTest
+```
+
+En Windows usar `.\gradlew.bat`. La revisión local del 13/10/2026 ejecutó **87 tests JVM, con 0 fallas**. La verificación del 14/10/2026 ejecutó además 7 tests instrumentados en Moto g85 Android 16, con 0 fallas; la escucha de TalkBack y API 21 siguen pendientes (ver [evidencia Espresso](docs/pruebas/EVIDENCIA_ESPRESSO.md)).
+
+Reportes generados:
+
+- Tests: `app/build/reports/tests/testDebugUnitTest/index.html`.
+- Cobertura JVM (JaCoCo): `app/build/reports/jacoco/jacocoTestReport/html/index.html` y XML en esa carpeta.
+- Lint: `app/build/reports/lint-results-debug.html`.
+
+El [workflow Android](.github/workflows/android-tests.yml) ejecuta esas comprobaciones en los PR a `develop` y `main`, y en los push a ambas ramas. Conserva los reportes y APK durante 14 días como artifacts. Su ejecución remota podrá verificarse en [GitHub Actions](https://github.com/ISPC-TSDWAD/Mobile-Testing-Cyberseguridad-Dev-6/actions) una vez publicado.
 
 ---
 
@@ -184,3 +205,4 @@ main       ← versión estable al cierre de cada Sprint (lo que se corrige)
 ---
 
 **ISPC** · Tecnicatura Superior en Desarrollo Web y Aplicaciones Digitales · Proyecto ABP — Aplicación Móvil
+Actualización de documentación del sprint 2.
