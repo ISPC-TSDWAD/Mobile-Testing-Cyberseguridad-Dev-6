@@ -48,6 +48,7 @@ public class AuthRepositoryTest {
         assertNull(resultado.getMensaje());
         assertEquals("access-falso", storage.getAccessToken());
         assertEquals("refresh-falso", storage.getRefreshToken());
+        assertEquals("ana", storage.getUsername());
     }
 
     @Test

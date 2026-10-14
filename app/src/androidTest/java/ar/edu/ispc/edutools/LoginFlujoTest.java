@@ -1,5 +1,6 @@
 package ar.edu.ispc.edutools;
 
+import androidx.test.core.app.ApplicationProvider;
 import androidx.test.espresso.accessibility.AccessibilityChecks;
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
@@ -10,6 +11,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import ar.edu.ispc.edutools.screens.LoginScreen;
+import ar.edu.ispc.edutools.security.SessionManager;
 
 /**
  * AUT-UI-01 · Flujo critico: Acceso con campos vacios (HU de login, Issue #24).
@@ -23,6 +25,12 @@ public class LoginFlujoTest {
     @BeforeClass
     public static void activarChequeosDeAccesibilidad() {
         AccessibilityChecks.enable().setRunChecksFromRootView(true);
+    }
+
+    /** Si el celular tiene una sesion guardada, la app entra directo al Home: se limpia antes. */
+    @BeforeClass
+    public static void cerrarSesionGuardada() {
+        new SessionManager(ApplicationProvider.getApplicationContext()).cerrarSesion();
     }
 
     @Rule
