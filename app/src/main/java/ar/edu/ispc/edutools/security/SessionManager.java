@@ -2,6 +2,8 @@ package ar.edu.ispc.edutools.security;
 
 import android.content.Context;
 
+import ar.edu.ispc.edutools.util.JwtUtil;
+
 /** Maneja la sesion del usuario (tokens JWT) sin exponer donde se guardan. */
 public class SessionManager {
 
@@ -23,6 +25,20 @@ public class SessionManager {
     public boolean estaLogueado() {
         String token = storage.getAccessToken();
         return token != null && !token.isEmpty();
+    }
+
+    /** Guarda el usuario para saludarlo al reabrir la app con la sesion abierta. */
+    public void guardarUsuario(String usuario) {
+        storage.saveUsername(usuario);
+    }
+
+    public String getUsuario() {
+        return storage.getUsername();
+    }
+
+    /** Hay sesion guardada y el access token todavia no vencio. */
+    public boolean haySesionValida() {
+        return estaLogueado() && !JwtUtil.estaVencido(storage.getAccessToken());
     }
 
     public String getAccessToken() {

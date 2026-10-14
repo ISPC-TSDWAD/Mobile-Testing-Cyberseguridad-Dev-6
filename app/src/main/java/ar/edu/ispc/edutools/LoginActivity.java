@@ -35,6 +35,15 @@ public class LoginActivity extends BaseActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        // Si quedo una sesion valida guardada (cifrada), se entra directo al Home.
+        final SessionManager sesionGuardada = new SessionManager(this);
+        if (sesionGuardada.haySesionValida()) {
+            irAlHome(Validador.normalizarUsuario(sesionGuardada.getUsuario()));
+            return;
+        }
+        sesionGuardada.cerrarSesion();   // si el token vencio, se borra
+
         setContentView(R.layout.activity_login);
         configurarToolbar(false);   // Activity raiz: sin flecha de retroceso.
 

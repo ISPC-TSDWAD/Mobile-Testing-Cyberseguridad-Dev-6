@@ -14,6 +14,7 @@ public final class JwtUtil {
 
     private static final Pattern ROL = Pattern.compile("\"rol\"\\s*:\\s*\"([^\"]*)\"");
     private static final Pattern IS_STAFF = Pattern.compile("\"is_staff\"\\s*:\\s*(true|false)");
+    private static final Pattern EXP = Pattern.compile("\"exp\"\\s*:\\s*(\\d+)");
     private static final String ABC =
             "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_";
 
@@ -42,6 +43,24 @@ public final class JwtUtil {
     /** Es admin si el rol es admin o si is_staff es true. */
     public static boolean esAdmin(String token) {
         return "admin".equals(getRol(token)) || isStaff(token);
+    }
+
+    /** True si el token ya vencio (claim exp, en segundos) o si no se puede leer. */
+    public static boolean estaVencido(String token) {
+        return estaVencido(token, System.currentTimeMillis() / 1000);
+    }
+
+    /** Igual que estaVencido(token) pero con la hora actual en segundos, para los tests. */
+    public static boolean estaVencido(String token, long ahoraSegundos) {
+        String payload = leerPayload(token);
+        if (payload == null) {
+            return true;
+        }
+        Matcher m = EXP.matcher(payload);
+        if (!m.find()) {
+            return true;
+        }
+        return Long.parseLong(m.group(1)) <= ahoraSegundos;
     }
 
     /** Un JWT tiene 3 partes separadas por punto; el payload es la del medio. */

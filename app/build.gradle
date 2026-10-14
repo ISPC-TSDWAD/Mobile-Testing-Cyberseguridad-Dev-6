@@ -42,6 +42,9 @@ dependencies {
     implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
     implementation 'com.squareup.okhttp3:okhttp:4.12.0'
 
+    // Token cifrado (Issue #26). Pide API 23; la app sigue en minSdk 21 y se resuelve en el manifiesto.
+    implementation 'androidx.security:security-crypto:1.0.0'
+
     testImplementation 'junit:junit:4.13.2'
     testImplementation 'com.squareup.okhttp3:mockwebserver:4.12.0'
 

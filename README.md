@@ -4,7 +4,7 @@ Cliente Android de **EduTools**, la plataforma de gestión y sandbox pedagógico
 
 La aplicación móvil consume la misma API REST en Django construida durante el módulo Programador Web, de modo que la información queda sincronizada entre el cliente web y el móvil.
 
-> **Estado actual: Sprint 1 (Evidencia 2).** Esta entrega presenta la estructura de navegación completa de la aplicación, **sin funcionalidad integrada**. El consumo de la API, el CRUD y la autenticación se desarrollan en el Sprint 2.
+> **Estado actual: Sprint 2 (Evidencia 3).** La aplicación ya consume la API del backend por HTTPS: inicio de sesión real con JWT, roles leídos del token, CRUD de usuarios (solo admin), Registro con contraseña robusta y token guardado de forma cifrada. El CRUD de Recursos sigue pendiente (Issue #22). El detalle está en la [Wiki](../../wiki).
 
 ---
 
@@ -25,12 +25,12 @@ La aplicación móvil consume la misma API REST en Django construida durante el 
 
 | Módulo | Pantallas | Estado |
 |:---|:---|:---|
-| **Acceso** | Pantalla de inicio de sesión | Maquetada · validación en Sprint 2 |
+| **Acceso** | Inicio de sesión · Registro | Login real con JWT · validación por campo · contraseña robusta · sesión cifrada que se restaura al abrir la app |
 | **Home** | Menú principal con acceso a los cinco módulos | Navegable |
 | **Recursos pedagógicos** | Listado · Detalle del recurso · Formulario de alta y edición | Navegable · CRUD en Sprint 2 |
-| **Usuarios** | Listado de usuarios · Perfil | Navegable · CRUD en Sprint 2 |
+| **Usuarios** | Listado de usuarios · Perfil · Alta y edición | CRUD contra la API (solo admin; el asesor recibe 403) |
 | **Guía multimedia** | Video de los estándares institucionales e imagen de la paleta | Imagen funcional · agregar el archivo de video |
-| **Contacto** | Formulario de consulta a la mesa de ayuda | Maquetado · envío en Sprint 2 |
+| **Contacto** | Formulario de consulta a la mesa de ayuda | Validación por campo · envío pendiente |
 | **Quiénes somos** | Identidad del proyecto y equipo | Funcional |
 
 ---
@@ -45,7 +45,7 @@ La aplicación móvil consume la misma API REST en Django construida durante el 
 | Interfaz | Material Components · RecyclerView · CardView |
 | Gradle Plugin | 8.1.4 |
 | Backend | Django REST Framework · MySQL |
-| Autenticación | JWT (SimpleJWT) — Sprint 2 |
+| Autenticación | JWT (SimpleJWT) · token en `EncryptedSharedPreferences` |
 
 ---
 

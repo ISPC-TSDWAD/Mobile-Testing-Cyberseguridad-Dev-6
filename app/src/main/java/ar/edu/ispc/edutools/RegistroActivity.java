@@ -91,8 +91,10 @@ public class RegistroActivity extends BaseActivity {
                 R.string.error_obligatorio);
         ok &= marcar(tilEmail, Validador.esEmailValido(texto(etEmail)),
                 R.string.contacto_error_email);
-        ok &= marcar(tilPassword, Validador.esObligatorioCompleto(password),
-                R.string.error_obligatorio);
+        // Contrasena robusta: el mensaje dice que le falta (null si esta bien)
+        String falta = Validador.mensajePassword(password);
+        tilPassword.setError(falta);
+        ok &= falta == null;
         ok &= marcar(tilPassword2, Validador.coincidenPasswords(password, texto(etPassword2)),
                 R.string.registro_error_password2);
         return ok;

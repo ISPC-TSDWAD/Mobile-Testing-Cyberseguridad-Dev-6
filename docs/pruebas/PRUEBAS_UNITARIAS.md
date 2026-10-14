@@ -18,14 +18,18 @@ El reporte queda en `app/build/reports/tests/testDebugUnitTest/index.html`.
 
 | Clase | Qué se verifica | Tests |
 |---|---|---|
-| `Validador` (`util/`) | email, usuario del login, título y URL del recurso | 14 |
+| `Validador` (`util/`) | email, usuario del login, título y URL del recurso | 19 |
+| `Validador` — contraseña (`ValidadorPasswordTest`) | más de 8 caracteres, letra, número y carácter especial, con el mensaje de lo que falta | 8 |
 | `UsuarioItem` (`model/`) | etiquetas legibles de rol y estado, getters | 6 |
 | `Recurso` (`model/`) | etiquetas legibles del tipo de recurso, getters | 6 |
-| `JwtUtil` (`util/`) | lee `rol` e `is_staff` del payload del token | 7 |
+| `JwtUtil` (`util/`) | lee `rol` e `is_staff` del payload del token y su vencimiento (`exp`) | 10 |
+| `SessionManager` (`security/`) | la sesión es válida solo con token sin vencer; cerrar sesión borra tokens y usuario | 5 |
 | `AuthRepository` (`net/`) | login contra MockWebServer: 200 guarda los tokens, 401/500 y sin red muestran error | 5 |
 | `UsuarioApi` (`net/`) | CRUD de usuarios contra MockWebServer: rutas, token, 403, 201 y 204 | 5 |
 
-Total: 26 tests.
+Los tests de `ApiErrorMapper` (11), `AuthInterceptor` (3) y la capa de red de Gonzalo se suman a esta tabla en `app/src/test`.
+
+Total: 78 tests, todos pasan (`testDebugUnitTest`, 13/10).
 
 ## Validador
 

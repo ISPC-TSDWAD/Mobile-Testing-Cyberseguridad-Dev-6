@@ -5,6 +5,7 @@ public class MemoryTokenStorage implements TokenStorage {
 
     private String access;
     private String refresh;
+    private String username;
 
     @Override
     public synchronized void saveTokens(String access, String refresh) {
@@ -23,8 +24,19 @@ public class MemoryTokenStorage implements TokenStorage {
     }
 
     @Override
+    public synchronized void saveUsername(String username) {
+        this.username = username;
+    }
+
+    @Override
+    public synchronized String getUsername() {
+        return username;
+    }
+
+    @Override
     public synchronized void clear() {
         access = null;
         refresh = null;
+        username = null;
     }
 }
