@@ -184,3 +184,4 @@ main       ← versión estable al cierre de cada Sprint (lo que se corrige)
 ---
 
 **ISPC** · Tecnicatura Superior en Desarrollo Web y Aplicaciones Digitales · Proyecto ABP — Aplicación Móvil
+Actualización de documentación del sprint 2.
