@@ -2,7 +2,7 @@
 
 Fecha: 13/10/2026. Rama de trabajo: `feature/gonzalo-velasco`, actualizada hasta `origin/develop` (`b3627e0`).
 
-Requisitos contrastados con el [documento ABP compartido por el equipo](https://docs.google.com/document/d/12Zcq7IckMen_Gnz_A1XAZzsOe7gxziNKL1pWvUBdCUQ/edit?tab=t.0). El encabezado indica 13/10 a las 23:59 y la sección Sprint 2 indica 14/10: confirmar la fecha con la cátedra. No se da por finalizada la entrega hasta que el código esté en `main` y las evidencias sean accesibles.
+Requisitos contrastados con el [documento ABP compartido por el equipo](https://docs.google.com/document/d/12Zcq7IckMen_Gnz_A1XAZzsOe7gxziNKL1pWvUBdCUQ/edit?tab=t.0). Entrega: **14/10/2026**, confirmada por el equipo. No se da por finalizada la entrega hasta que el código esté en `main` y las evidencias sean accesibles.
 
 ## Cambios realizados
 
