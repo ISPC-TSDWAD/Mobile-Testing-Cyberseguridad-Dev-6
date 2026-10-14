@@ -46,11 +46,11 @@ public class RecursoAdapter extends RecyclerView.Adapter<RecursoAdapter.RecursoV
 
         holder.tvTitulo.setText(recurso.getTitulo());
         holder.tvTipo.setText(recurso.getTipoLegible());
-        holder.tvAsignatura.setText(recurso.getAsignatura());
+        holder.tvAsignatura.setText(recurso.getAsignaturaNombre());
 
         holder.itemView.setContentDescription(
                 recurso.getTitulo() + ". Tipo: " + recurso.getTipoLegible()
-                        + ". Asignatura: " + recurso.getAsignatura());
+                        + ". Asignatura: " + recurso.getAsignaturaNombre());
 
         holder.itemView.setOnClickListener(v -> {
             if (listener != null) {
