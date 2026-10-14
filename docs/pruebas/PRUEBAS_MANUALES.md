@@ -10,6 +10,9 @@ Se probó la app en un **Samsung SM-A546E** (instalada desde Android Studio) con
 | 4 | Credenciales inválidas | Ingresar con una contraseña incorrecta | Mensaje "Sesión vencida o credenciales inválidas" (401), sin guardar sesión | OK |
 | 5 | Datos móviles | Repetir el login con el wifi apagado | El login funciona contra el servidor público | OK |
 | 6 | Cierre de sesión | Tocar "Cerrar sesión" | Vuelve al login y se borran los tokens | OK |
+| 7 | Contraseña débil en Registro | En Registro escribir `abcdefghi` | El campo muestra "Agregá al menos un número." y no se envía | Pendiente de ejecutar en el celular |
+| 8 | La sesión sobrevive al cierre | Iniciar sesión, cerrar la app desde recientes y abrirla de nuevo | Entra directo al Home con el mismo rol (token en `EncryptedSharedPreferences`) | Pendiente de ejecutar en el celular |
+| 9 | Cerrar sesión borra la sesión guardada | Tocar "Cerrar sesión", cerrar la app y abrirla | Aparece el login | Pendiente de ejecutar en el celular |
 
 ## Capturas
 

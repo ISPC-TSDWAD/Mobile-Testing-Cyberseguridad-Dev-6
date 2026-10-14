@@ -1,6 +1,6 @@
 # Guion del video de seguridad
 
-Video para Ciberseguridad (Sprint 2). Dura unos 4 minutos. Lo graban Dani y Jonathan: Jonathan maneja la app y explica el código, Dani graba la pantalla y edita.
+Video para Ciberseguridad (Sprint 2). Dura unos 4 minutos. Lo graba Jonathan, que maneja la app y explica el código (Daniela dejó el proyecto el 13/10; si alguien más puede grabar la pantalla y editar, mejor).
 
 Qué tiene que mostrar el video (lo que pide la cátedra): **registro, login, acceso a algo protegido, qué roles hay y cómo el backend deniega una acción**.
 
@@ -25,11 +25,11 @@ Qué tiene que mostrar el video (lo que pide la cátedra): **registro, login, ac
 | 7 | 2:20 | Asesor entra a Usuarios → mensaje "No tenés permiso para esta acción", sin botón "+" | "Acá el backend deniega: un asesor recibe 403 al pedir la lista de usuarios." |
 | 8 | 2:45 | Consola de PythonAnywhere: `tail -n 20 logs/security.log` | "Cada acceso denegado y cada cambio de rol queda registrado con usuario, ruta y resultado. Nunca se guardan contraseñas ni tokens." |
 | 9 | 3:10 | Terminal: `python manage.py test users.tests_seguridad` | "Y está probado: un asesor que intenta `set-role`, incluso sobre sí mismo, recibe 403 y su rol no cambia. Son 27 tests en total." |
-| 10 | 3:40 | Wiki de Ciberseguridad (sección 5) | "El detalle de cada corrección está documentado en la Wiki, con el antes y el después." |
+| 10 | 3:40 | Wiki de Ciberseguridad (secciones 5 y 6) | "El detalle de cada corrección está documentado en la Wiki, con el antes y el después." |
 
 ## Para tener a mano si preguntan
 
-- **¿Dónde se guarda el token?** En `SessionManager`, hoy en memoria (`MemoryTokenStorage`). Pasar a almacenamiento cifrado es el Issue #26.
+- **¿Dónde se guarda el token?** Cifrado, en `EncryptedSharedPreferences` con una clave del Keystore (`EncryptedTokenStorage`, Issue #26). En Android 5 (API 21 y 22) no se puede cifrar y queda solo en memoria. Si se cierra la app y el token no venció, entra directo al Home; al cerrar sesión se borra.
 - **¿Se puede cambiar el rol desde la app?** No. El único camino es `POST /api/users/{id}/set-role/`, solo admin, y queda en el log.
 - **¿Qué pasa si alguien edita el token?** Los claims `rol` e `is_staff` van firmados: si se tocan, el servidor rechaza el token (401).
 - **¿Por qué la app oculta el botón si el servidor ya valida?** Es solo comodidad para el usuario. La app nunca decide permisos.
