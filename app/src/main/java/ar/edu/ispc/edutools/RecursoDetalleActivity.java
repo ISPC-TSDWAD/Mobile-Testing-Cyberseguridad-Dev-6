@@ -12,13 +12,8 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 
 import ar.edu.ispc.edutools.model.Recurso;
-import ar.edu.ispc.edutools.net.ApiCallback;
 import ar.edu.ispc.edutools.net.ApiClient;
-import ar.edu.ispc.edutools.net.ApiErrorMapper;
 import ar.edu.ispc.edutools.net.RecursoApi;
-import ar.edu.ispc.edutools.security.SessionManager;
-import retrofit2.Call;
-import retrofit2.Response;
 
 /**
  * Detalle de un recurso pedagógico. Activity hija de RecursosActivity.
@@ -29,7 +24,6 @@ public class RecursoDetalleActivity extends BaseActivity {
 
     private Recurso recurso;
     private RecursoApi api;
-    private SessionManager sessionManager;
 
     private TextView tvTitulo;
     private TextView tvTipo;
@@ -57,7 +51,6 @@ public class RecursoDetalleActivity extends BaseActivity {
         configurarToolbar(true);
 
         api = ApiClient.create(this, RecursoApi.class);
-        sessionManager = new SessionManager(this);
 
         tvTitulo = findViewById(R.id.tvDetalleTitulo);
         tvTipo = findViewById(R.id.tvDetalleTipo);
@@ -109,15 +102,7 @@ public class RecursoDetalleActivity extends BaseActivity {
     }
 
     private void cargarDetalleDesdeApi(int id) {
-        api.detalle(id).enqueue(new ApiCallback<Recurso>() {
-            @Override
-            public void onResponse(Call<Recurso> call, Response<Recurso> respuesta) {
-                if (respuesta.code() == 401) {
-                    manejarSesionVencida();
-                    return;
-                }
-                super.onResponse(call, respuesta);
-            }
+        api.detalle(id).enqueue(new CallbackConSesion<Recurso>() {
 
             @Override
             public void onExito(Recurso cuerpo) {
@@ -144,15 +129,7 @@ public class RecursoDetalleActivity extends BaseActivity {
     }
 
     private void eliminar() {
-        api.eliminar(recurso.getId()).enqueue(new ApiCallback<Void>() {
-            @Override
-            public void onResponse(Call<Void> call, Response<Void> respuesta) {
-                if (respuesta.code() == 401) {
-                    manejarSesionVencida();
-                    return;
-                }
-                super.onResponse(call, respuesta);
-            }
+        api.eliminar(recurso.getId()).enqueue(new CallbackConSesion<Void>() {
 
             @Override
             public void onExito(Void cuerpo) {
@@ -168,12 +145,4 @@ public class RecursoDetalleActivity extends BaseActivity {
         });
     }
 
-    private void manejarSesionVencida() {
-        sessionManager.cerrarSesion();
-        Toast.makeText(this, ApiErrorMapper.mensaje(401, null), Toast.LENGTH_LONG).show();
-        Intent intent = new Intent(this, LoginActivity.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        startActivity(intent);
-        finish();
-    }
 }

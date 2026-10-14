@@ -7,6 +7,8 @@ import static androidx.test.espresso.action.ViewActions.scrollTo;
 import static androidx.test.espresso.action.ViewActions.typeText;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
+import static androidx.test.espresso.matcher.ViewMatchers.withText;
+import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static ar.edu.ispc.edutools.ErrorEnCampo.conError;
 import static ar.edu.ispc.edutools.ErrorEnCampo.sinError;
 
@@ -37,6 +39,13 @@ public class ContactoScreen {
         onView(withId(R.id.tilContactoNombre)).check(matches(sinError()));
         onView(withId(R.id.tilContactoAsunto)).check(matches(sinError()));
         onView(withId(R.id.tilContactoMensaje)).check(matches(sinError()));
+        return this;
+    }
+
+    public ContactoScreen verificarConsultaSinEnviar(String mensaje) {
+        onView(withId(R.id.etContactoMensaje)).check(matches(withText(mensaje)));
+        onView(withId(R.id.btnEnviarConsulta)).check(matches(isDisplayed()))
+                .check(matches(withText(R.string.contacto_enviar)));
         return this;
     }
 

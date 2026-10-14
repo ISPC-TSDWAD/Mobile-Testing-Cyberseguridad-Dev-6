@@ -18,8 +18,16 @@ public abstract class ApiCallback<T> implements Callback<T> {
     /** Mensaje en espanol listo para mostrar. */
     public abstract void onError(String mensaje);
 
+    /** Devuelve true si el cliente ya resolvio el 401 (por ejemplo, volviendo al login). */
+    public boolean onSesionVencida() {
+        return false;
+    }
+
     @Override
     public void onResponse(Call<T> call, Response<T> respuesta) {
+        if (respuesta.code() == 401 && onSesionVencida()) {
+            return;
+        }
         if (respuesta.isSuccessful()) {
             onExito(respuesta.body());
             return;

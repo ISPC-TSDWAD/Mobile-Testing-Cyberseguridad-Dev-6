@@ -1,5 +1,24 @@
 plugins {
     id 'com.android.application'
+    id 'jacoco'
+}
+
+jacoco {
+    toolVersion = '0.8.12'
+}
+
+tasks.register('jacocoTestReport', JacocoReport) {
+    dependsOn 'testDebugUnitTest'
+    executionData.from(file("$buildDir/jacoco/testDebugUnitTest.exec"))
+    sourceDirectories.from(files('src/main/java'))
+    classDirectories.from(fileTree(dir: "$buildDir/intermediates/javac/debug/classes", excludes: [
+            '**/R.class', '**/R$*.class', '**/BuildConfig.class'
+    ]))
+    reports {
+        html.required = true
+        xml.required = true
+        csv.required = false
+    }
 }
 
 android {

@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.DividerItemDecoration;
@@ -19,13 +18,8 @@ import java.util.List;
 
 import ar.edu.ispc.edutools.adapter.RecursoAdapter;
 import ar.edu.ispc.edutools.model.Recurso;
-import ar.edu.ispc.edutools.net.ApiCallback;
 import ar.edu.ispc.edutools.net.ApiClient;
-import ar.edu.ispc.edutools.net.ApiErrorMapper;
 import ar.edu.ispc.edutools.net.RecursoApi;
-import ar.edu.ispc.edutools.security.SessionManager;
-import retrofit2.Call;
-import retrofit2.Response;
 
 /** Listado de recursos pedagógicos. Consume GET api/pedagogia/recursos/. */
 public class RecursosActivity extends BaseActivity implements RecursoAdapter.OnRecursoClickListener {
@@ -40,7 +34,6 @@ public class RecursosActivity extends BaseActivity implements RecursoAdapter.OnR
     private ProgressBar progressBar;
     private RecyclerView rvRecursos;
     private RecursoApi api;
-    private SessionManager sessionManager;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -49,7 +42,6 @@ public class RecursosActivity extends BaseActivity implements RecursoAdapter.OnR
         configurarToolbar(true);    // Activity hija: flecha de retroceso visible.
 
         api = ApiClient.create(this, RecursoApi.class);
-        sessionManager = new SessionManager(this);
 
         tvCantidad = findViewById(R.id.tvCantidadRecursos);
         tvEstado = findViewById(R.id.tvEstadoRecursos);
@@ -78,15 +70,7 @@ public class RecursosActivity extends BaseActivity implements RecursoAdapter.OnR
         tvEstado.setVisibility(View.GONE);
         tvCantidad.setText(R.string.recursos_cargando);
 
-        api.listar().enqueue(new ApiCallback<List<Recurso>>() {
-            @Override
-            public void onResponse(Call<List<Recurso>> call, Response<List<Recurso>> respuesta) {
-                if (respuesta.code() == 401) {
-                    manejarSesionVencida();
-                    return;
-                }
-                super.onResponse(call, respuesta);
-            }
+        api.listar().enqueue(new CallbackConSesion<List<Recurso>>() {
 
             @Override
             public void onExito(List<Recurso> lista) {
@@ -128,14 +112,6 @@ public class RecursosActivity extends BaseActivity implements RecursoAdapter.OnR
         });
     }
 
-    private void manejarSesionVencida() {
-        sessionManager.cerrarSesion();
-        Toast.makeText(this, ApiErrorMapper.mensaje(401, null), Toast.LENGTH_LONG).show();
-        Intent intent = new Intent(this, LoginActivity.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        startActivity(intent);
-        finish();
-    }
 
     /** Envia el recurso serializado en el Intent hacia la pantalla de detalle. */
     @Override

@@ -54,8 +54,7 @@ public class ContactoActivity extends BaseActivity {
             return;
         }
 
-        Toast.makeText(this, getString(R.string.contacto_exito), Toast.LENGTH_LONG).show();
-        finish();
+        Toast.makeText(this, getString(R.string.contacto_sin_envio), Toast.LENGTH_LONG).show();
     }
 
     private boolean marcar(TextInputLayout campo, boolean valido, int idMensaje) {

@@ -14,7 +14,6 @@ import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 
 import ar.edu.ispc.edutools.model.UsuarioItem;
-import ar.edu.ispc.edutools.net.ApiCallback;
 import ar.edu.ispc.edutools.net.ApiClient;
 import ar.edu.ispc.edutools.net.EditarUsuarioRequest;
 import ar.edu.ispc.edutools.net.UsuarioApi;
@@ -122,7 +121,7 @@ public class PerfilUsuarioActivity extends BaseActivity {
             }
 
             api.editar(usuario.getId(), new EditarUsuarioRequest(nombre.trim(), apellido.trim(), email.trim()))
-                    .enqueue(new ApiCallback<UsuarioDto>() {
+                    .enqueue(new CallbackConSesion<UsuarioDto>() {
                         @Override
                         public void onExito(UsuarioDto actualizado) {
                             if (actualizado != null) {
@@ -153,7 +152,7 @@ public class PerfilUsuarioActivity extends BaseActivity {
     }
 
     private void eliminar() {
-        api.eliminar(usuario.getId()).enqueue(new ApiCallback<Void>() {
+        api.eliminar(usuario.getId()).enqueue(new CallbackConSesion<Void>() {
             @Override
             public void onExito(Void cuerpo) {
                 Toast.makeText(PerfilUsuarioActivity.this,
