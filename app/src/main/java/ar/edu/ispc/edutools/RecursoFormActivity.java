@@ -19,6 +19,7 @@ import ar.edu.ispc.edutools.model.DatosDemo;
 import ar.edu.ispc.edutools.model.ItemCatalogo;
 import ar.edu.ispc.edutools.model.Recurso;
 import ar.edu.ispc.edutools.net.ApiCallback;
+import ar.edu.ispc.edutools.util.CatalogoUtil;
 import ar.edu.ispc.edutools.net.ApiClient;
 import ar.edu.ispc.edutools.net.ApiErrorMapper;
 import ar.edu.ispc.edutools.net.RecursoApi;
@@ -164,8 +165,15 @@ public class RecursoFormActivity extends BaseActivity {
             }
 
             @Override
+            public void onSesionVencida(String mensaje) {
+                cerrarSesionPorVencimiento();
+            }
+
+            @Override
             public void onError(String mensaje) {
-                // Si falla la red, se mantiene la opción previa
+                if (!isFinishing()) {
+                    Toast.makeText(RecursoFormActivity.this, mensaje, Toast.LENGTH_LONG).show();
+                }
             }
         });
 
@@ -190,8 +198,15 @@ public class RecursoFormActivity extends BaseActivity {
             }
 
             @Override
+            public void onSesionVencida(String mensaje) {
+                cerrarSesionPorVencimiento();
+            }
+
+            @Override
             public void onError(String mensaje) {
-                // Si falla la red, se mantiene la opción previa
+                if (!isFinishing()) {
+                    Toast.makeText(RecursoFormActivity.this, mensaje, Toast.LENGTH_LONG).show();
+                }
             }
         });
     }
@@ -224,18 +239,15 @@ public class RecursoFormActivity extends BaseActivity {
         int tipoPos = spTipo.getSelectedItemPosition();
         String tipo = tipoPos >= 0 && tipoPos < TIPOS_SLUGS.length ? TIPOS_SLUGS[tipoPos] : "video";
 
-        int categoriaId = 1;
-        if (spCategoria.getSelectedItem() instanceof ItemCatalogo) {
-            categoriaId = ((ItemCatalogo) spCategoria.getSelectedItem()).getId();
-        } else if (recursoExistente != null && recursoExistente.getCategoria() > 0) {
-            categoriaId = recursoExistente.getCategoria();
-        }
-
-        int asignaturaId = 1;
-        if (spAsignatura.getSelectedItem() instanceof ItemCatalogo) {
-            asignaturaId = ((ItemCatalogo) spAsignatura.getSelectedItem()).getId();
-        } else if (recursoExistente != null && recursoExistente.getAsignatura() > 0) {
-            asignaturaId = recursoExistente.getAsignatura();
+        int categoriaId = CatalogoUtil.resolverId(spCategoria.getSelectedItem(),
+                recursoExistente != null ? recursoExistente.getCategoria() : 0);
+        int asignaturaId = CatalogoUtil.resolverId(spAsignatura.getSelectedItem(),
+                recursoExistente != null ? recursoExistente.getAsignatura() : 0);
+        if (categoriaId == CatalogoUtil.SIN_ID || asignaturaId == CatalogoUtil.SIN_ID) {
+            // No se guarda con un valor inventado: primero tienen que cargar los catalogos.
+            Toast.makeText(this, R.string.form_error_catalogos, Toast.LENGTH_LONG).show();
+            cargarCatalogosDesdeApi();
+            return;
         }
 
         btnGuardar.setEnabled(false);
@@ -303,12 +315,7 @@ public class RecursoFormActivity extends BaseActivity {
     }
 
     private void manejarSesionVencida() {
-        sessionManager.cerrarSesion();
-        Toast.makeText(this, ApiErrorMapper.mensaje(401, null), Toast.LENGTH_LONG).show();
-        Intent intent = new Intent(this, LoginActivity.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        startActivity(intent);
-        finish();
+        cerrarSesionPorVencimiento();
     }
 
     private void cargarSpinnerStrings(Spinner spinner, String[] opciones) {

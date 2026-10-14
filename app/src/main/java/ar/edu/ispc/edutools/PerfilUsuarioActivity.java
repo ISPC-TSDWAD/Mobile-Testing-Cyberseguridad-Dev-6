@@ -124,6 +124,11 @@ public class PerfilUsuarioActivity extends BaseActivity {
             api.editar(usuario.getId(), new EditarUsuarioRequest(nombre.trim(), apellido.trim(), email.trim()))
                     .enqueue(new ApiCallback<UsuarioDto>() {
                         @Override
+                        public void onSesionVencida(String mensaje) {
+                            cerrarSesionPorVencimiento();
+                        }
+
+                        @Override
                         public void onExito(UsuarioDto actualizado) {
                             if (actualizado != null) {
                                 usuario = actualizado.toItem();
@@ -154,6 +159,11 @@ public class PerfilUsuarioActivity extends BaseActivity {
 
     private void eliminar() {
         api.eliminar(usuario.getId()).enqueue(new ApiCallback<Void>() {
+            @Override
+            public void onSesionVencida(String mensaje) {
+                cerrarSesionPorVencimiento();
+            }
+
             @Override
             public void onExito(Void cuerpo) {
                 Toast.makeText(PerfilUsuarioActivity.this,

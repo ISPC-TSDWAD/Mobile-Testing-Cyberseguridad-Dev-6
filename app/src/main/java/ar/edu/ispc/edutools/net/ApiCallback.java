@@ -18,6 +18,15 @@ public abstract class ApiCallback<T> implements Callback<T> {
     /** Mensaje en espanol listo para mostrar. */
     public abstract void onError(String mensaje);
 
+    /**
+     * La API respondio 401. Por defecto se trata como un error comun (asi el Login
+     * muestra "usuario o clave incorrectos"); las pantallas con sesion lo
+     * sobreescriben para cerrar la sesion y volver al Login.
+     */
+    public void onSesionVencida(String mensaje) {
+        onError(mensaje);
+    }
+
     @Override
     public void onResponse(Call<T> call, Response<T> respuesta) {
         if (respuesta.isSuccessful()) {
@@ -32,7 +41,12 @@ public abstract class ApiCallback<T> implements Callback<T> {
         } catch (IOException e) {
             // Si no se puede leer el cuerpo, igual se muestra el mensaje por codigo.
         }
-        onError(ApiErrorMapper.mensaje(respuesta.code(), cuerpoError));
+        String mensaje = ApiErrorMapper.mensaje(respuesta.code(), cuerpoError);
+        if (respuesta.code() == 401) {
+            onSesionVencida(mensaje);
+            return;
+        }
+        onError(mensaje);
     }
 
     @Override

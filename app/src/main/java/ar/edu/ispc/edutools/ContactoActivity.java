@@ -1,5 +1,8 @@
 package ar.edu.ispc.edutools;
 
+import android.content.ActivityNotFoundException;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
@@ -9,6 +12,7 @@ import androidx.annotation.Nullable;
 
 import com.google.android.material.textfield.TextInputLayout;
 
+import ar.edu.ispc.edutools.util.ConsultaMail;
 import ar.edu.ispc.edutools.util.Validador;
 
 /**
@@ -54,8 +58,17 @@ public class ContactoActivity extends BaseActivity {
             return;
         }
 
-        Toast.makeText(this, getString(R.string.contacto_exito), Toast.LENGTH_LONG).show();
-        finish();
+        // La app no tiene un endpoint de consultas: se arma el correo y lo envia la app de mail.
+        Intent correo = new Intent(Intent.ACTION_SENDTO, Uri.fromParts("mailto", ConsultaMail.DESTINO, null));
+        correo.putExtra(Intent.EXTRA_SUBJECT, ConsultaMail.asunto(texto(etAsunto)));
+        correo.putExtra(Intent.EXTRA_TEXT,
+                ConsultaMail.cuerpo(texto(etNombre), texto(etCorreo), texto(etMensaje)));
+        try {
+            startActivity(correo);
+            finish();
+        } catch (ActivityNotFoundException e) {
+            Toast.makeText(this, R.string.contacto_sin_app_correo, Toast.LENGTH_LONG).show();
+        }
     }
 
     private boolean marcar(TextInputLayout campo, boolean valido, int idMensaje) {

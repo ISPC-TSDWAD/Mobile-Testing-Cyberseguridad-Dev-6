@@ -129,12 +129,7 @@ public class RecursosActivity extends BaseActivity implements RecursoAdapter.OnR
     }
 
     private void manejarSesionVencida() {
-        sessionManager.cerrarSesion();
-        Toast.makeText(this, ApiErrorMapper.mensaje(401, null), Toast.LENGTH_LONG).show();
-        Intent intent = new Intent(this, LoginActivity.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        startActivity(intent);
-        finish();
+        cerrarSesionPorVencimiento();
     }
 
     /** Envia el recurso serializado en el Intent hacia la pantalla de detalle. */

@@ -66,6 +66,11 @@ public class RegistroActivity extends BaseActivity {
         btnRegistrar.setEnabled(false);   // evita enviar dos veces
         ApiClient.create(this, UsuarioApi.class).crear(pedido).enqueue(new ApiCallback<UsuarioDto>() {
             @Override
+            public void onSesionVencida(String mensaje) {
+                cerrarSesionPorVencimiento();
+            }
+
+            @Override
             public void onExito(UsuarioDto creado) {
                 Toast.makeText(RegistroActivity.this,
                         getString(R.string.registro_exito, username), Toast.LENGTH_LONG).show();

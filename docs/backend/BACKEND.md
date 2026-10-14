@@ -29,6 +29,7 @@ Apps del proyecto: `users` (usuarios, roles y login), `pedagogia` (categorías, 
 1. La app llama a `POST /api/token/` con `username` y `password` y recibe `access` y `refresh`.
 2. En cada pedido siguiente manda el header `Authorization: Bearer <access>`.
 3. Si el `access` vence (dura 1 día), pide uno nuevo con `POST /api/token/refresh/` (el `refresh` dura 7 días).
+   > **Estado en la app:** el `refresh` se guarda cifrado, pero la renovación automática todavía no está hecha (queda para el Sprint 3). Cuando el `access` vence, cualquier pantalla recibe un 401, borra la sesión y vuelve al Login (`BaseActivity.cerrarSesionPorVencimiento`).
 4. Todo va por **HTTPS**. La app tiene el tráfico sin cifrar prohibido en `network_security_config.xml`; sin ninguna excepción (se eliminó la del host de desarrollo `10.0.2.2`/`localhost`).
 
 Los datos de cada endpoint (qué recibe, qué devuelve, si pide token y qué rol lo puede usar) están en [ENDPOINTS.md](../api/ENDPOINTS.md).

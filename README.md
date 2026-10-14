@@ -4,7 +4,7 @@ Cliente Android de **EduTools**, la plataforma de gestión y sandbox pedagógico
 
 La aplicación móvil consume la misma API REST en Django construida durante el módulo Programador Web, de modo que la información queda sincronizada entre el cliente web y el móvil.
 
-> **Estado actual: Sprint 2 (Evidencia 3).** La aplicación ya consume la API del backend por HTTPS: inicio de sesión real con JWT, roles leídos del token, CRUD de usuarios (solo admin), Registro con contraseña robusta y token guardado de forma cifrada. El CRUD de Recursos sigue pendiente (Issue #22). El detalle está en la [Wiki](../../wiki).
+> **Estado actual: Sprint 2 (Evidencia 3).** La aplicación ya consume la API del backend por HTTPS: inicio de sesión real con JWT, roles leídos del token, CRUD de usuarios (solo admin), Registro con contraseña robusta y token guardado de forma cifrada. El CRUD de Recursos (listar, detalle, alta, edición y baja) también consume la API. El detalle está en la [Wiki](../../wiki).
 
 ---
 
@@ -27,10 +27,10 @@ La aplicación móvil consume la misma API REST en Django construida durante el 
 |:---|:---|:---|
 | **Acceso** | Inicio de sesión · Registro | Login real con JWT · validación por campo · contraseña robusta · sesión cifrada que se restaura al abrir la app |
 | **Home** | Menú principal con acceso a los cinco módulos | Navegable |
-| **Recursos pedagógicos** | Listado · Detalle del recurso · Formulario de alta y edición | Navegable · CRUD en Sprint 2 |
+| **Recursos pedagógicos** | Listado · Detalle del recurso · Formulario de alta y edición | CRUD contra la API (alta y edición exigen categorías y asignaturas cargadas) |
 | **Usuarios** | Listado de usuarios · Perfil · Alta y edición | CRUD contra la API (solo admin; el asesor recibe 403) |
-| **Guía multimedia** | Video de los estándares institucionales e imagen de la paleta | Imagen funcional · agregar el archivo de video |
-| **Contacto** | Formulario de consulta a la mesa de ayuda | Validación por campo · envío pendiente |
+| **Guía multimedia** | Video de los estándares institucionales e imagen de la paleta | Video e imagen incluidos en la app |
+| **Contacto** | Formulario de consulta a la mesa de ayuda | Validación por campo · abre la app de correo con la consulta armada para soporte@edutools.edu.ar (no hay endpoint propio) |
 | **Quiénes somos** | Identidad del proyecto y equipo | Funcional |
 
 ---
@@ -64,7 +64,7 @@ git clone https://github.com/ISPC-TSDWAD/Mobile-Testing-Cyberseguridad-Dev-6.git
 ```
 
 1. Abrir la carpeta en Android Studio y esperar la sincronización de Gradle.
-2. Agregar el video de presentación en `app/src/main/res/raw/presentacion_edutools.mp4`. Sin este archivo el proyecto compila igual: la pantalla multimedia informa que el video no está incorporado.
+2. El video de presentación ya viene en `app/src/main/res/raw/presentacion_edutools.mp4`; no hay que agregar nada.
 3. Seleccionar el dispositivo o emulador y ejecutar **Run ▸ app**.
 
 ### Generar el APK de depuración
@@ -161,7 +161,7 @@ El detalle completo de políticas y la fundamentación de la elección de JWT es
 | Documentación formal del cliente móvil | [docs/EduTools_Documentacion_formal_Mobile_Ev2.md](docs/EduTools_Documentacion_formal_Mobile_Ev2.md) |
 | ANEXO II — capturas de las Activities | [Ver anexo](docs/EduTools_Documentacion_formal_Mobile_Ev2.md#anexo-ii--capturas-de-las-activities) |
 | Plan de seguridad (Evidencia 2) | [PDF](docs/Documentacion_Ciberseguridad_AppEduTools.pdf) · [documento colaborativo](https://docs.google.com/document/d/16HC2LHAWWaxBdfk89M1nlIFZkRZtYlht/edit) |
-| Planilla de casos de prueba | [docs/Test_Cases_Sprint1.csv](docs/Test_Cases_Sprint1.csv) |
+| Testing: plan de pruebas, accesibilidad y trazabilidad | [docs/testing](docs/testing/README.md) · colección Postman/Newman en [tests/api](tests/api/README.md) |
 | Demo en video de la navegabilidad | [Ver en Drive](https://drive.google.com/file/d/193K4IP9BwwjeN6Mn-tMd8QOG3UiY6Efv/view?usp=drive_link) · [copia en el repositorio](docs/video) |
 | Backend: cómo se conecta, roles, seguridad y despliegue | [docs/backend/BACKEND.md](docs/backend/BACKEND.md) |
 | Lista de endpoints de la API | [docs/api/ENDPOINTS.md](docs/api/ENDPOINTS.md) |

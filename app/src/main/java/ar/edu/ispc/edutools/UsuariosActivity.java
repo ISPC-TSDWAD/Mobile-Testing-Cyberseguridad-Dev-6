@@ -68,6 +68,11 @@ public class UsuariosActivity extends BaseActivity implements UsuarioAdapter.OnU
         tvCantidad.setText(R.string.usuarios_cargando);
         api.listar().enqueue(new ApiCallback<List<UsuarioDto>>() {
             @Override
+            public void onSesionVencida(String mensaje) {
+                cerrarSesionPorVencimiento();
+            }
+
+            @Override
             public void onExito(List<UsuarioDto> lista) {
                 if (isFinishing()) {
                     return;

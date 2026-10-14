@@ -1,12 +1,17 @@
 package ar.edu.ispc.edutools;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+
+import ar.edu.ispc.edutools.net.ApiErrorMapper;
+import ar.edu.ispc.edutools.security.SessionManager;
 
 /**
  * Activity base de EduTools Mobile. Centraliza la Toolbar y la navegacion Up.
@@ -46,5 +51,18 @@ public abstract class BaseActivity extends AppCompatActivity {
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    /**
+     * Respuesta unica ante un 401 en una pantalla con sesion: borra los tokens,
+     * avisa y vuelve al Login sin dejar pantallas atras.
+     */
+    protected void cerrarSesionPorVencimiento() {
+        new SessionManager(this).cerrarSesion();
+        Toast.makeText(this, ApiErrorMapper.mensaje(401, null), Toast.LENGTH_LONG).show();
+        Intent intent = new Intent(this, LoginActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
+        finish();
     }
 }

@@ -26,6 +26,8 @@ El reporte queda en `app/build/reports/tests/testDebugUnitTest/index.html`.
 | `SessionManager` (`security/`) | la sesión es válida solo con token sin vencer; cerrar sesión borra tokens y usuario | 5 |
 | `AuthRepository` (`net/`) | login contra MockWebServer: 200 guarda los tokens, 401/500 y sin red muestran error | 5 |
 | `UsuarioApi` (`net/`) | CRUD de usuarios contra MockWebServer: rutas, token, 403, 201 y 204 | 5 |
+| `CatalogoUtil` (`util/`) | el formulario de recursos nunca inventa una categoría o asignatura: sin selección ni dato previo devuelve -1 | 4 |
+| `ConsultaMail` (`util/`) | asunto y cuerpo del correo de la pantalla Contacto, con textos nulos o con espacios | 3 |
 
 Los tests de `ApiErrorMapper` (14, incluidos el 429 del límite de intentos y el 409 de dato en uso), `AuthInterceptor` (3) y la capa de red de Gonzalo se suman a esta tabla en `app/src/test`.
 
