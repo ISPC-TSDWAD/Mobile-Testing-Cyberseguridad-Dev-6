@@ -27,9 +27,9 @@ El reporte queda en `app/build/reports/tests/testDebugUnitTest/index.html`.
 | `AuthRepository` (`net/`) | login contra MockWebServer: 200 guarda los tokens, 401/500 y sin red muestran error | 5 |
 | `UsuarioApi` (`net/`) | CRUD de usuarios contra MockWebServer: rutas, token, 403, 201 y 204 | 5 |
 
-Los tests de `ApiErrorMapper` (11), `AuthInterceptor` (3) y la capa de red de Gonzalo se suman a esta tabla en `app/src/test`.
+Los tests de `ApiErrorMapper` (14, incluidos el 429 del límite de intentos y el 409 de dato en uso), `AuthInterceptor` (3) y la capa de red de Gonzalo se suman a esta tabla en `app/src/test`.
 
-Total: 78 tests, todos pasan (`testDebugUnitTest`, 13/10).
+Total: 81 tests, todos pasan (`testDebugUnitTest`, 13/10).
 
 ## Validador
 
