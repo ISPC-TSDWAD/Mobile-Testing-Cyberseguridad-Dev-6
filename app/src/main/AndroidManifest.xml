@@ -8,6 +8,7 @@
     <uses-sdk tools:overrideLibrary="androidx.security.crypto" />
 
     <application
+        android:name=".EduToolsApp"
         android:allowBackup="false"
         android:icon="@drawable/ic_logo_edutools"
         android:label="@string/app_name"

@@ -28,10 +28,12 @@ El reporte queda en `app/build/reports/tests/testDebugUnitTest/index.html`.
 | `UsuarioApi` (`net/`) | CRUD de usuarios contra MockWebServer: rutas, token, 403, 201 y 204 | 5 |
 | `ApiErrorMapper` (`net/`) | mensajes de errores HTTP y cuerpos de error, incluidos el 429 del límite de intentos y el 409 de dato en uso | 14 |
 | `AuthInterceptor` (`net/`) | agrega Bearer y deja de enviarlo al cerrar sesión | 3 |
-| `RecursoApi` (`net/`) | lista, alta, parseo, 401, 400 y 500 con MockWebServer | 5 |
+| `RecursoApi` (`net/`) | lista, alta, parseo, 401, 400 y 500 con MockWebServer; el detalle trae `contenido` y `url`; al editar una plantilla el PUT manda los campos del formulario (sin `contenido`) y la copia que devuelve el servidor los conserva sin tocar la plantilla | 8 |
 | `ApiCallback` (`net/`) | 401 resuelto o sin redirección, 403 conserva sesión, 204 sin cuerpo | 4 |
+| `TemaApp` (`util/`) | selector de tema: Claro / Oscuro / Según el sistema, modo de AppCompat, orden de las opciones, valores inválidos y persistencia | 7 |
+| `VistaPreviaRecurso` (`util/`) | vista previa del recurso: qué se muestra y qué se bloquea (scripts, marcos, eventos, `javascript:`), solo enlaces HTTPS, recurso sin contenido ni enlace, documento con CSP y colores del tema | 13 |
 
-Total: **90 tests, 0 fallas y 0 errores** (`testDebugUnitTest`, 14/10/2026). Incluye los 87 tests de `develop` y 3 tests nuevos de `ApiErrorMapper` (429 y 409).
+Total: **113 tests, 0 fallas y 0 errores** (`testDebugUnitTest`, 14/10/2026). Incluye los 90 tests de `develop` y 23 nuevos: selector de tema (7), vista previa de recursos (13) y contrato de la API para el detalle y la copia de plantilla (3).
 
 ## Cobertura y comprobaciones automáticas
 
@@ -41,7 +43,7 @@ Total: **90 tests, 0 fallas y 0 errores** (`testDebugUnitTest`, 14/10/2026). Inc
 
 JaCoCo genera HTML en `app/build/reports/jacoco/jacocoTestReport/html/index.html` y XML en `app/build/reports/jacoco/jacocoTestReport/jacocoTestReport.xml`.
 
-Resultado actualizado del 14/10/2026: **282 de 1049 líneas cubiertas (26,9%)** sobre el código Java de producción, incluidas Activities y adapters. No se excluyen pantallas para aumentar el porcentaje. Este reporte mide únicamente los tests JVM; las pantallas y el almacenamiento cifrado requieren pruebas instrumentadas y no están cubiertos por esta ejecución. Los tests JVM siguen pasando.
+Resultado del 14/10/2026 sobre `develop` (no se recalculó con la rama del selector de tema y la vista previa): **282 de 1049 líneas cubiertas (26,9%)** sobre el código Java de producción, incluidas Activities y adapters. No se excluyen pantallas para aumentar el porcentaje. Este reporte mide únicamente los tests JVM; las pantallas y el almacenamiento cifrado requieren pruebas instrumentadas y no están cubiertos por esta ejecución. Los tests JVM siguen pasando.
 
 El workflow [.github/workflows/android-tests.yml](../../.github/workflows/android-tests.yml) conserva tests, cobertura, lint y APK como artifacts. Está preparado localmente; el resultado de GitHub Actions queda pendiente hasta publicar el cambio y ejecutar el workflow.
 
