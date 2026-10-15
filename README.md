@@ -29,7 +29,7 @@ La aplicación móvil consume la misma API REST en Django construida durante el 
 | **Home** | Menú principal con acceso a los cinco módulos y selector de tema (Claro / Oscuro / Según el sistema) | Navegable · el tema elegido se guarda y se aplica a todas las pantallas |
 | **Recursos pedagógicos** | Listado · Detalle del recurso · Formulario de alta y edición | CRUD contra la API · catálogos reales · validación antes de guardar · vista previa del contenido HTML y del enlace en el detalle |
 | **Usuarios** | Listado de usuarios · Perfil · Alta y edición | CRUD contra la API (solo admin; el asesor recibe 403) |
-| **Guía multimedia** | Video de los estándares institucionales e imagen de la paleta | Video incluido · reproducción manual · imagen funcional |
+| **Guía multimedia** | Video de presentación con las funciones del Sprint 2 e imagen de la paleta | Video incluido · reproducción manual · imagen funcional |
 | **Contacto** | Formulario de demostración | Validación por campo · no envía ni guarda consultas · canal de soporte pendiente |
 | **Quiénes somos** | Identidad del proyecto y equipo | Funcional |
 
@@ -64,7 +64,7 @@ git clone https://github.com/ISPC-TSDWAD/Mobile-Testing-Cyberseguridad-Dev-6.git
 ```
 
 1. Abrir la carpeta en Android Studio y esperar la sincronización de Gradle.
-2. El video de presentación ya está incluido en `app/src/main/res/raw/presentacion_edutools.mp4`.
+2. El video de presentación (funciones del Sprint 2) ya está incluido en `app/src/main/res/raw/presentacion_edutools.mp4`.
 3. Seleccionar el dispositivo o emulador y ejecutar **Run ▸ app**.
 
 ### Generar el APK de depuración
@@ -164,6 +164,7 @@ El detalle completo de políticas y la fundamentación de la elección de JWT es
 | ANEXO II — capturas de las Activities | [Ver anexo](docs/EduTools_Documentacion_formal_Mobile_Ev2.md#anexo-ii--capturas-de-las-activities) |
 | Plan de seguridad (Evidencia 2) | [PDF](docs/Documentacion_Ciberseguridad_AppEduTools.pdf) · [documento colaborativo](https://docs.google.com/document/d/16HC2LHAWWaxBdfk89M1nlIFZkRZtYlht/edit) |
 | Planilla de casos de prueba | [docs/testing/Planilla_Test_Cases.csv](docs/testing/Planilla_Test_Cases.csv) |
+| Guía multimedia, Sprint 1 (video anterior de la app) | [docs/video/Guia-multimedia-Sprint1.mp4](docs/video/Guia-multimedia-Sprint1.mp4) |
 | Demo en video de la navegabilidad | [Ver en Drive](https://drive.google.com/file/d/193K4IP9BwwjeN6Mn-tMd8QOG3UiY6Efv/view?usp=drive_link) · [copia en el repositorio](docs/video) |
 | Backend: cómo se conecta, roles, seguridad y despliegue | [docs/backend/BACKEND.md](docs/backend/BACKEND.md) |
 | Lista de endpoints de la API | [docs/api/ENDPOINTS.md](docs/api/ENDPOINTS.md) |
