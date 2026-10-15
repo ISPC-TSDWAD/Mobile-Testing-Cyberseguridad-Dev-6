@@ -8,3 +8,10 @@
 -keep class ar.edu.ispc.edutools.net.**Response { *; }
 -keep class ar.edu.ispc.edutools.net.ResultadoLogin { *; }
 -keep interface ar.edu.ispc.edutools.net.**Api { *; }
+
+# Retrofit inspecciona Call<T> y Response<T> por reflexion en release.
+-keep,allowobfuscation,allowshrinking interface retrofit2.Call
+-keep,allowobfuscation,allowshrinking class retrofit2.Response
+# Gson conserva el tipo generico de sus adaptadores.
+-keep,allowobfuscation,allowshrinking class com.google.gson.reflect.TypeToken
+-keep,allowobfuscation,allowshrinking class * extends com.google.gson.reflect.TypeToken
