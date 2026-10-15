@@ -6,11 +6,13 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.cardview.widget.CardView;
 
 import ar.edu.ispc.edutools.model.UsuarioItem;
 import ar.edu.ispc.edutools.security.SessionManager;
 import ar.edu.ispc.edutools.util.JwtUtil;
+import ar.edu.ispc.edutools.util.TemaApp;
 
 /**
  * Home de la aplicacion. Padre de todos los modulos, concentra la navegacion
@@ -50,12 +52,17 @@ public class MainActivity extends BaseActivity {
         CardView cardContacto = findViewById(R.id.cardContacto);
         CardView cardAcerca = findViewById(R.id.cardAcerca);
         Button btnCerrarSesion = findViewById(R.id.btnCerrarSesion);
+        CardView cardTema = findViewById(R.id.cardTema);
 
         cardRecursos.setOnClickListener(v -> abrir(RecursosActivity.class));
         cardUsuarios.setOnClickListener(v -> abrir(UsuariosActivity.class));
         cardMultimedia.setOnClickListener(v -> abrir(MultimediaActivity.class));
         cardContacto.setOnClickListener(v -> abrir(ContactoActivity.class));
         cardAcerca.setOnClickListener(v -> abrir(AcercaDeActivity.class));
+
+        // Selector de tema: Claro / Oscuro / Segun el sistema.
+        mostrarTemaActual();
+        cardTema.setOnClickListener(v -> mostrarSelectorTema());
 
         btnCerrarSesion.setOnClickListener(v -> {
             sesion.cerrarSesion();   // borra los tokens guardados
@@ -64,6 +71,27 @@ public class MainActivity extends BaseActivity {
             startActivity(intent);
             finish();
         });
+    }
+
+    private void mostrarTemaActual() {
+        TextView tvTemaActual = findViewById(R.id.tvTemaActual);
+        String[] nombres = getResources().getStringArray(R.array.tema_opciones);
+        int indice = TemaApp.indice(TemaApp.leer(this));
+        tvTemaActual.setText(getString(R.string.home_tema_actual, nombres[indice]));
+    }
+
+    /** La eleccion se guarda y se aplica al instante en todas las pantallas. */
+    private void mostrarSelectorTema() {
+        int actual = TemaApp.indice(TemaApp.leer(this));
+        new AlertDialog.Builder(this)
+                .setTitle(R.string.tema_titulo)
+                .setSingleChoiceItems(R.array.tema_opciones, actual, (dialog, which) -> {
+                    TemaApp.elegir(this, TemaApp.valorEn(which));
+                    dialog.dismiss();
+                    mostrarTemaActual();
+                })
+                .setNegativeButton(R.string.form_cancelar, null)
+                .show();
     }
 
     /** Abre una pantalla hija propagando el usuario de la sesion. */

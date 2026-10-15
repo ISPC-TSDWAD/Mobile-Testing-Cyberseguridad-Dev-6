@@ -141,4 +141,32 @@
     <string name="cd_video">Reproductor del video con el recorrido por los estándares institucionales</string>
 
 
+
+    <!-- ===== Apariencia (tema) ===== -->
+    <string name="home_tema">Apariencia</string>
+    <string name="home_tema_actual">Tema: %1$s</string>
+    <string name="cd_icono_tema">Icono de apariencia</string>
+    <string name="tema_titulo">Elegí el tema</string>
+    <string name="tema_claro">Claro</string>
+    <string name="tema_oscuro">Oscuro</string>
+    <string name="tema_sistema">Según el sistema</string>
+    <string-array name="tema_opciones">
+        <item>@string/tema_claro</item>
+        <item>@string/tema_oscuro</item>
+        <item>@string/tema_sistema</item>
+    </string-array>
+
+    <!-- ===== Vista previa del recurso ===== -->
+    <string name="preview_titulo">Contenido</string>
+    <string name="preview_vacio">Este recurso todavía no tiene contenido ni enlace para mostrar.</string>
+    <string name="preview_bloqueado">El contenido de este recurso se bloqueó por seguridad porque incluye elementos que la app no ejecuta (scripts, marcos o eventos).</string>
+    <string name="preview_enlace_inseguro">El enlace de este recurso no usa HTTPS, por eso no se puede abrir desde la app.</string>
+    <string name="preview_abrir_enlace">Abrir enlace</string>
+    <string name="preview_abrir_video">Abrir video</string>
+    <string name="preview_aviso_externo">Se abre en tu navegador, fuera de EduTools.</string>
+    <string name="preview_abrir_confirmar">Se va a abrir %1$s en tu navegador, fuera de EduTools. ¿Querés continuar?</string>
+    <string name="preview_abrir">Abrir</string>
+    <string name="preview_enlace_bloqueado">Ese enlace no se abre: solo se permiten enlaces HTTPS.</string>
+    <string name="preview_sin_navegador">No hay una aplicación para abrir este enlace.</string>
+
 </resources>
