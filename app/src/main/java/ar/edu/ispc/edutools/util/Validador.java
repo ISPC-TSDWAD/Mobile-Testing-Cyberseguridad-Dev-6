@@ -59,7 +59,6 @@ public final class Validador {
     }
 
     // ---------- Formularios de Acceso, Contacto y Registro (Issues #23 y #24) ----------
-    // La regla de contrasena fuerte (esPasswordFuerte) la agrega Daniela (#26).
 
     /** Mismas reglas que Django: letras, numeros y @ . + - _ (hasta 150). */
     private static final Pattern USERNAME = Pattern.compile("^[A-Za-z0-9@.+_-]{1,150}$");
@@ -75,6 +74,49 @@ public final class Validador {
             return false;
         }
         return USERNAME.matcher(username.trim()).matches();
+    }
+
+    // ---------- Contrasena robusta (pide el ABP) ----------
+
+    /** La contrasena tiene que tener mas de 8 caracteres. */
+    public static final int PASSWORD_LARGO_MIN = 9;
+
+    /**
+     * Contrasena robusta: mas de 8 caracteres, con al menos una letra,
+     * un numero y un caracter especial (algo que no sea letra, numero ni espacio).
+     */
+    public static boolean esPasswordFuerte(String password) {
+        return mensajePassword(password) == null;
+    }
+
+    /** Dice en espanol que le falta a la contrasena. Devuelve null si esta bien. */
+    public static String mensajePassword(String password) {
+        if (password == null || password.length() < PASSWORD_LARGO_MIN) {
+            return "La contraseña tiene que tener más de 8 caracteres.";
+        }
+        boolean hayLetra = false;
+        boolean hayNumero = false;
+        boolean hayEspecial = false;
+        for (int i = 0; i < password.length(); i++) {
+            char c = password.charAt(i);
+            if (Character.isLetter(c)) {
+                hayLetra = true;
+            } else if (Character.isDigit(c)) {
+                hayNumero = true;
+            } else if (!Character.isWhitespace(c)) {
+                hayEspecial = true;
+            }
+        }
+        if (!hayLetra) {
+            return "Agregá al menos una letra.";
+        }
+        if (!hayNumero) {
+            return "Agregá al menos un número.";
+        }
+        if (!hayEspecial) {
+            return "Agregá al menos un carácter especial (por ejemplo ! # $ %).";
+        }
+        return null;
     }
 
     /** La contrasena y su repeticion tienen que ser iguales. */

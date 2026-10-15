@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Paleta de EduTools en modo oscuro. Mismos nombres que en values/colors.xml:
+  Android elige este archivo solo cuando el celular esta en tema oscuro.
+  Los pares texto/fondo se eligieron para pasar el minimo de contraste 4.5:1
+  que pide la politica de accesibilidad (RNF2).
+-->
+<resources>
+
+    <!-- El primario en oscuro se usa casi siempre como texto, icono o borde,
+         asi que se aclara para que se lea sobre el fondo. -->
+    <color name="edu_primario">#9CC2F0</color>
+    <color name="edu_primario_oscuro">#0A1320</color>
+    <color name="edu_primario_claro">#22354D</color>
+
+    <color name="edu_secundario">#4FC3AE</color>
+    <color name="edu_acento">#E8A33D</color>
+
+    <color name="edu_fondo">#10151B</color>
+    <color name="edu_superficie">#1A2129</color>
+    <color name="edu_borde">#2E3A46</color>
+
+    <color name="edu_texto">#E6EAF0</color>
+    <color name="edu_texto_secundario">#AFBBC9</color>
+    <color name="edu_texto_inverso">#FFFFFF</color>
+
+    <!-- La barra superior y el boton flotante siguen oscuros, con texto blanco. -->
+    <color name="edu_barra">#16263B</color>
+    <color name="edu_barra_oscura">#0B1624</color>
+    <!-- Sobre el primario claro el texto tiene que ser oscuro. -->
+    <color name="edu_sobre_primario">#0B1726</color>
+
+    <color name="edu_error">#FF8A8A</color>
+    <color name="edu_exito">#4FC3AE</color>
+
+</resources>

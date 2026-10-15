@@ -15,6 +15,7 @@
 
         <TextView
             android:id="@+id/tvCantidadUsuarios"
+            android:accessibilityLiveRegion="polite"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="16dp"
@@ -40,7 +41,7 @@
         android:layout_margin="16dp"
         android:src="@drawable/ic_agregar"
         android:contentDescription="@string/usuarios_nuevo"
-        app:backgroundTint="@color/edu_primario"
+        app:backgroundTint="@color/edu_barra"
         app:tint="@color/edu_texto_inverso" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

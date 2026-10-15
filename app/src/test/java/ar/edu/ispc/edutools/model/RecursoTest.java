@@ -8,7 +8,7 @@ public class RecursoTest {
 
     private Recurso recurso(String tipo) {
         return new Recurso(1, "Titulo", "Descripcion", tipo,
-                "Programacion", "Desarrollo Web", "aperez", "https://ispc.edu.ar");
+                10, 20, "Programacion", "Desarrollo Web", 5, "https://ispc.edu.ar");
     }
 
     @Test
@@ -43,9 +43,11 @@ public class RecursoTest {
         Recurso r = recurso("video");
         assertEquals(1, r.getId());
         assertEquals("Titulo", r.getTitulo());
-        assertEquals("Programacion", r.getCategoria());
-        assertEquals("Desarrollo Web", r.getAsignatura());
-        assertEquals("aperez", r.getCreadoPor());
+        assertEquals(10, r.getCategoria());
+        assertEquals(20, r.getAsignatura());
+        assertEquals("Programacion", r.getCategoriaNombre());
+        assertEquals("Desarrollo Web", r.getAsignaturaNombre());
+        assertEquals(Integer.valueOf(5), r.getCreadoPor());
         assertEquals("https://ispc.edu.ar", r.getUrl());
     }
 }

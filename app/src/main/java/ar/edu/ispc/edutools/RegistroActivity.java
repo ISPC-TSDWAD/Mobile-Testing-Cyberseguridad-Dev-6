@@ -9,7 +9,6 @@ import androidx.annotation.Nullable;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 
-import ar.edu.ispc.edutools.net.ApiCallback;
 import ar.edu.ispc.edutools.net.ApiClient;
 import ar.edu.ispc.edutools.net.NuevoUsuarioRequest;
 import ar.edu.ispc.edutools.net.UsuarioApi;
@@ -64,7 +63,7 @@ public class RegistroActivity extends BaseActivity {
                 texto(etEmail).trim(), texto(etNombre).trim(), texto(etApellido).trim());
 
         btnRegistrar.setEnabled(false);   // evita enviar dos veces
-        ApiClient.create(this, UsuarioApi.class).crear(pedido).enqueue(new ApiCallback<UsuarioDto>() {
+        ApiClient.create(this, UsuarioApi.class).crear(pedido).enqueue(new CallbackConSesion<UsuarioDto>() {
             @Override
             public void onExito(UsuarioDto creado) {
                 Toast.makeText(RegistroActivity.this,
@@ -91,8 +90,10 @@ public class RegistroActivity extends BaseActivity {
                 R.string.error_obligatorio);
         ok &= marcar(tilEmail, Validador.esEmailValido(texto(etEmail)),
                 R.string.contacto_error_email);
-        ok &= marcar(tilPassword, Validador.esObligatorioCompleto(password),
-                R.string.error_obligatorio);
+        // Contrasena robusta: el mensaje dice que le falta (null si esta bien)
+        String falta = Validador.mensajePassword(password);
+        tilPassword.setError(falta);
+        ok &= falta == null;
         ok &= marcar(tilPassword2, Validador.coincidenPasswords(password, texto(etPassword2)),
                 R.string.registro_error_password2);
         return ok;

@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.INTERNET" />
+
+    <!-- security-crypto pide API 23. La app sigue en minSdk 21: en Android 5 se usa MemoryTokenStorage. -->
+    <uses-sdk tools:overrideLibrary="androidx.security.crypto" />
 
     <application
         android:allowBackup="false"

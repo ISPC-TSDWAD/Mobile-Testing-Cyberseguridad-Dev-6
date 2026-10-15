@@ -26,6 +26,7 @@ public class AuthRepository {
             LoginResponse cuerpo = respuesta.body();
             if (respuesta.isSuccessful() && cuerpo != null) {
                 sesion.guardarSesion(cuerpo.getAccess(), cuerpo.getRefresh());
+                sesion.guardarUsuario(usuario);
                 return ResultadoLogin.ok();
             }
             String error = respuesta.errorBody() != null ? respuesta.errorBody().string() : null;

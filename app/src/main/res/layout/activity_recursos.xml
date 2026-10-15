@@ -15,10 +15,29 @@
 
         <TextView
             android:id="@+id/tvCantidadRecursos"
+            android:accessibilityLiveRegion="polite"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="16dp"
             android:textAppearance="@style/TextAppearance.EduTools.Secundario" />
+
+        <ProgressBar
+            android:id="@+id/pbRecursos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="32dp"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/tvEstadoRecursos"
+            android:accessibilityLiveRegion="polite"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="24dp"
+            android:textAppearance="@style/TextAppearance.EduTools.Cuerpo"
+            android:visibility="gone" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvRecursos"
@@ -39,7 +58,7 @@
         android:layout_margin="16dp"
         android:src="@drawable/ic_agregar"
         android:contentDescription="@string/recursos_nuevo"
-        app:backgroundTint="@color/edu_primario"
+        app:backgroundTint="@color/edu_barra"
         app:tint="@color/edu_texto_inverso" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

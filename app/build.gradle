@@ -1,5 +1,24 @@
 plugins {
     id 'com.android.application'
+    id 'jacoco'
+}
+
+jacoco {
+    toolVersion = '0.8.12'
+}
+
+tasks.register('jacocoTestReport', JacocoReport) {
+    dependsOn 'testDebugUnitTest'
+    executionData.from(file("$buildDir/jacoco/testDebugUnitTest.exec"))
+    sourceDirectories.from(files('src/main/java'))
+    classDirectories.from(fileTree(dir: "$buildDir/intermediates/javac/debug/classes", excludes: [
+            '**/R.class', '**/R$*.class', '**/BuildConfig.class'
+    ]))
+    reports {
+        html.required = true
+        xml.required = true
+        csv.required = false
+    }
 }
 
 android {
@@ -41,6 +60,9 @@ dependencies {
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
     implementation 'com.squareup.okhttp3:okhttp:4.12.0'
+
+    // Token cifrado (Issue #26). Pide API 23; la app sigue en minSdk 21 y se resuelve en el manifiesto.
+    implementation 'androidx.security:security-crypto:1.0.0'
 
     testImplementation 'junit:junit:4.13.2'
     testImplementation 'com.squareup.okhttp3:mockwebserver:4.12.0'

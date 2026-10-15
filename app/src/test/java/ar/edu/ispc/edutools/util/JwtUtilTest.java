@@ -73,4 +73,26 @@ public class JwtUtilTest {
         assertNull(JwtUtil.getRol(t));
         assertFalse(JwtUtil.isStaff(t));
     }
+
+    // ---------- vencimiento (claim exp) ----------
+
+    @Test
+    public void tokenConExpFutura_noEstaVencido() {
+        String t = token("{\"user_id\":2,\"rol\":\"asesor\",\"exp\":2000}");
+        assertFalse(JwtUtil.estaVencido(t, 1999));
+    }
+
+    @Test
+    public void tokenConExpPasada_estaVencido() {
+        String t = token("{\"user_id\":2,\"rol\":\"asesor\",\"exp\":2000}");
+        assertTrue(JwtUtil.estaVencido(t, 2000));
+        assertTrue(JwtUtil.estaVencido(t, 5000));
+    }
+
+    @Test
+    public void tokenSinExpONulo_seTrataComoVencido() {
+        assertTrue(JwtUtil.estaVencido(token("{\"rol\":\"asesor\"}"), 1));
+        assertTrue(JwtUtil.estaVencido(null, 1));
+        assertTrue(JwtUtil.estaVencido("no-es-un-jwt", 1));
+    }
 }

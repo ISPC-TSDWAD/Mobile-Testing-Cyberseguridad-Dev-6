@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools">
 
-    <style name="Theme.EduTools" parent="Theme.MaterialComponents.Light.NoActionBar">
+    <style name="Theme.EduTools" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <item name="colorPrimary">@color/edu_primario</item>
         <item name="colorPrimaryVariant">@color/edu_primario_oscuro</item>
-        <item name="colorOnPrimary">@color/edu_texto_inverso</item>
+        <item name="colorOnPrimary">@color/edu_sobre_primario</item>
         <item name="colorSecondary">@color/edu_secundario</item>
-        <item name="colorOnSecondary">@color/edu_texto_inverso</item>
+        <item name="colorOnSecondary">@color/edu_sobre_primario</item>
         <item name="android:colorBackground">@color/edu_fondo</item>
         <item name="colorSurface">@color/edu_superficie</item>
         <item name="colorOnSurface">@color/edu_texto</item>
         <item name="colorError">@color/edu_error</item>
-        <item name="android:statusBarColor" tools:targetApi="l">@color/edu_primario_oscuro</item>
+        <item name="android:statusBarColor" tools:targetApi="l">@color/edu_barra_oscura</item>
         <item name="android:textColorPrimary">@color/edu_texto</item>
         <item name="android:textColorSecondary">@color/edu_texto_secundario</item>
         <item name="textInputStyle">@style/Widget.EduTools.CampoTexto</item>
@@ -24,7 +24,7 @@
 
     <!-- Toolbar comun a todas las Activity. -->
     <style name="Widget.EduTools.Toolbar" parent="Widget.MaterialComponents.Toolbar.Primary">
-        <item name="android:background">@color/edu_primario</item>
+        <item name="android:background">@color/edu_barra</item>
         <item name="titleTextColor">@color/edu_texto_inverso</item>
         <item name="android:elevation">4dp</item>
     </style>
