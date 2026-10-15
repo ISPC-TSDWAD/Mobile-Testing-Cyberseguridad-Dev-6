@@ -14,6 +14,22 @@ Se probó la app en un **Samsung SM-A546E** (instalada desde Android Studio) con
 | 8 | La sesión sobrevive al cierre | Iniciar sesión, cerrar la app desde recientes y abrirla de nuevo | Entra directo al Home con el mismo rol (token en `EncryptedSharedPreferences`) | OK |
 | 9 | Cerrar sesión borra la sesión guardada | Tocar "Cerrar sesión", cerrar la app y abrirla | Aparece el login | OK |
 
+## Selector de tema y vista previa de recursos (pendiente de probar en el celular)
+
+Estos casos corresponden a la rama `feature/tema-y-previsualizacion`. Los tests automáticos están en [PRUEBAS_UNITARIAS.md](PRUEBAS_UNITARIAS.md); lo que sigue se completa al instalar la app en el celular. Cada caso se repite en tema **Claro** y **Oscuro**.
+
+| # | Caso | Pasos | Resultado esperado | Resultado |
+|---|------|-------|--------------------|-----------|
+| 10 | Elegir tema | Home, tarjeta "Apariencia", elegir Oscuro | Toda la app pasa a oscuro y la tarjeta dice "Tema: Oscuro" | Pendiente |
+| 11 | Tema Claro y Según el sistema | Elegir Claro; luego Según el sistema con el celular en oscuro | Claro fuerza el claro; "Según el sistema" sigue al celular | Pendiente |
+| 12 | El tema se recuerda | Elegir Oscuro, cerrar la app desde recientes y abrirla | Login y Home abren en oscuro | Pendiente |
+| 13 | Todas las pantallas | Recorrer Recursos, Detalle, Formulario, Usuarios, Perfil, Contacto, Multimedia y Quiénes somos | Todas respetan el tema elegido, sin texto ilegible | Pendiente |
+| 14 | Recurso con contenido HTML | Abrir un recurso con `contenido` (por ejemplo una lectura) | La sección "Contenido" muestra el HTML con los colores del tema | Pendiente |
+| 15 | Recurso con enlace HTTPS | Abrir un recurso con URL `https://` | Aparece el botón "Abrir enlace" (o "Abrir video") y el aviso "Se abre en tu navegador, fuera de EduTools"; al tocarlo pide confirmar y abre el navegador | Pendiente |
+| 16 | Recurso sin contenido ni enlace | Abrir un recurso sin `contenido` ni `url` | Mensaje "Este recurso todavía no tiene contenido ni enlace para mostrar" | Pendiente |
+| 17 | Enlaces dentro del HTML | En un HTML con un enlace `https://`, tocarlo | No navega dentro de la vista: pide confirmar y abre afuera | Pendiente |
+| 18 | Editar o copiar una plantilla | Como asesor, editar una plantilla base (título, descripción, URL) y guardar; abrir la copia | La copia tiene los cambios y conserva el contenido; la plantilla base no cambió | Pendiente |
+
 ## Capturas
 
 | Caso | Captura |

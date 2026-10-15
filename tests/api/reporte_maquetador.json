@@ -1,0 +1,89 @@
+{
+  "metadata": {
+    "started": "2026-10-15T01:59:46.782258+00:00",
+    "finished": "2026-10-15T02:00:00.809917+00:00",
+    "baseUrl": "https://dev6.pythonanywhere.com",
+    "sanitized": true,
+    "cleanupErrors": 0
+  },
+  "results": [
+    {
+      "case": "Login admin",
+      "expected": 200,
+      "actual": 200,
+      "passed": true
+    },
+    {
+      "case": "Crear cuenta temporal",
+      "expected": 201,
+      "actual": 201,
+      "passed": true
+    },
+    {
+      "case": "Asignar rol maquetador",
+      "expected": 200,
+      "actual": 200,
+      "passed": true
+    },
+    {
+      "case": "Login maquetador y claim",
+      "expected": 200,
+      "actual": 200,
+      "passed": true
+    },
+    {
+      "case": "Leer categorías",
+      "expected": 200,
+      "actual": 200,
+      "passed": true
+    },
+    {
+      "case": "Crear categoría",
+      "expected": 201,
+      "actual": 201,
+      "passed": true
+    },
+    {
+      "case": "Crear asignatura",
+      "expected": 201,
+      "actual": 201,
+      "passed": true
+    },
+    {
+      "case": "Crear plantilla como maquetador",
+      "expected": 201,
+      "actual": 201,
+      "passed": true
+    },
+    {
+      "case": "Desmarcar plantilla",
+      "expected": 200,
+      "actual": 200,
+      "passed": true
+    },
+    {
+      "case": "Editar recurso",
+      "expected": 200,
+      "actual": 200,
+      "passed": true
+    },
+    {
+      "case": "Eliminar recurso propio",
+      "expected": 204,
+      "actual": 204,
+      "passed": true
+    },
+    {
+      "case": "Eliminar categoría libre",
+      "expected": 204,
+      "actual": 204,
+      "passed": true
+    },
+    {
+      "case": "Eliminar asignatura libre",
+      "expected": 204,
+      "actual": 204,
+      "passed": true
+    }
+  ]
+}

@@ -288,6 +288,54 @@
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
+            <!-- ============ Tarjeta: Apariencia (tema) ============ -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardTema"
+                style="@style/Widget.EduTools.Tarjeta"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?attr/selectableItemBackground">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:padding="16dp">
+
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:src="@drawable/ic_tema"
+                        app:tint="@color/edu_primario"
+                        android:contentDescription="@string/cd_icono_tema" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginStart="16dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/home_tema"
+                            android:textAppearance="@style/TextAppearance.EduTools.Cuerpo"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/tvTemaActual"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="@style/TextAppearance.EduTools.Secundario" />
+                    </LinearLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
             <Button
                 android:id="@+id/btnCerrarSesion"
                 style="@style/Widget.EduTools.Boton.Secundario"

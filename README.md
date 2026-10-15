@@ -5,17 +5,17 @@ Cliente Android de **EduTools**, la plataforma de gestión y sandbox pedagógico
 La aplicación móvil consume la misma API REST en Django construida durante el módulo Programador Web, de modo que la información queda sincronizada entre el cliente web y el móvil.
 
 > **Estado actual: Sprint 2 (Evidencia 3).** La aplicación consume la API del backend por HTTPS: inicio de sesión real con JWT, roles leídos del token, CRUD de usuarios (solo admin), CRUD de recursos pedagógicos, Registro con contraseña robusta y token guardado de forma cifrada desde Android 6. En Android 5 la sesión se conserva solo en memoria. El detalle está en la [Wiki](../../wiki).
+>
+> **Tema y vista previa.** La app ofrece tema Claro, Oscuro o Según el sistema (se recuerda entre sesiones). El detalle de un recurso muestra su contenido HTML en un WebView sin JavaScript ni acceso a archivos, y los enlaces se abren solo si son HTTPS, fuera de la app y con confirmación previa.
 
 ---
 
 ## Equipo DEV6
 
-| Integrante | Rol | Responsabilidad en el Sprint 1 |
+| Integrante | Rol | Responsabilidad del equipo |
 |:---|:---|:---|
 | Gonzalo Velasco | Scrum Master · Developer | Módulo de recursos, modelos de datos y gestión de la Wiki |
 | Jonathan Guillén | Líder Técnico · Developer | Configuración del proyecto, manifiesto, seguridad de red y code reviews |
-| Ale Corva | Developer | Navegación base, pantalla de acceso y menú principal |
-| Daniela Salvo | Technical Writer & Designer | Módulo de usuarios, design tokens y ANEXO II de capturas |
 | Gerardo Romero | Developer | Multimedia, contacto, institucional e iconografía |
 | Roni Duncan Gonzales Martínez | QA Tester | Plan de Pruebas, accesibilidad y compatibilidad con API 21 |
 
@@ -26,8 +26,8 @@ La aplicación móvil consume la misma API REST en Django construida durante el 
 | Módulo | Pantallas | Estado |
 |:---|:---|:---|
 | **Acceso** | Inicio de sesión · Registro | Login real con JWT · validación por campo · contraseña robusta · sesión cifrada que se restaura al abrir la app |
-| **Home** | Menú principal con acceso a los cinco módulos | Navegable |
-| **Recursos pedagógicos** | Listado · Detalle del recurso · Formulario de alta y edición | CRUD contra la API · catálogos reales · validación antes de guardar |
+| **Home** | Menú principal con acceso a los cinco módulos y selector de tema (Claro / Oscuro / Según el sistema) | Navegable · el tema elegido se guarda y se aplica a todas las pantallas |
+| **Recursos pedagógicos** | Listado · Detalle del recurso · Formulario de alta y edición | CRUD contra la API · catálogos reales · validación antes de guardar · vista previa del contenido HTML y del enlace en el detalle |
 | **Usuarios** | Listado de usuarios · Perfil · Alta y edición | CRUD contra la API (solo admin; el asesor recibe 403) |
 | **Guía multimedia** | Video de los estándares institucionales e imagen de la paleta | Video incluido · reproducción manual · imagen funcional |
 | **Contacto** | Formulario de demostración | Validación por campo · no envía ni guarda consultas · canal de soporte pendiente |
@@ -178,10 +178,10 @@ El detalle completo de políticas y la fundamentación de la elección de JWT es
 Con JDK 17 y Android SDK 34 configurados en `local.properties` (archivo local, sin versionar):
 
 ```bash
-./gradlew testDebugUnitTest jacocoTestReport lintDebug assembleDebug assembleDebugAndroidTest
+./gradlew testDebugUnitTest jacocoTestReport lintDebug assembleDebug assembleDebugAndroidTest assembleRelease
 ```
 
-En Windows usar `.\gradlew.bat`. La revisión local del 13/10/2026 ejecutó **87 tests JVM, con 0 fallas**. La verificación del 14/10/2026 ejecutó además 7 tests instrumentados en Moto g85 Android 16, con 0 fallas; la escucha de TalkBack y API 21 siguen pendientes (ver [evidencia Espresso](docs/pruebas/EVIDENCIA_ESPRESSO.md)).
+En Windows usar `.\gradlew.bat`. La verificación del 14/10/2026 ejecutó **113 tests JVM, con 0 fallas** (incluye el selector de tema, la vista previa de recursos y el contrato de la copia de plantillas). La verificación del 14/10/2026 ejecutó además 21 tests instrumentados en Moto g85 Android 16, con 0 fallas; la escucha de TalkBack y API 21 siguen pendientes (ver [evidencia Espresso](docs/pruebas/EVIDENCIA_ESPRESSO.md)).
 
 Reportes generados:
 
@@ -206,3 +206,9 @@ main       ← versión estable al cierre de cada Sprint (lo que se corrige)
 
 **ISPC** · Tecnicatura Superior en Desarrollo Web y Aplicaciones Digitales · Proyecto ABP — Aplicación Móvil
 Actualización de documentación del sprint 2.
+
+## Cierre del Sprint 2
+
+La versión 0.2.0 incorpora ofuscación R8 y reducción de recursos. El APK firmado está preparado para su publicación tras integrar el cierre en main. [Empaquetado](docs/pruebas/EMPAQUETADO.md).
+
+Evidencia consolidada: 113 tests JVM, 21 instrumentados, 47 requests Newman (4 fallas de latencia) y 13 comprobaciones del rol maquetador. El [informe de cierre](docs/testing/CIERRE_SPRINT2.md) detalla los resultados y pendientes, incluida la Review, Retrospective y el video grupal.

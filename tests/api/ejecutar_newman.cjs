@@ -25,7 +25,7 @@ if (baseUrl !== 'https://dev6.pythonanywhere.com') {
     process.exit(2);
 }
 // Las variables transitorias nunca se reutilizan de una corrida anterior.
-for (const key of ['token', 'refresh', 'tokenAsesor', 'recursoId', 'copiaId', 'categoriaId', 'asignaturaId']) {
+for (const key of ['token', 'refresh', 'tokenAsesor', 'recursoId', 'copiaId', 'categoriaId', 'asignaturaId', 'usuarioId', 'qaUsername', 'qaPassword', 'qaResourceTitle']) {
     values.set(key, { key, value: '', enabled: true });
 }
 const collection = readJson(path.join(__dirname, 'EduTools.postman_collection.json'));
@@ -37,13 +37,50 @@ newman.run({
     timeoutRequest: 15000,
     timeoutScript: 10000,
     delayRequest: 150,
-}, (error, summary) => {
+}, async (error, summary) => {
     if (error || !summary?.run) {
         console.error('No se pudo completar Newman. No se exportaron datos privados.');
         process.exitCode = 2;
         return;
     }
     const run = summary.run;
+    // Limpieza defensiva: solo fixtures identificados de esta corrida.
+    const cleanup = { deleted: 0, remaining: 0, errors: 0 };
+    const token = summary.environment.get('token');
+    const qaUsername = summary.environment.get('qaUsername');
+    const qaTitle = summary.environment.get('qaResourceTitle');
+    const request = async (route, method = 'GET') => fetch(baseUrl + route, {
+        method, headers: { Authorization: 'Bearer ' + token }, signal: AbortSignal.timeout(15000),
+    });
+    if (token) {
+        for (const key of ['copiaId', 'recursoId']) {
+            const id = summary.environment.get(key);
+            if (!id || !qaTitle) continue;
+            try {
+                const response = await request('/api/pedagogia/recursos/' + id + '/');
+                if (response.status === 404) continue;
+                if (response.status !== 200) throw new Error('No se pudo verificar fixture');
+                const resource = await response.json();
+                if (![qaTitle, qaTitle + ' editado', qaTitle + ' copia'].includes(resource.titulo)) {
+                    cleanup.errors++; continue;
+                }
+                const result = await request('/api/pedagogia/recursos/' + id + '/', 'DELETE');
+                if (result.status === 204) cleanup.deleted++; else cleanup.remaining++;
+            } catch { cleanup.errors++; }
+        }
+        if (qaUsername) {
+            try {
+                const response = await request('/api/users/');
+                if (response.status !== 200) throw new Error('No se pudo verificar fixtures');
+                const users = await response.json();
+                const names = [qaUsername, qaUsername + '_debil', qaUsername + '_sin_token'];
+                for (const user of users.filter(u => names.includes(u.username))) {
+                    const result = await request('/api/users/' + user.id + '/', 'DELETE');
+                    if (result.status === 204) cleanup.deleted++; else cleanup.remaining++;
+                }
+            } catch { cleanup.errors++; }
+        }
+    } else { cleanup.errors++; }
     const stats = {};
     for (const key of ['iterations', 'items', 'scripts', 'prerequests', 'requests', 'tests', 'assertions', 'testScripts']) {
         const stat = run.stats[key];
@@ -61,7 +98,7 @@ newman.run({
     }));
     const report = {
         collection: { info: { name: collection.info.name } },
-        metadata: { started, finished: new Date().toISOString(), baseUrl, roles: ['admin', 'asesor'], sanitized: true },
+        metadata: { started, finished: new Date().toISOString(), baseUrl, roles: ['admin', 'asesor'], sanitized: true, cleanup },
         run: { stats, executions, failures },
     };
     const output = path.join(__dirname, 'reporte_newman.json');
@@ -69,5 +106,6 @@ newman.run({
     console.log(`Newman: ${stats.requests.total} requests, ${stats.assertions.total} assertions, ${failures.length} fallas.`);
     console.log('Reporte sanitizado guardado en tests/api/reporte_newman.json.');
     failures.forEach(f => console.log(`Fallo: ${f.source.name} / ${f.error.test || f.error.name}`));
-    process.exitCode = failures.length ? 1 : 0;
+    console.log(`Limpieza: ${cleanup.remaining} fixtures pendientes, ${cleanup.errors} errores.`);
+    process.exitCode = failures.length || cleanup.remaining || cleanup.errors ? 1 : 0;
 });

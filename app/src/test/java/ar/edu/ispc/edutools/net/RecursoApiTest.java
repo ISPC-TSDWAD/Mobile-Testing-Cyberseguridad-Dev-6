@@ -160,4 +160,74 @@ public class RecursoApiTest {
         assertEquals("Error del servidor, probá más tarde",
                 ApiErrorMapper.mensaje(respuesta.code(), null));
     }
+
+    @Test
+    public void detalle_traeElContenidoHtmlParaLaVistaPrevia() throws Exception {
+        servidor.enqueue(new MockResponse().setResponseCode(200).setBody("{"
+                + "\"id\":7,\"titulo\":\"Lectura\",\"descripcion\":\"Desc\",\"tipo\":\"lectura\","
+                + "\"contenido\":\"<h1>Hola</h1><p>Texto</p>\",\"url\":\"https://ispc.edu.ar\","
+                + "\"categoria\":2,\"asignatura\":1,\"es_plantilla_base\":false,\"copia_de\":3}"));
+
+        Response<Recurso> respuesta = api.detalle(7).execute();
+
+        assertTrue(respuesta.isSuccessful());
+        Recurso r = respuesta.body();
+        assertNotNull(r);
+        assertEquals("<h1>Hola</h1><p>Texto</p>", r.getContenido());
+        assertEquals("https://ispc.edu.ar", r.getUrl());
+        assertEquals(Integer.valueOf(3), r.getCopiaDe());
+        assertEquals("/api/pedagogia/recursos/7/", servidor.takeRequest().getPath());
+    }
+
+    @Test
+    public void detalle_sinContenidoNiUrl_llegaComoNulosOVacios() throws Exception {
+        servidor.enqueue(new MockResponse().setResponseCode(200).setBody("{"
+                + "\"id\":8,\"titulo\":\"Vacio\",\"descripcion\":\"\",\"tipo\":\"actividad\","
+                + "\"contenido\":\"\",\"url\":null,\"categoria\":1,\"asignatura\":1}"));
+
+        Recurso r = api.detalle(8).execute().body();
+
+        assertNotNull(r);
+        assertFalse(ar.edu.ispc.edutools.util.VistaPreviaRecurso.tieneContenido(r));
+        assertFalse(ar.edu.ispc.edutools.util.VistaPreviaRecurso.tieneEnlace(r));
+        assertTrue(ar.edu.ispc.edutools.util.VistaPreviaRecurso.sinNadaParaMostrar(r));
+    }
+
+    @Test
+    public void editarPlantilla_mandaLosCamposEditadosYLaCopiaVuelveConEllos() throws Exception {
+        // El asesor edita una plantilla base: el servidor responde 201 con la copia propia.
+        servidor.enqueue(new MockResponse().setResponseCode(201).setBody("{"
+                + "\"id\":21,\"titulo\":\"Mi version\",\"descripcion\":\"Cambiada\",\"tipo\":\"lectura\","
+                + "\"contenido\":\"<p>Heredado</p>\",\"url\":\"https://ispc.edu.ar/mia\","
+                + "\"categoria\":4,\"asignatura\":2,\"es_plantilla_base\":false,\"copia_de\":5}"));
+
+        Recurso editado = new Recurso(5, "Mi version", "Cambiada", "lectura", 4, 2,
+                "https://ispc.edu.ar/mia");
+        Response<Recurso> respuesta = api.actualizar(5, editado).execute();
+
+        RecordedRequest pedido = servidor.takeRequest();
+        assertEquals("PUT", pedido.getMethod());
+        assertEquals("/api/pedagogia/recursos/5/", pedido.getPath());
+        String cuerpo = pedido.getBody().readUtf8();
+        assertTrue(cuerpo.contains("\"titulo\":\"Mi version\""));
+        assertTrue(cuerpo.contains("\"descripcion\":\"Cambiada\""));
+        assertTrue(cuerpo.contains("\"url\":\"https://ispc.edu.ar/mia\""));
+        assertTrue(cuerpo.contains("\"categoria\":4"));
+        assertTrue(cuerpo.contains("\"asignatura\":2"));
+        // El contenido no se manda desde el formulario: el servidor lo hereda de la plantilla.
+        assertFalse(cuerpo.contains("contenido"));
+
+        assertEquals(201, respuesta.code());
+        Recurso copia = respuesta.body();
+        assertNotNull(copia);
+        assertEquals(21, copia.getId());
+        assertEquals("Mi version", copia.getTitulo());
+        assertEquals("Cambiada", copia.getDescripcion());
+        assertEquals("https://ispc.edu.ar/mia", copia.getUrl());
+        assertEquals(4, copia.getCategoria());
+        assertEquals(2, copia.getAsignatura());
+        assertEquals("<p>Heredado</p>", copia.getContenido());
+        assertEquals(Boolean.FALSE, copia.getEsPlantillaBase());
+        assertEquals(Integer.valueOf(5), copia.getCopiaDe());
+    }
 }

@@ -54,6 +54,17 @@
                   "pm.test('Cuenta administradora', function () { pm.expect(pm.response.json().is_staff).to.eql(true); });"
                 ]
               }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.environment.set('qaUsername', 'qa_newman_' + Date.now());",
+                  "pm.environment.set('qaPassword', 'QA-' + pm.variables.replaceIn('{{$randomUUID}}') + '-9!');",
+                  "pm.environment.set('qaResourceTitle', 'QA Newman ' + Date.now());"
+                ]
+              }
             }
           ],
           "request": {
@@ -365,17 +376,8 @@
               "script": {
                 "type": "text/javascript",
                 "exec": [
-                  "const esAdmin = pm.response.code === 200;",
-                  "pm.test('Admin: 200 con lista / no admin: 403', function () { pm.expect([200, 403]).to.include(pm.response.code); });",
-                  "if (esAdmin) {",
-                  "    pm.test('Es una lista y ningun usuario trae contrasena', function () {",
-                  "        const lista = pm.response.json();",
-                  "        pm.expect(lista).to.be.an('array');",
-                  "        lista.forEach(function (u) { pm.expect(u).to.not.have.property('password'); });",
-                  "    });",
-                  "} else {",
-                  "    pm.test('403 con detail', function () { pm.expect(pm.response.json().detail).to.be.a('string'); });",
-                  "}"
+                  "pm.test('Admin recibe 200', () => pm.response.to.have.status(200));",
+                  "pm.test('Contrato de la lista de usuarios', () => { const lista=pm.response.json(); pm.expect(lista).to.be.an('array'); lista.forEach(u => { pm.expect(u.id).to.be.a('number'); pm.expect(u.username).to.be.a('string'); pm.expect(u.email).to.be.a('string'); pm.expect(u.is_staff).to.be.a('boolean'); pm.expect(u.is_active).to.be.a('boolean'); pm.expect(u.rol).to.be.a('string'); pm.expect(u).not.to.have.property('password'); }); });"
                 ]
               }
             }
@@ -507,6 +509,503 @@
               }
             }
           ]
+        },
+        {
+          "name": "USR-06 Crear usuario temporal (201)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/users/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "users",
+                ""
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\"username\": \"{{qaUsername}}\", \"password\": \"{{qaPassword}}\", \"first_name\": \"QA\", \"last_name\": \"Temporal\", \"email\": \"qa@example.com\"}"
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Codigo 201', () => pm.response.to.have.status(201));",
+                  "if(pm.response.code===201) pm.environment.set('usuarioId',pm.response.json().id);",
+                  "pm.test('Contrato de usuario sin password', () => { const u=pm.response.json(); pm.expect(u.id).to.be.a('number'); pm.expect(u.username).to.eql(pm.environment.get('qaUsername')); pm.expect(u.email).to.be.a('string'); pm.expect(u.first_name).to.be.a('string'); pm.expect(u.last_name).to.be.a('string'); pm.expect(u.is_staff).to.be.a('boolean'); pm.expect(u.is_active).to.be.a('boolean'); pm.expect(u.rol).to.be.a('string'); pm.expect(u).not.to.have.property('password'); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "USR-07 Leer usuario temporal (200)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/users/{{usuarioId}}/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "users",
+                "{{usuarioId}}",
+                ""
+              ]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Codigo 200', () => pm.response.to.have.status(200));",
+                  "pm.test('Contrato de usuario sin password', () => { const u=pm.response.json(); pm.expect(u.id).to.be.a('number'); pm.expect(u.username).to.eql(pm.environment.get('qaUsername')); pm.expect(u.email).to.be.a('string'); pm.expect(u.first_name).to.be.a('string'); pm.expect(u.last_name).to.be.a('string'); pm.expect(u.is_staff).to.be.a('boolean'); pm.expect(u.is_active).to.be.a('boolean'); pm.expect(u.rol).to.be.a('string'); pm.expect(u).not.to.have.property('password'); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "USR-08 Editar usuario temporal (200)",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/users/{{usuarioId}}/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "users",
+                "{{usuarioId}}",
+                ""
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\"first_name\": \"QA editado\", \"email\": \"qa-editado@example.com\"}"
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Codigo 200', () => pm.response.to.have.status(200));",
+                  "pm.test('Contrato de usuario sin password', () => { const u=pm.response.json(); pm.expect(u.id).to.be.a('number'); pm.expect(u.username).to.eql(pm.environment.get('qaUsername')); pm.expect(u.email).to.be.a('string'); pm.expect(u.first_name).to.be.a('string'); pm.expect(u.last_name).to.be.a('string'); pm.expect(u.is_staff).to.be.a('boolean'); pm.expect(u.is_active).to.be.a('boolean'); pm.expect(u.rol).to.be.a('string'); pm.expect(u).not.to.have.property('password'); });",
+                  "pm.test('Cambios conservados',()=> { pm.expect(pm.response.json().first_name).to.eql('QA editado'); pm.expect(pm.response.json().email).to.eql('qa-editado@example.com'); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "USR-09 Asesor no lee perfil ajeno (403)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/users/{{usuarioId}}/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "users",
+                "{{usuarioId}}",
+                ""
+              ]
+            },
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{tokenAsesor}}",
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Codigo 403', () => pm.response.to.have.status(403));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "USR-10 Alta con password débil (400)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/users/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "users",
+                ""
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\"username\": \"{{qaUsername}}_debil\", \"password\": \"abcdefghi\"}"
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Codigo 400', () => pm.response.to.have.status(400));",
+                  "pm.test('Error de password',()=>pm.expect(pm.response.json()).to.have.property('password'));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "USR-11 Alta sin token (401)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/users/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "users",
+                ""
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\"username\": \"{{qaUsername}}_sin_token\", \"password\": \"{{qaPassword}}\"}"
+            },
+            "auth": {
+              "type": "noauth"
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Codigo 401', () => pm.response.to.have.status(401));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "USR-12 Edición sin token (401)",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/users/{{usuarioId}}/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "users",
+                "{{usuarioId}}",
+                ""
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\"first_name\": \"No autorizado\"}"
+            },
+            "auth": {
+              "type": "noauth"
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Codigo 401', () => pm.response.to.have.status(401));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "USR-13 Baja sin token (401)",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/users/{{usuarioId}}/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "users",
+                "{{usuarioId}}",
+                ""
+              ]
+            },
+            "auth": {
+              "type": "noauth"
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Codigo 401', () => pm.response.to.have.status(401));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "USR-16 Edición con correo inválido (400)",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/users/{{usuarioId}}/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "users",
+                "{{usuarioId}}",
+                ""
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\"email\": \"correo_invalido\"}"
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Codigo 400', () => pm.response.to.have.status(400));",
+                  "pm.test('Error de email',()=>pm.expect(pm.response.json()).to.have.property('email'));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "USR-17 Asesor no modifica perfil ajeno (403)",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/users/{{usuarioId}}/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "users",
+                "{{usuarioId}}",
+                ""
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\"first_name\": \"No autorizado\"}"
+            },
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{tokenAsesor}}",
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Codigo 403', () => pm.response.to.have.status(403));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "USR-18 Asesor no elimina perfil ajeno (403)",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/users/{{usuarioId}}/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "users",
+                "{{usuarioId}}",
+                ""
+              ]
+            },
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{tokenAsesor}}",
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Codigo 403', () => pm.response.to.have.status(403));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "USR-14 Eliminar usuario temporal (204)",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/users/{{usuarioId}}/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "users",
+                "{{usuarioId}}",
+                ""
+              ]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Codigo 204', () => pm.response.to.have.status(204));",
+                  "pm.test('Sin cuerpo',()=>pm.expect(pm.response.text()).to.be.empty);"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "USR-15 Usuario eliminado no existe (404)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/users/{{usuarioId}}/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "users",
+                "{{usuarioId}}",
+                ""
+              ]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Codigo 404', () => pm.response.to.have.status(404));"
+                ]
+              }
+            }
+          ]
         }
       ]
     },
@@ -531,7 +1030,8 @@
                   "        pm.expect(lista[0].nombre).to.be.a('string');",
                   "    }",
                   "});",
-                  "if (lista.length > 0) { pm.environment.set('categoriaId', lista[0].id); }"
+                  "if (lista.length > 0) { pm.environment.set('categoriaId', lista[0].id); }",
+                  "pm.test('Catálogo disponible para el flujo',()=>pm.expect(pm.response.json().length).to.be.above(0));"
                 ]
               }
             }
@@ -571,7 +1071,8 @@
                   "        pm.expect(lista[0].nombre).to.be.a('string');",
                   "    }",
                   "});",
-                  "if (lista.length > 0) { pm.environment.set('asignaturaId', lista[0].id); }"
+                  "if (lista.length > 0) { pm.environment.set('asignaturaId', lista[0].id); }",
+                  "pm.test('Catálogo disponible para el flujo',()=>pm.expect(pm.response.json().length).to.be.above(0));"
                 ]
               }
             }
@@ -606,7 +1107,7 @@
                   "const r = pm.response.json();",
                   "pm.test('Campos y tipos del recurso', function () {",
                   "    pm.expect(r.id).to.be.a('number');",
-                  "    pm.expect(r.titulo).to.eql('Recurso de prueba Newman');",
+                  "    pm.expect(r.titulo).to.eql(pm.environment.get('qaResourceTitle'));",
                   "    pm.expect(r.tipo).to.eql('lectura');",
                   "    pm.expect(r.categoria).to.be.a('number');",
                   "    pm.expect(r.asignatura).to.be.a('number');",
@@ -628,7 +1129,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"titulo\": \"Recurso de prueba Newman\",\n  \"descripcion\": \"Creado por la coleccion automatica\",\n  \"tipo\": \"lectura\",\n  \"categoria\": {{categoriaId}},\n  \"asignatura\": {{asignaturaId}}\n}"
+              "raw": "{\"titulo\": \"{{qaResourceTitle}}\", \"descripcion\": \"Creado por la coleccion automatica\", \"tipo\": \"lectura\", \"categoria\": \"{{categoriaId}}\", \"asignatura\": \"{{asignaturaId}}\"}"
             },
             "url": {
               "raw": "{{baseUrl}}/api/pedagogia/recursos/",
@@ -729,7 +1230,7 @@
                   "pm.test('Es el recurso que se creo', function () {",
                   "    const r = pm.response.json();",
                   "    pm.expect(r.id).to.eql(parseInt(pm.environment.get('recursoId'), 10));",
-                  "    pm.expect(r.titulo).to.eql('Recurso de prueba Newman');",
+                  "    pm.expect(r.titulo).to.eql(pm.environment.get('qaResourceTitle'));",
                   "    pm.expect(r.categoria_nombre).to.be.a('string');",
                   "    pm.expect(r.asignatura_nombre).to.be.a('string');",
                   "});"
@@ -801,15 +1302,14 @@
               "script": {
                 "type": "text/javascript",
                 "exec": [
-                  "pm.test('Codigo 200 (admin/maquetador) o 201 (asesor: copia)', function () { pm.expect([200, 201]).to.include(pm.response.code); });",
-                  "pm.test('Content-Type JSON', function () { pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json'); });",
-                  "pm.test('Titulo actualizado', function () { pm.expect(pm.response.json().titulo).to.include('editado'); });"
+                  "pm.test('Admin edita con PUT: 200',()=>pm.response.to.have.status(200));",
+                  "pm.test('Campos editados conservados',()=>{const r=pm.response.json(); pm.expect(r.titulo).to.eql(pm.environment.get('qaResourceTitle')+' editado'); pm.expect(r.descripcion).to.eql('Edición completa Android'); pm.expect(r.url).to.eql('https://example.com/recurso'); pm.expect(r.categoria).to.eql(Number(pm.environment.get('categoriaId'))); pm.expect(r.asignatura).to.eql(Number(pm.environment.get('asignaturaId'))); });"
                 ]
               }
             }
           ],
           "request": {
-            "method": "PATCH",
+            "method": "PUT",
             "header": [
               {
                 "key": "Content-Type",
@@ -818,7 +1318,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"titulo\": \"Recurso de prueba Newman editado\"\n}"
+              "raw": "{\"titulo\": \"{{qaResourceTitle}} editado\", \"descripcion\": \"Edici\\u00f3n completa Android\", \"tipo\": \"lectura\", \"categoria\": \"{{categoriaId}}\", \"asignatura\": \"{{asignaturaId}}\", \"url\": \"https://example.com/recurso\"}"
             },
             "url": {
               "raw": "{{baseUrl}}/api/pedagogia/recursos/{{recursoId}}/",
@@ -947,6 +1447,390 @@
               ]
             }
           }
+        },
+        {
+          "name": "REC-14 Categorías sin token (401)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/pedagogia/categorias/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "pedagogia",
+                "categorias",
+                ""
+              ]
+            },
+            "auth": {
+              "type": "noauth"
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Codigo 401', () => pm.response.to.have.status(401));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "REC-15 Asignaturas sin token (401)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/pedagogia/asignaturas/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "pedagogia",
+                "asignaturas",
+                ""
+              ]
+            },
+            "auth": {
+              "type": "noauth"
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Codigo 401', () => pm.response.to.have.status(401));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "REC-16 Alta sin token (401)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/pedagogia/recursos/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "pedagogia",
+                "recursos",
+                ""
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\"titulo\": \"No autorizado\"}"
+            },
+            "auth": {
+              "type": "noauth"
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Codigo 401', () => pm.response.to.have.status(401));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "REC-17 PUT sin token (401)",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/pedagogia/recursos/{{recursoId}}/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "pedagogia",
+                "recursos",
+                "{{recursoId}}",
+                ""
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\"titulo\": \"No autorizado\"}"
+            },
+            "auth": {
+              "type": "noauth"
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Codigo 401', () => pm.response.to.have.status(401));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "REC-18 DELETE sin token (401)",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/pedagogia/recursos/{{recursoId}}/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "pedagogia",
+                "recursos",
+                "{{recursoId}}",
+                ""
+              ]
+            },
+            "auth": {
+              "type": "noauth"
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Codigo 401', () => pm.response.to.have.status(401));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "REC-19 Detalle sin token (401)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/pedagogia/recursos/{{recursoId}}/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "pedagogia",
+                "recursos",
+                "{{recursoId}}",
+                ""
+              ]
+            },
+            "auth": {
+              "type": "noauth"
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Codigo 401', () => pm.response.to.have.status(401));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "REC-20 PUT con título vacío (400)",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/pedagogia/recursos/{{recursoId}}/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "pedagogia",
+                "recursos",
+                "{{recursoId}}",
+                ""
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\"titulo\": \"\", \"categoria\": \"{{categoriaId}}\", \"asignatura\": \"{{asignaturaId}}\"}"
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Codigo 400', () => pm.response.to.have.status(400));",
+                  "pm.test('Error de titulo',()=>pm.expect(pm.response.json()).to.have.property('titulo'));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "REC-21 Asesor copia plantilla con campos editados (201)",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/pedagogia/recursos/{{recursoId}}/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "pedagogia",
+                "recursos",
+                "{{recursoId}}",
+                ""
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\"titulo\": \"{{qaResourceTitle}} copia\", \"descripcion\": \"Descripción personal\", \"tipo\": \"lectura\", \"contenido\": \"<p>Contenido personal</p>\", \"url\": \"https://example.com/copia\", \"categoria\": \"{{categoriaId}}\", \"asignatura\": \"{{asignaturaId}}\"}"
+            },
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{tokenAsesor}}",
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Codigo 201', () => pm.response.to.have.status(201));",
+                  "if(pm.response.code===201) pm.environment.set('copiaId',pm.response.json().id);",
+                  "pm.test('Copia conserva campos y origen',()=>{const r=pm.response.json(); pm.expect(r.titulo).to.eql(pm.environment.get('qaResourceTitle')+' copia'); pm.expect(r.descripcion).to.eql('Descripción personal'); pm.expect(r.contenido).to.eql('<p>Contenido personal</p>'); pm.expect(r.url).to.eql('https://example.com/copia'); pm.expect(r.es_plantilla_base).to.eql(false); pm.expect(r.copia_de).to.eql(Number(pm.environment.get('recursoId'))); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "REC-22 Asesor elimina su copia (204)",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/pedagogia/recursos/{{copiaId}}/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "pedagogia",
+                "recursos",
+                "{{copiaId}}",
+                ""
+              ]
+            },
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{tokenAsesor}}",
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Codigo 204', () => pm.response.to.have.status(204));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "REC-23 Copia eliminada no existe (404)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/pedagogia/recursos/{{copiaId}}/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "pedagogia",
+                "recursos",
+                "{{copiaId}}",
+                ""
+              ]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Codigo 404', () => pm.response.to.have.status(404));"
+                ]
+              }
+            }
+          ]
         },
         {
           "name": "REC-10 Eliminar el recurso (204)",
