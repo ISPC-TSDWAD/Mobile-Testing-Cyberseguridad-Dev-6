@@ -1,0 +1,479 @@
+INSTRUMENTATION_STATUS: class=ar.edu.ispc.edutools.AccesibilidadEstructuraTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=20
+INSTRUMENTATION_STATUS: stream=
+ar.edu.ispc.edutools.AccesibilidadEstructuraTest:
+INSTRUMENTATION_STATUS: test=home_titulosSeIdentificanComoEncabezados
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=ar.edu.ispc.edutools.AccesibilidadEstructuraTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=20
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=home_titulosSeIdentificanComoEncabezados
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: class=ar.edu.ispc.edutools.AccesibilidadEstructuraTest
+INSTRUMENTATION_STATUS: current=2
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=20
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=resultadosDeListados_tienenAnuncioPolite
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=ar.edu.ispc.edutools.AccesibilidadEstructuraTest
+INSTRUMENTATION_STATUS: current=2
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=20
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=resultadosDeListados_tienenAnuncioPolite
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: class=ar.edu.ispc.edutools.AccesibilidadPantallasTest
+INSTRUMENTATION_STATUS: current=3
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=20
+INSTRUMENTATION_STATUS: stream=
+ar.edu.ispc.edutools.AccesibilidadPantallasTest:
+INSTRUMENTATION_STATUS: test=login_sinErroresATF
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=ar.edu.ispc.edutools.AccesibilidadPantallasTest
+INSTRUMENTATION_STATUS: current=3
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=20
+INSTRUMENTATION_STATUS: stack=java.lang.NullPointerException: Cannot run onActivity since Activity has been destroyed already
+	at androidx.test.internal.util.Checks.checkNotNull(Checks.java:50)
+	at androidx.test.core.app.ActivityScenario.lambda$onActivity$2$androidx-test-core-app-ActivityScenario(ActivityScenario.java:792)
+	at androidx.test.core.app.ActivityScenario$$ExternalSyntheticLambda2.run(D8$$SyntheticClass:4)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:520)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:328)
+	at android.app.Instrumentation$SyncRunnable.run(Instrumentation.java:2621)
+	at android.os.Handler.handleCallback(Handler.java:1037)
+	at android.os.Handler.dispatchMessage(Handler.java:108)
+	at android.os.Looper.loopOnce(Looper.java:304)
+	at android.os.Looper.loop(Looper.java:430)
+	at android.app.ActivityThread.main(ActivityThread.java:9345)
+	at java.lang.reflect.Method.invoke(Native Method)
+	at com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:593)
+	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:953)
+
+INSTRUMENTATION_STATUS: stream=
+Error in login_sinErroresATF(ar.edu.ispc.edutools.AccesibilidadPantallasTest):
+java.lang.NullPointerException: Cannot run onActivity since Activity has been destroyed already
+	at androidx.test.internal.util.Checks.checkNotNull(Checks.java:50)
+	at androidx.test.core.app.ActivityScenario.lambda$onActivity$2$androidx-test-core-app-ActivityScenario(ActivityScenario.java:792)
+	at androidx.test.core.app.ActivityScenario$$ExternalSyntheticLambda2.run(D8$$SyntheticClass:4)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:520)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:328)
+	at android.app.Instrumentation$SyncRunnable.run(Instrumentation.java:2621)
+	at android.os.Handler.handleCallback(Handler.java:1037)
+	at android.os.Handler.dispatchMessage(Handler.java:108)
+	at android.os.Looper.loopOnce(Looper.java:304)
+	at android.os.Looper.loop(Looper.java:430)
+	at android.app.ActivityThread.main(ActivityThread.java:9345)
+	at java.lang.reflect.Method.invoke(Native Method)
+	at com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:593)
+	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:953)
+
+INSTRUMENTATION_STATUS: test=login_sinErroresATF
+INSTRUMENTATION_STATUS_CODE: -2
+INSTRUMENTATION_STATUS: class=ar.edu.ispc.edutools.AccesibilidadPantallasTest
+INSTRUMENTATION_STATUS: current=4
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=20
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=perfil_sinErroresATF
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=ar.edu.ispc.edutools.AccesibilidadPantallasTest
+INSTRUMENTATION_STATUS: current=4
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=20
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=perfil_sinErroresATF
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: class=ar.edu.ispc.edutools.AccesibilidadPantallasTest
+INSTRUMENTATION_STATUS: current=5
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=20
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=detalle_sinErroresATF
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=ar.edu.ispc.edutools.AccesibilidadPantallasTest
+INSTRUMENTATION_STATUS: current=5
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=20
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=detalle_sinErroresATF
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: class=ar.edu.ispc.edutools.AccesibilidadPantallasTest
+INSTRUMENTATION_STATUS: current=6
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=20
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=registro_sinErroresATF
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=ar.edu.ispc.edutools.AccesibilidadPantallasTest
+INSTRUMENTATION_STATUS: current=6
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=20
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=registro_sinErroresATF
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: class=ar.edu.ispc.edutools.AccesibilidadPantallasTest
+INSTRUMENTATION_STATUS: current=7
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=20
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=usuarios_sinErroresATF
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=ar.edu.ispc.edutools.AccesibilidadPantallasTest
+INSTRUMENTATION_STATUS: current=7
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=20
+INSTRUMENTATION_STATUS: stack=com.google.android.apps.common.testing.accessibility.framework.integrations.espresso.AccessibilityViewCheckException: There was 1 accessibility result:
+RecyclerView{id=2131231128, res-name=rvUsuarios, visibility=VISIBLE, width=1080, height=1869, has-focus=false, has-focusable=true, has-window-focus=false, is-clickable=false, is-enabled=true, is-focused=false, is-focusable=true, is-layout-requested=false, is-selected=false, layout-params=android.widget.LinearLayout$LayoutParams@YYYYYY, tag=null, root-is-layout-requested=false, has-input-connection=false, x=0.0, y=303.0, child-count=0}: This item may not have a label readable by screen readers. Reported by com.google.android.apps.common.testing.accessibility.framework.checks.SpeakableTextPresentCheck
+	at com.google.android.apps.common.testing.accessibility.framework.integrations.espresso.AccessibilityValidator.processResults(AccessibilityValidator.java:272)
+	at com.google.android.apps.common.testing.accessibility.framework.integrations.espresso.AccessibilityValidator.runAccessibilityChecks(AccessibilityValidator.java:228)
+	at com.google.android.apps.common.testing.accessibility.framework.integrations.espresso.AccessibilityValidator.checkAndReturnResults(AccessibilityValidator.java:87)
+	at com.google.android.apps.common.testing.accessibility.framework.integrations.espresso.AccessibilityValidator.check(AccessibilityValidator.java:74)
+	at ar.edu.ispc.edutools.AccesibilidadPantallasTest.lambda$revisar$0(AccesibilidadPantallasTest.java:18)
+	at ar.edu.ispc.edutools.AccesibilidadPantallasTest$$ExternalSyntheticLambda0.perform(D8$$SyntheticClass:2)
+	at androidx.test.core.app.ActivityScenario.lambda$onActivity$2$androidx-test-core-app-ActivityScenario(ActivityScenario.java:794)
+	at androidx.test.core.app.ActivityScenario$$ExternalSyntheticLambda2.run(D8$$SyntheticClass:4)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:520)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:328)
+	at android.app.Instrumentation$SyncRunnable.run(Instrumentation.java:2621)
+	at android.os.Handler.handleCallback(Handler.java:1037)
+	at android.os.Handler.dispatchMessage(Handler.java:108)
+	at android.os.Looper.loopOnce(Looper.java:304)
+	at android.os.Looper.loop(Looper.java:430)
+	at android.app.ActivityThread.main(ActivityThread.java:9345)
+	at java.lang.reflect.Method.invoke(Native Method)
+	at com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:593)
+	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:953)
+
+INSTRUMENTATION_STATUS: stream=
+Error in usuarios_sinErroresATF(ar.edu.ispc.edutools.AccesibilidadPantallasTest):
+com.google.android.apps.common.testing.accessibility.framework.integrations.espresso.AccessibilityViewCheckException: There was 1 accessibility result:
+RecyclerView{id=2131231128, res-name=rvUsuarios, visibility=VISIBLE, width=1080, height=1869, has-focus=false, has-focusable=true, has-window-focus=false, is-clickable=false, is-enabled=true, is-focused=false, is-focusable=true, is-layout-requested=false, is-selected=false, layout-params=android.widget.LinearLayout$LayoutParams@YYYYYY, tag=null, root-is-layout-requested=false, has-input-connection=false, x=0.0, y=303.0, child-count=0}: This item may not have a label readable by screen readers. Reported by com.google.android.apps.common.testing.accessibility.framework.checks.SpeakableTextPresentCheck
+	at com.google.android.apps.common.testing.accessibility.framework.integrations.espresso.AccessibilityValidator.processResults(AccessibilityValidator.java:272)
+	at com.google.android.apps.common.testing.accessibility.framework.integrations.espresso.AccessibilityValidator.runAccessibilityChecks(AccessibilityValidator.java:228)
+	at com.google.android.apps.common.testing.accessibility.framework.integrations.espresso.AccessibilityValidator.checkAndReturnResults(AccessibilityValidator.java:87)
+	at com.google.android.apps.common.testing.accessibility.framework.integrations.espresso.AccessibilityValidator.check(AccessibilityValidator.java:74)
+	at ar.edu.ispc.edutools.AccesibilidadPantallasTest.lambda$revisar$0(AccesibilidadPantallasTest.java:18)
+	at ar.edu.ispc.edutools.AccesibilidadPantallasTest$$ExternalSyntheticLambda0.perform(D8$$SyntheticClass:2)
+	at androidx.test.core.app.ActivityScenario.lambda$onActivity$2$androidx-test-core-app-ActivityScenario(ActivityScenario.java:794)
+	at androidx.test.core.app.ActivityScenario$$ExternalSyntheticLambda2.run(D8$$SyntheticClass:4)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:520)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:328)
+	at android.app.Instrumentation$SyncRunnable.run(Instrumentation.java:2621)
+	at android.os.Handler.handleCallback(Handler.java:1037)
+	at android.os.Handler.dispatchMessage(Handler.java:108)
+	at android.os.Looper.loopOnce(Looper.java:304)
+	at android.os.Looper.loop(Looper.java:430)
+	at android.app.ActivityThread.main(ActivityThread.java:9345)
+	at java.lang.reflect.Method.invoke(Native Method)
+	at com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:593)
+	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:953)
+
+INSTRUMENTATION_STATUS: test=usuarios_sinErroresATF
+INSTRUMENTATION_STATUS_CODE: -2
+INSTRUMENTATION_STATUS: class=ar.edu.ispc.edutools.AccesibilidadPantallasTest
+INSTRUMENTATION_STATUS: current=8
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=20
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=multimedia_sinErroresATF
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=ar.edu.ispc.edutools.AccesibilidadPantallasTest
+INSTRUMENTATION_STATUS: current=8
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=20
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=multimedia_sinErroresATF
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: class=ar.edu.ispc.edutools.AccesibilidadPantallasTest
+INSTRUMENTATION_STATUS: current=9
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=20
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=acerca_sinErroresATF
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=ar.edu.ispc.edutools.AccesibilidadPantallasTest
+INSTRUMENTATION_STATUS: current=9
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=20
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=acerca_sinErroresATF
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: class=ar.edu.ispc.edutools.AccesibilidadPantallasTest
+INSTRUMENTATION_STATUS: current=10
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=20
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=contacto_sinErroresATF
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=ar.edu.ispc.edutools.AccesibilidadPantallasTest
+INSTRUMENTATION_STATUS: current=10
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=20
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=contacto_sinErroresATF
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: class=ar.edu.ispc.edutools.AccesibilidadPantallasTest
+INSTRUMENTATION_STATUS: current=11
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=20
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=home_sinErroresATF
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=ar.edu.ispc.edutools.AccesibilidadPantallasTest
+INSTRUMENTATION_STATUS: current=11
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=20
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=home_sinErroresATF
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: class=ar.edu.ispc.edutools.AccesibilidadPantallasTest
+INSTRUMENTATION_STATUS: current=12
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=20
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=formulario_sinErroresATF
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=ar.edu.ispc.edutools.AccesibilidadPantallasTest
+INSTRUMENTATION_STATUS: current=12
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=20
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=formulario_sinErroresATF
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: class=ar.edu.ispc.edutools.AccesibilidadPantallasTest
+INSTRUMENTATION_STATUS: current=13
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=20
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=recursos_sinErroresATF
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=ar.edu.ispc.edutools.AccesibilidadPantallasTest
+INSTRUMENTATION_STATUS: current=13
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=20
+INSTRUMENTATION_STATUS: stack=com.google.android.apps.common.testing.accessibility.framework.integrations.espresso.AccessibilityViewCheckException: There was 1 accessibility result:
+RecyclerView{id=2131231127, res-name=rvRecursos, visibility=VISIBLE, width=1080, height=1669, has-focus=false, has-focusable=true, has-window-focus=false, is-clickable=false, is-enabled=true, is-focused=false, is-focusable=true, is-layout-requested=false, is-selected=false, layout-params=android.widget.LinearLayout$LayoutParams@YYYYYY, tag=null, root-is-layout-requested=false, has-input-connection=false, x=0.0, y=503.0, child-count=0}: This item may not have a label readable by screen readers. Reported by com.google.android.apps.common.testing.accessibility.framework.checks.SpeakableTextPresentCheck
+	at com.google.android.apps.common.testing.accessibility.framework.integrations.espresso.AccessibilityValidator.processResults(AccessibilityValidator.java:272)
+	at com.google.android.apps.common.testing.accessibility.framework.integrations.espresso.AccessibilityValidator.runAccessibilityChecks(AccessibilityValidator.java:228)
+	at com.google.android.apps.common.testing.accessibility.framework.integrations.espresso.AccessibilityValidator.checkAndReturnResults(AccessibilityValidator.java:87)
+	at com.google.android.apps.common.testing.accessibility.framework.integrations.espresso.AccessibilityValidator.check(AccessibilityValidator.java:74)
+	at ar.edu.ispc.edutools.AccesibilidadPantallasTest.lambda$revisar$0(AccesibilidadPantallasTest.java:18)
+	at ar.edu.ispc.edutools.AccesibilidadPantallasTest$$ExternalSyntheticLambda0.perform(D8$$SyntheticClass:2)
+	at androidx.test.core.app.ActivityScenario.lambda$onActivity$2$androidx-test-core-app-ActivityScenario(ActivityScenario.java:794)
+	at androidx.test.core.app.ActivityScenario$$ExternalSyntheticLambda2.run(D8$$SyntheticClass:4)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:520)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:328)
+	at android.app.Instrumentation$SyncRunnable.run(Instrumentation.java:2621)
+	at android.os.Handler.handleCallback(Handler.java:1037)
+	at android.os.Handler.dispatchMessage(Handler.java:108)
+	at android.os.Looper.loopOnce(Looper.java:304)
+	at android.os.Looper.loop(Looper.java:430)
+	at android.app.ActivityThread.main(ActivityThread.java:9345)
+	at java.lang.reflect.Method.invoke(Native Method)
+	at com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:593)
+	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:953)
+
+INSTRUMENTATION_STATUS: stream=
+Error in recursos_sinErroresATF(ar.edu.ispc.edutools.AccesibilidadPantallasTest):
+com.google.android.apps.common.testing.accessibility.framework.integrations.espresso.AccessibilityViewCheckException: There was 1 accessibility result:
+RecyclerView{id=2131231127, res-name=rvRecursos, visibility=VISIBLE, width=1080, height=1669, has-focus=false, has-focusable=true, has-window-focus=false, is-clickable=false, is-enabled=true, is-focused=false, is-focusable=true, is-layout-requested=false, is-selected=false, layout-params=android.widget.LinearLayout$LayoutParams@YYYYYY, tag=null, root-is-layout-requested=false, has-input-connection=false, x=0.0, y=503.0, child-count=0}: This item may not have a label readable by screen readers. Reported by com.google.android.apps.common.testing.accessibility.framework.checks.SpeakableTextPresentCheck
+	at com.google.android.apps.common.testing.accessibility.framework.integrations.espresso.AccessibilityValidator.processResults(AccessibilityValidator.java:272)
+	at com.google.android.apps.common.testing.accessibility.framework.integrations.espresso.AccessibilityValidator.runAccessibilityChecks(AccessibilityValidator.java:228)
+	at com.google.android.apps.common.testing.accessibility.framework.integrations.espresso.AccessibilityValidator.checkAndReturnResults(AccessibilityValidator.java:87)
+	at com.google.android.apps.common.testing.accessibility.framework.integrations.espresso.AccessibilityValidator.check(AccessibilityValidator.java:74)
+	at ar.edu.ispc.edutools.AccesibilidadPantallasTest.lambda$revisar$0(AccesibilidadPantallasTest.java:18)
+	at ar.edu.ispc.edutools.AccesibilidadPantallasTest$$ExternalSyntheticLambda0.perform(D8$$SyntheticClass:2)
+	at androidx.test.core.app.ActivityScenario.lambda$onActivity$2$androidx-test-core-app-ActivityScenario(ActivityScenario.java:794)
+	at androidx.test.core.app.ActivityScenario$$ExternalSyntheticLambda2.run(D8$$SyntheticClass:4)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:520)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:328)
+	at android.app.Instrumentation$SyncRunnable.run(Instrumentation.java:2621)
+	at android.os.Handler.handleCallback(Handler.java:1037)
+	at android.os.Handler.dispatchMessage(Handler.java:108)
+	at android.os.Looper.loopOnce(Looper.java:304)
+	at android.os.Looper.loop(Looper.java:430)
+	at android.app.ActivityThread.main(ActivityThread.java:9345)
+	at java.lang.reflect.Method.invoke(Native Method)
+	at com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:593)
+	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:953)
+
+INSTRUMENTATION_STATUS: test=recursos_sinErroresATF
+INSTRUMENTATION_STATUS_CODE: -2
+INSTRUMENTATION_STATUS: class=ar.edu.ispc.edutools.ContactoFlujoTest
+INSTRUMENTATION_STATUS: current=14
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=20
+INSTRUMENTATION_STATUS: stream=
+ar.edu.ispc.edutools.ContactoFlujoTest:
+INSTRUMENTATION_STATUS: test=contactoVacio_marcaLosCuatroCampos
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=ar.edu.ispc.edutools.ContactoFlujoTest
+INSTRUMENTATION_STATUS: current=14
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=20
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=contactoVacio_marcaLosCuatroCampos
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: class=ar.edu.ispc.edutools.ContactoFlujoTest
+INSTRUMENTATION_STATUS: current=15
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=20
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=contactoConEmailMalFormado_marcaErrorSoloEnCorreo
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=ar.edu.ispc.edutools.ContactoFlujoTest
+INSTRUMENTATION_STATUS: current=15
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=20
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=contactoConEmailMalFormado_marcaErrorSoloEnCorreo
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: class=ar.edu.ispc.edutools.ContactoFlujoTest
+INSTRUMENTATION_STATUS: current=16
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=20
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=contactoValido_conservaConsultaEnPantallaSinEnviar
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=ar.edu.ispc.edutools.ContactoFlujoTest
+INSTRUMENTATION_STATUS: current=16
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=20
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=contactoValido_conservaConsultaEnPantallaSinEnviar
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: class=ar.edu.ispc.edutools.LoginFlujoTest
+INSTRUMENTATION_STATUS: current=17
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=20
+INSTRUMENTATION_STATUS: stream=
+ar.edu.ispc.edutools.LoginFlujoTest:
+INSTRUMENTATION_STATUS: test=loginVacio_marcaErrorEnUsuarioYContrasena_yNoAvanza
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=ar.edu.ispc.edutools.LoginFlujoTest
+INSTRUMENTATION_STATUS: current=17
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=20
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=loginVacio_marcaErrorEnUsuarioYContrasena_yNoAvanza
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: class=ar.edu.ispc.edutools.LoginFlujoTest
+INSTRUMENTATION_STATUS: current=18
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=20
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=loginSoloConUsuario_marcaErrorSoloEnContrasena
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=ar.edu.ispc.edutools.LoginFlujoTest
+INSTRUMENTATION_STATUS: current=18
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=20
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=loginSoloConUsuario_marcaErrorSoloEnContrasena
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: class=ar.edu.ispc.edutools.RecursoFormFlujoTest
+INSTRUMENTATION_STATUS: current=19
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=20
+INSTRUMENTATION_STATUS: stream=
+ar.edu.ispc.edutools.RecursoFormFlujoTest:
+INSTRUMENTATION_STATUS: test=tituloVacio_marcaErrorYConservaFormulario
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=ar.edu.ispc.edutools.RecursoFormFlujoTest
+INSTRUMENTATION_STATUS: current=19
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=20
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=tituloVacio_marcaErrorYConservaFormulario
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: class=ar.edu.ispc.edutools.RegistroFlujoTest
+INSTRUMENTATION_STATUS: current=20
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=20
+INSTRUMENTATION_STATUS: stream=
+ar.edu.ispc.edutools.RegistroFlujoTest:
+INSTRUMENTATION_STATUS: test=registroConContrasenasDistintas_marcaErrorEnLaRepeticion
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=ar.edu.ispc.edutools.RegistroFlujoTest
+INSTRUMENTATION_STATUS: current=20
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=20
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=registroConContrasenasDistintas_marcaErrorEnLaRepeticion
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_RESULT: stream=
+
+Time: 37,874
+There were 3 failures:
+1) login_sinErroresATF(ar.edu.ispc.edutools.AccesibilidadPantallasTest)
+java.lang.NullPointerException: Cannot run onActivity since Activity has been destroyed already
+	at androidx.test.internal.util.Checks.checkNotNull(Checks.java:50)
+	at androidx.test.core.app.ActivityScenario.lambda$onActivity$2$androidx-test-core-app-ActivityScenario(ActivityScenario.java:792)
+	at androidx.test.core.app.ActivityScenario$$ExternalSyntheticLambda2.run(D8$$SyntheticClass:4)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:520)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:328)
+	at android.app.Instrumentation$SyncRunnable.run(Instrumentation.java:2621)
+	at android.os.Handler.handleCallback(Handler.java:1037)
+	at android.os.Handler.dispatchMessage(Handler.java:108)
+	at android.os.Looper.loopOnce(Looper.java:304)
+	at android.os.Looper.loop(Looper.java:430)
+	at android.app.ActivityThread.main(ActivityThread.java:9345)
+	at java.lang.reflect.Method.invoke(Native Method)
+	at com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:593)
+	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:953)
+2) usuarios_sinErroresATF(ar.edu.ispc.edutools.AccesibilidadPantallasTest)
+com.google.android.apps.common.testing.accessibility.framework.integrations.espresso.AccessibilityViewCheckException: There was 1 accessibility result:
+RecyclerView{id=2131231128, res-name=rvUsuarios, visibility=VISIBLE, width=1080, height=1869, has-focus=false, has-focusable=true, has-window-focus=false, is-clickable=false, is-enabled=true, is-focused=false, is-focusable=true, is-layout-requested=false, is-selected=false, layout-params=android.widget.LinearLayout$LayoutParams@YYYYYY, tag=null, root-is-layout-requested=false, has-input-connection=false, x=0.0, y=303.0, child-count=0}: This item may not have a label readable by screen readers. Reported by com.google.android.apps.common.testing.accessibility.framework.checks.SpeakableTextPresentCheck
+	at com.google.android.apps.common.testing.accessibility.framework.integrations.espresso.AccessibilityValidator.processResults(AccessibilityValidator.java:272)
+	at com.google.android.apps.common.testing.accessibility.framework.integrations.espresso.AccessibilityValidator.runAccessibilityChecks(AccessibilityValidator.java:228)
+	at com.google.android.apps.common.testing.accessibility.framework.integrations.espresso.AccessibilityValidator.checkAndReturnResults(AccessibilityValidator.java:87)
+	at com.google.android.apps.common.testing.accessibility.framework.integrations.espresso.AccessibilityValidator.check(AccessibilityValidator.java:74)
+	at ar.edu.ispc.edutools.AccesibilidadPantallasTest.lambda$revisar$0(AccesibilidadPantallasTest.java:18)
+	at ar.edu.ispc.edutools.AccesibilidadPantallasTest$$ExternalSyntheticLambda0.perform(D8$$SyntheticClass:2)
+	at androidx.test.core.app.ActivityScenario.lambda$onActivity$2$androidx-test-core-app-ActivityScenario(ActivityScenario.java:794)
+	at androidx.test.core.app.ActivityScenario$$ExternalSyntheticLambda2.run(D8$$SyntheticClass:4)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:520)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:328)
+	at android.app.Instrumentation$SyncRunnable.run(Instrumentation.java:2621)
+	at android.os.Handler.handleCallback(Handler.java:1037)
+	at android.os.Handler.dispatchMessage(Handler.java:108)
+	at android.os.Looper.loopOnce(Looper.java:304)
+	at android.os.Looper.loop(Looper.java:430)
+	at android.app.ActivityThread.main(ActivityThread.java:9345)
+	at java.lang.reflect.Method.invoke(Native Method)
+	at com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:593)
+	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:953)
+3) recursos_sinErroresATF(ar.edu.ispc.edutools.AccesibilidadPantallasTest)
+com.google.android.apps.common.testing.accessibility.framework.integrations.espresso.AccessibilityViewCheckException: There was 1 accessibility result:
+RecyclerView{id=2131231127, res-name=rvRecursos, visibility=VISIBLE, width=1080, height=1669, has-focus=false, has-focusable=true, has-window-focus=false, is-clickable=false, is-enabled=true, is-focused=false, is-focusable=true, is-layout-requested=false, is-selected=false, layout-params=android.widget.LinearLayout$LayoutParams@YYYYYY, tag=null, root-is-layout-requested=false, has-input-connection=false, x=0.0, y=503.0, child-count=0}: This item may not have a label readable by screen readers. Reported by com.google.android.apps.common.testing.accessibility.framework.checks.SpeakableTextPresentCheck
+	at com.google.android.apps.common.testing.accessibility.framework.integrations.espresso.AccessibilityValidator.processResults(AccessibilityValidator.java:272)
+	at com.google.android.apps.common.testing.accessibility.framework.integrations.espresso.AccessibilityValidator.runAccessibilityChecks(AccessibilityValidator.java:228)
+	at com.google.android.apps.common.testing.accessibility.framework.integrations.espresso.AccessibilityValidator.checkAndReturnResults(AccessibilityValidator.java:87)
+	at com.google.android.apps.common.testing.accessibility.framework.integrations.espresso.AccessibilityValidator.check(AccessibilityValidator.java:74)
+	at ar.edu.ispc.edutools.AccesibilidadPantallasTest.lambda$revisar$0(AccesibilidadPantallasTest.java:18)
+	at ar.edu.ispc.edutools.AccesibilidadPantallasTest$$ExternalSyntheticLambda0.perform(D8$$SyntheticClass:2)
+	at androidx.test.core.app.ActivityScenario.lambda$onActivity$2$androidx-test-core-app-ActivityScenario(ActivityScenario.java:794)
+	at androidx.test.core.app.ActivityScenario$$ExternalSyntheticLambda2.run(D8$$SyntheticClass:4)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:520)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:328)
+	at android.app.Instrumentation$SyncRunnable.run(Instrumentation.java:2621)
+	at android.os.Handler.handleCallback(Handler.java:1037)
+	at android.os.Handler.dispatchMessage(Handler.java:108)
+	at android.os.Looper.loopOnce(Looper.java:304)
+	at android.os.Looper.loop(Looper.java:430)
+	at android.app.ActivityThread.main(ActivityThread.java:9345)
+	at java.lang.reflect.Method.invoke(Native Method)
+	at com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:593)
+	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:953)
+
+FAILURES!!!
+Tests run: 20,  Failures: 3
+
+
+INSTRUMENTATION_CODE: -1

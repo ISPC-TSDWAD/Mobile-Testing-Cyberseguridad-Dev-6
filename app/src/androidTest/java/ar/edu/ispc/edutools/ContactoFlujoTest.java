@@ -8,6 +8,10 @@ import org.junit.BeforeClass;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import static androidx.test.espresso.Espresso.onView;
+import static androidx.test.espresso.assertion.ViewAssertions.matches;
+import static androidx.test.espresso.matcher.ViewMatchers.withId;
+import static ar.edu.ispc.edutools.ErrorEnCampo.conError;
 
 import ar.edu.ispc.edutools.screens.ContactoScreen;
 
@@ -46,5 +50,15 @@ public class ContactoFlujoTest {
         contacto.tocarEnviar();
         contacto.verificarSinErrorEnNombreAsuntoYMensaje()
                 .verificarConsultaSinEnviar("Hola");
+    }
+
+    /** TC-25: el formulario vacio muestra cada error sin salir de la pantalla. */
+    @Test
+    public void contactoVacio_marcaLosCuatroCampos() {
+        new ContactoScreen().tocarEnviar();
+        onView(withId(R.id.tilContactoNombre)).check(matches(conError("Este campo es obligatorio.")));
+        onView(withId(R.id.tilContactoCorreo)).check(matches(conError("Por favor ingresá un correo electrónico válido.")));
+        onView(withId(R.id.tilContactoAsunto)).check(matches(conError("Este campo es obligatorio.")));
+        onView(withId(R.id.tilContactoMensaje)).check(matches(conError("Este campo es obligatorio.")));
     }
 }

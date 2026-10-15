@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="recursos_lista_accesible">Lista de recursos pedagógicos</string>
+    <string name="usuarios_lista_accesible">Lista de usuarios</string>
 
     <string name="app_name">EduTools</string>
 

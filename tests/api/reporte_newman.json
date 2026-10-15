@@ -5,14 +5,19 @@
     }
   },
   "metadata": {
-    "started": "2026-10-14T02:45:09.004Z",
-    "finished": "2026-10-14T02:45:21.951Z",
+    "started": "2026-10-15T01:28:29.031Z",
+    "finished": "2026-10-15T01:28:55.059Z",
     "baseUrl": "https://dev6.pythonanywhere.com",
     "roles": [
       "admin",
       "asesor"
     ],
-    "sanitized": true
+    "sanitized": true,
+    "cleanup": {
+      "deleted": 0,
+      "remaining": 0,
+      "errors": 0
+    }
   },
   "run": {
     "stats": {
@@ -22,37 +27,37 @@
         "failed": 0
       },
       "items": {
-        "total": 24,
+        "total": 47,
         "pending": 0,
         "failed": 0
       },
       "scripts": {
-        "total": 48,
+        "total": 95,
         "pending": 0,
         "failed": 0
       },
       "prerequests": {
-        "total": 24,
+        "total": 47,
         "pending": 0,
         "failed": 0
       },
       "requests": {
-        "total": 24,
+        "total": 47,
         "pending": 0,
         "failed": 0
       },
       "tests": {
-        "total": 24,
+        "total": 47,
         "pending": 0,
         "failed": 0
       },
       "assertions": {
-        "total": 114,
+        "total": 208,
         "pending": 0,
-        "failed": 3
+        "failed": 4
       },
       "testScripts": {
-        "total": 48,
+        "total": 94,
         "pending": 0,
         "failed": 0
       }
@@ -64,7 +69,7 @@
         },
         "response": {
           "code": 200,
-          "responseTime": 1902
+          "responseTime": 3073
         },
         "assertions": [
           {
@@ -100,7 +105,7 @@
         },
         "response": {
           "code": 200,
-          "responseTime": 1431
+          "responseTime": 1690
         },
         "assertions": [
           {
@@ -132,7 +137,7 @@
         },
         "response": {
           "code": 401,
-          "responseTime": 1377
+          "responseTime": 1575
         },
         "assertions": [
           {
@@ -168,7 +173,7 @@
         },
         "response": {
           "code": 400,
-          "responseTime": 170
+          "responseTime": 172
         },
         "assertions": [
           {
@@ -200,7 +205,7 @@
         },
         "response": {
           "code": 200,
-          "responseTime": 182
+          "responseTime": 170
         },
         "assertions": [
           {
@@ -232,7 +237,7 @@
         },
         "response": {
           "code": 401,
-          "responseTime": 172
+          "responseTime": 178
         },
         "assertions": [
           {
@@ -264,7 +269,7 @@
         },
         "response": {
           "code": 200,
-          "responseTime": 181
+          "responseTime": 198
         },
         "assertions": [
           {
@@ -296,7 +301,7 @@
         },
         "response": {
           "code": 200,
-          "responseTime": 183
+          "responseTime": 182
         },
         "assertions": [
           {
@@ -308,11 +313,11 @@
             "failed": false
           },
           {
-            "assertion": "Admin: 200 con lista / no admin: 403",
+            "assertion": "Admin recibe 200",
             "failed": false
           },
           {
-            "assertion": "Es una lista y ningun usuario trae contrasena",
+            "assertion": "Contrato de la lista de usuarios",
             "failed": false
           }
         ],
@@ -324,7 +329,7 @@
         },
         "response": {
           "code": 401,
-          "responseTime": 172
+          "responseTime": 167
         },
         "assertions": [
           {
@@ -356,7 +361,7 @@
         },
         "response": {
           "code": 401,
-          "responseTime": 172
+          "responseTime": 169
         },
         "assertions": [
           {
@@ -388,7 +393,7 @@
         },
         "response": {
           "code": 403,
-          "responseTime": 180
+          "responseTime": 179
         },
         "assertions": [
           {
@@ -412,11 +417,39 @@
       },
       {
         "item": {
-          "name": "REC-01 Listar categorias (200)"
+          "name": "USR-06 Crear usuario temporal (201)"
+        },
+        "response": {
+          "code": 201,
+          "responseTime": 1846
+        },
+        "assertions": [
+          {
+            "assertion": "Tiempo de respuesta menor a 800 ms",
+            "failed": true
+          },
+          {
+            "assertion": "Content-Type JSON",
+            "failed": false
+          },
+          {
+            "assertion": "Codigo 201",
+            "failed": false
+          },
+          {
+            "assertion": "Contrato de usuario sin password",
+            "failed": false
+          }
+        ],
+        "requestFailed": false
+      },
+      {
+        "item": {
+          "name": "USR-07 Leer usuario temporal (200)"
         },
         "response": {
           "code": 200,
-          "responseTime": 193
+          "responseTime": 179
         },
         "assertions": [
           {
@@ -432,11 +465,7 @@
             "failed": false
           },
           {
-            "assertion": "Content-Type JSON",
-            "failed": false
-          },
-          {
-            "assertion": "Es una lista con id y nombre",
+            "assertion": "Contrato de usuario sin password",
             "failed": false
           }
         ],
@@ -444,7 +473,323 @@
       },
       {
         "item": {
-          "name": "REC-02 Listar asignaturas (200)"
+          "name": "USR-08 Editar usuario temporal (200)"
+        },
+        "response": {
+          "code": 200,
+          "responseTime": 204
+        },
+        "assertions": [
+          {
+            "assertion": "Tiempo de respuesta menor a 800 ms",
+            "failed": false
+          },
+          {
+            "assertion": "Content-Type JSON",
+            "failed": false
+          },
+          {
+            "assertion": "Codigo 200",
+            "failed": false
+          },
+          {
+            "assertion": "Contrato de usuario sin password",
+            "failed": false
+          },
+          {
+            "assertion": "Cambios conservados",
+            "failed": false
+          }
+        ],
+        "requestFailed": false
+      },
+      {
+        "item": {
+          "name": "USR-09 Asesor no lee perfil ajeno (403)"
+        },
+        "response": {
+          "code": 403,
+          "responseTime": 182
+        },
+        "assertions": [
+          {
+            "assertion": "Tiempo de respuesta menor a 800 ms",
+            "failed": false
+          },
+          {
+            "assertion": "Content-Type JSON",
+            "failed": false
+          },
+          {
+            "assertion": "Error estructurado",
+            "failed": false
+          },
+          {
+            "assertion": "Codigo 403",
+            "failed": false
+          }
+        ],
+        "requestFailed": false
+      },
+      {
+        "item": {
+          "name": "USR-10 Alta con password débil (400)"
+        },
+        "response": {
+          "code": 400,
+          "responseTime": 185
+        },
+        "assertions": [
+          {
+            "assertion": "Tiempo de respuesta menor a 800 ms",
+            "failed": false
+          },
+          {
+            "assertion": "Content-Type JSON",
+            "failed": false
+          },
+          {
+            "assertion": "Error estructurado",
+            "failed": false
+          },
+          {
+            "assertion": "Codigo 400",
+            "failed": false
+          },
+          {
+            "assertion": "Error de password",
+            "failed": false
+          }
+        ],
+        "requestFailed": false
+      },
+      {
+        "item": {
+          "name": "USR-11 Alta sin token (401)"
+        },
+        "response": {
+          "code": 401,
+          "responseTime": 173
+        },
+        "assertions": [
+          {
+            "assertion": "Tiempo de respuesta menor a 800 ms",
+            "failed": false
+          },
+          {
+            "assertion": "Content-Type JSON",
+            "failed": false
+          },
+          {
+            "assertion": "Error estructurado",
+            "failed": false
+          },
+          {
+            "assertion": "Codigo 401",
+            "failed": false
+          }
+        ],
+        "requestFailed": false
+      },
+      {
+        "item": {
+          "name": "USR-12 Edición sin token (401)"
+        },
+        "response": {
+          "code": 401,
+          "responseTime": 173
+        },
+        "assertions": [
+          {
+            "assertion": "Tiempo de respuesta menor a 800 ms",
+            "failed": false
+          },
+          {
+            "assertion": "Content-Type JSON",
+            "failed": false
+          },
+          {
+            "assertion": "Error estructurado",
+            "failed": false
+          },
+          {
+            "assertion": "Codigo 401",
+            "failed": false
+          }
+        ],
+        "requestFailed": false
+      },
+      {
+        "item": {
+          "name": "USR-13 Baja sin token (401)"
+        },
+        "response": {
+          "code": 401,
+          "responseTime": 173
+        },
+        "assertions": [
+          {
+            "assertion": "Tiempo de respuesta menor a 800 ms",
+            "failed": false
+          },
+          {
+            "assertion": "Content-Type JSON",
+            "failed": false
+          },
+          {
+            "assertion": "Error estructurado",
+            "failed": false
+          },
+          {
+            "assertion": "Codigo 401",
+            "failed": false
+          }
+        ],
+        "requestFailed": false
+      },
+      {
+        "item": {
+          "name": "USR-16 Edición con correo inválido (400)"
+        },
+        "response": {
+          "code": 400,
+          "responseTime": 198
+        },
+        "assertions": [
+          {
+            "assertion": "Tiempo de respuesta menor a 800 ms",
+            "failed": false
+          },
+          {
+            "assertion": "Content-Type JSON",
+            "failed": false
+          },
+          {
+            "assertion": "Error estructurado",
+            "failed": false
+          },
+          {
+            "assertion": "Codigo 400",
+            "failed": false
+          },
+          {
+            "assertion": "Error de email",
+            "failed": false
+          }
+        ],
+        "requestFailed": false
+      },
+      {
+        "item": {
+          "name": "USR-17 Asesor no modifica perfil ajeno (403)"
+        },
+        "response": {
+          "code": 403,
+          "responseTime": 176
+        },
+        "assertions": [
+          {
+            "assertion": "Tiempo de respuesta menor a 800 ms",
+            "failed": false
+          },
+          {
+            "assertion": "Content-Type JSON",
+            "failed": false
+          },
+          {
+            "assertion": "Error estructurado",
+            "failed": false
+          },
+          {
+            "assertion": "Codigo 403",
+            "failed": false
+          }
+        ],
+        "requestFailed": false
+      },
+      {
+        "item": {
+          "name": "USR-18 Asesor no elimina perfil ajeno (403)"
+        },
+        "response": {
+          "code": 403,
+          "responseTime": 199
+        },
+        "assertions": [
+          {
+            "assertion": "Tiempo de respuesta menor a 800 ms",
+            "failed": false
+          },
+          {
+            "assertion": "Content-Type JSON",
+            "failed": false
+          },
+          {
+            "assertion": "Error estructurado",
+            "failed": false
+          },
+          {
+            "assertion": "Codigo 403",
+            "failed": false
+          }
+        ],
+        "requestFailed": false
+      },
+      {
+        "item": {
+          "name": "USR-14 Eliminar usuario temporal (204)"
+        },
+        "response": {
+          "code": 204,
+          "responseTime": 219
+        },
+        "assertions": [
+          {
+            "assertion": "Tiempo de respuesta menor a 800 ms",
+            "failed": false
+          },
+          {
+            "assertion": "Codigo 204",
+            "failed": false
+          },
+          {
+            "assertion": "Sin cuerpo",
+            "failed": false
+          }
+        ],
+        "requestFailed": false
+      },
+      {
+        "item": {
+          "name": "USR-15 Usuario eliminado no existe (404)"
+        },
+        "response": {
+          "code": 404,
+          "responseTime": 189
+        },
+        "assertions": [
+          {
+            "assertion": "Tiempo de respuesta menor a 800 ms",
+            "failed": false
+          },
+          {
+            "assertion": "Content-Type JSON",
+            "failed": false
+          },
+          {
+            "assertion": "Error estructurado",
+            "failed": false
+          },
+          {
+            "assertion": "Codigo 404",
+            "failed": false
+          }
+        ],
+        "requestFailed": false
+      },
+      {
+        "item": {
+          "name": "REC-01 Listar categorias (200)"
         },
         "response": {
           "code": 200,
@@ -470,6 +815,46 @@
           {
             "assertion": "Es una lista con id y nombre",
             "failed": false
+          },
+          {
+            "assertion": "Catálogo disponible para el flujo",
+            "failed": false
+          }
+        ],
+        "requestFailed": false
+      },
+      {
+        "item": {
+          "name": "REC-02 Listar asignaturas (200)"
+        },
+        "response": {
+          "code": 200,
+          "responseTime": 200
+        },
+        "assertions": [
+          {
+            "assertion": "Tiempo de respuesta menor a 800 ms",
+            "failed": false
+          },
+          {
+            "assertion": "Content-Type JSON",
+            "failed": false
+          },
+          {
+            "assertion": "Codigo 200",
+            "failed": false
+          },
+          {
+            "assertion": "Content-Type JSON",
+            "failed": false
+          },
+          {
+            "assertion": "Es una lista con id y nombre",
+            "failed": false
+          },
+          {
+            "assertion": "Catálogo disponible para el flujo",
+            "failed": false
           }
         ],
         "requestFailed": false
@@ -480,7 +865,7 @@
         },
         "response": {
           "code": 201,
-          "responseTime": 214
+          "responseTime": 225
         },
         "assertions": [
           {
@@ -512,7 +897,7 @@
         },
         "response": {
           "code": 403,
-          "responseTime": 186
+          "responseTime": 202
         },
         "assertions": [
           {
@@ -540,7 +925,7 @@
         },
         "response": {
           "code": 200,
-          "responseTime": 188
+          "responseTime": 198
         },
         "assertions": [
           {
@@ -568,7 +953,7 @@
         },
         "response": {
           "code": 200,
-          "responseTime": 190
+          "responseTime": 218
         },
         "assertions": [
           {
@@ -596,7 +981,7 @@
         },
         "response": {
           "code": 200,
-          "responseTime": 246
+          "responseTime": 408
         },
         "assertions": [
           {
@@ -628,7 +1013,7 @@
         },
         "response": {
           "code": 200,
-          "responseTime": 229
+          "responseTime": 265
         },
         "assertions": [
           {
@@ -640,15 +1025,11 @@
             "failed": false
           },
           {
-            "assertion": "Codigo 200 (admin/maquetador) o 201 (asesor: copia)",
+            "assertion": "Admin edita con PUT: 200",
             "failed": false
           },
           {
-            "assertion": "Content-Type JSON",
-            "failed": false
-          },
-          {
-            "assertion": "Titulo actualizado",
+            "assertion": "Campos editados conservados",
             "failed": false
           }
         ],
@@ -660,7 +1041,7 @@
         },
         "response": {
           "code": 400,
-          "responseTime": 183
+          "responseTime": 196
         },
         "assertions": [
           {
@@ -692,7 +1073,7 @@
         },
         "response": {
           "code": 401,
-          "responseTime": 171
+          "responseTime": 173
         },
         "assertions": [
           {
@@ -724,7 +1105,7 @@
         },
         "response": {
           "code": 404,
-          "responseTime": 191
+          "responseTime": 209
         },
         "assertions": [
           {
@@ -745,6 +1126,282 @@
           },
           {
             "assertion": "Trae detail",
+            "failed": false
+          }
+        ],
+        "requestFailed": false
+      },
+      {
+        "item": {
+          "name": "REC-14 Categorías sin token (401)"
+        },
+        "response": {
+          "code": 401,
+          "responseTime": 191
+        },
+        "assertions": [
+          {
+            "assertion": "Tiempo de respuesta menor a 800 ms",
+            "failed": false
+          },
+          {
+            "assertion": "Content-Type JSON",
+            "failed": false
+          },
+          {
+            "assertion": "Error estructurado",
+            "failed": false
+          },
+          {
+            "assertion": "Codigo 401",
+            "failed": false
+          }
+        ],
+        "requestFailed": false
+      },
+      {
+        "item": {
+          "name": "REC-15 Asignaturas sin token (401)"
+        },
+        "response": {
+          "code": 401,
+          "responseTime": 175
+        },
+        "assertions": [
+          {
+            "assertion": "Tiempo de respuesta menor a 800 ms",
+            "failed": false
+          },
+          {
+            "assertion": "Content-Type JSON",
+            "failed": false
+          },
+          {
+            "assertion": "Error estructurado",
+            "failed": false
+          },
+          {
+            "assertion": "Codigo 401",
+            "failed": false
+          }
+        ],
+        "requestFailed": false
+      },
+      {
+        "item": {
+          "name": "REC-16 Alta sin token (401)"
+        },
+        "response": {
+          "code": 401,
+          "responseTime": 179
+        },
+        "assertions": [
+          {
+            "assertion": "Tiempo de respuesta menor a 800 ms",
+            "failed": false
+          },
+          {
+            "assertion": "Content-Type JSON",
+            "failed": false
+          },
+          {
+            "assertion": "Error estructurado",
+            "failed": false
+          },
+          {
+            "assertion": "Codigo 401",
+            "failed": false
+          }
+        ],
+        "requestFailed": false
+      },
+      {
+        "item": {
+          "name": "REC-17 PUT sin token (401)"
+        },
+        "response": {
+          "code": 401,
+          "responseTime": 175
+        },
+        "assertions": [
+          {
+            "assertion": "Tiempo de respuesta menor a 800 ms",
+            "failed": false
+          },
+          {
+            "assertion": "Content-Type JSON",
+            "failed": false
+          },
+          {
+            "assertion": "Error estructurado",
+            "failed": false
+          },
+          {
+            "assertion": "Codigo 401",
+            "failed": false
+          }
+        ],
+        "requestFailed": false
+      },
+      {
+        "item": {
+          "name": "REC-18 DELETE sin token (401)"
+        },
+        "response": {
+          "code": 401,
+          "responseTime": 170
+        },
+        "assertions": [
+          {
+            "assertion": "Tiempo de respuesta menor a 800 ms",
+            "failed": false
+          },
+          {
+            "assertion": "Content-Type JSON",
+            "failed": false
+          },
+          {
+            "assertion": "Error estructurado",
+            "failed": false
+          },
+          {
+            "assertion": "Codigo 401",
+            "failed": false
+          }
+        ],
+        "requestFailed": false
+      },
+      {
+        "item": {
+          "name": "REC-19 Detalle sin token (401)"
+        },
+        "response": {
+          "code": 401,
+          "responseTime": 176
+        },
+        "assertions": [
+          {
+            "assertion": "Tiempo de respuesta menor a 800 ms",
+            "failed": false
+          },
+          {
+            "assertion": "Content-Type JSON",
+            "failed": false
+          },
+          {
+            "assertion": "Error estructurado",
+            "failed": false
+          },
+          {
+            "assertion": "Codigo 401",
+            "failed": false
+          }
+        ],
+        "requestFailed": false
+      },
+      {
+        "item": {
+          "name": "REC-20 PUT con título vacío (400)"
+        },
+        "response": {
+          "code": 400,
+          "responseTime": 194
+        },
+        "assertions": [
+          {
+            "assertion": "Tiempo de respuesta menor a 800 ms",
+            "failed": false
+          },
+          {
+            "assertion": "Content-Type JSON",
+            "failed": false
+          },
+          {
+            "assertion": "Error estructurado",
+            "failed": false
+          },
+          {
+            "assertion": "Codigo 400",
+            "failed": false
+          },
+          {
+            "assertion": "Error de titulo",
+            "failed": false
+          }
+        ],
+        "requestFailed": false
+      },
+      {
+        "item": {
+          "name": "REC-21 Asesor copia plantilla con campos editados (201)"
+        },
+        "response": {
+          "code": 201,
+          "responseTime": 210
+        },
+        "assertions": [
+          {
+            "assertion": "Tiempo de respuesta menor a 800 ms",
+            "failed": false
+          },
+          {
+            "assertion": "Content-Type JSON",
+            "failed": false
+          },
+          {
+            "assertion": "Codigo 201",
+            "failed": false
+          },
+          {
+            "assertion": "Copia conserva campos y origen",
+            "failed": false
+          }
+        ],
+        "requestFailed": false
+      },
+      {
+        "item": {
+          "name": "REC-22 Asesor elimina su copia (204)"
+        },
+        "response": {
+          "code": 204,
+          "responseTime": 212
+        },
+        "assertions": [
+          {
+            "assertion": "Tiempo de respuesta menor a 800 ms",
+            "failed": false
+          },
+          {
+            "assertion": "Codigo 204",
+            "failed": false
+          }
+        ],
+        "requestFailed": false
+      },
+      {
+        "item": {
+          "name": "REC-23 Copia eliminada no existe (404)"
+        },
+        "response": {
+          "code": 404,
+          "responseTime": 197
+        },
+        "assertions": [
+          {
+            "assertion": "Tiempo de respuesta menor a 800 ms",
+            "failed": false
+          },
+          {
+            "assertion": "Content-Type JSON",
+            "failed": false
+          },
+          {
+            "assertion": "Error estructurado",
+            "failed": false
+          },
+          {
+            "assertion": "Codigo 404",
             "failed": false
           }
         ],
@@ -780,7 +1437,7 @@
         },
         "response": {
           "code": 404,
-          "responseTime": 193
+          "responseTime": 183
         },
         "assertions": [
           {
@@ -825,6 +1482,15 @@
       {
         "source": {
           "name": "AUTH-02 Login con credenciales invalidas (401)"
+        },
+        "error": {
+          "name": "AssertionError",
+          "test": "Tiempo de respuesta menor a 800 ms"
+        }
+      },
+      {
+        "source": {
+          "name": "USR-06 Crear usuario temporal (201)"
         },
         "error": {
           "name": "AssertionError",
