@@ -1,6 +1,7 @@
 package ar.edu.ispc.edutools.net;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
@@ -58,6 +59,27 @@ public class ApiErrorMapperTest {
     public void error5xx_errorDelServidor() {
         assertEquals("Error del servidor, probá más tarde", ApiErrorMapper.mensaje(500, null));
         assertEquals("Error del servidor, probá más tarde", ApiErrorMapper.mensaje(503, null));
+    }
+
+    @Test
+    public void error429_avisaQueHayQueEsperar() {
+        // El backend limita los intentos de login (politica PSM-08).
+        String mensaje = ApiErrorMapper.mensaje(429, null);
+        assertTrue(mensaje.toLowerCase().contains("intentos"));
+        assertFalse(mensaje.contains("429"));
+    }
+
+    @Test
+    public void error409_usaElDetalleDelServidor() {
+        assertEquals("No se puede borrar: todavia hay recursos que la usan.",
+                ApiErrorMapper.mensaje(409,
+                        "{\"detail\":\"No se puede borrar: todavia hay recursos que la usan.\"}"));
+    }
+
+    @Test
+    public void error409_sinDetalle_usaElMensajeGenerico() {
+        assertEquals("No se pudo completar: el dato está en uso",
+                ApiErrorMapper.mensaje(409, null));
     }
 
     @Test

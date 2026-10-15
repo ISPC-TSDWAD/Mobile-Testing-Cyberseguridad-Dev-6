@@ -35,6 +35,11 @@ public final class ApiErrorMapper {
                 return "No tenés permiso para esta acción";
             case 404:
                 return "No se encontró el recurso";
+            case 409:
+                String conflicto = extraerDetalle(cuerpoError);
+                return conflicto != null ? conflicto : "No se pudo completar: el dato está en uso";
+            case 429:
+                return "Demasiados intentos. Esperá un minuto y probá de nuevo";
             default:
                 if (codigoHttp >= 500 && codigoHttp < 600) {
                     return "Error del servidor, probá más tarde";

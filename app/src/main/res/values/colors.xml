@@ -17,6 +17,12 @@
     <color name="edu_texto_secundario">#4A5568</color>
     <color name="edu_texto_inverso">#FFFFFF</color>
 
+    <!-- Barra superior y boton flotante. Van aparte del primario porque en modo
+         oscuro el primario se aclara (se usa como texto) y la barra sigue oscura. -->
+    <color name="edu_barra">#123B6D</color>
+    <color name="edu_barra_oscura">#0C2A4E</color>
+    <color name="edu_sobre_primario">#FFFFFF</color>
+
     <color name="edu_error">#B00020</color>
     <color name="edu_exito">#0F7B6C</color>
 
