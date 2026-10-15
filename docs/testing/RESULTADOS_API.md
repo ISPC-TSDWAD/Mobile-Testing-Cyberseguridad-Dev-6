@@ -1,13 +1,16 @@
-# Resultados de API — Sprint 2
+# Resultados de API — cierre Sprint 2
 
-Fecha: 13/10/2026. Ejecutó: Gonzalo Velasco. Herramienta: Newman 6; servidor de pruebas HTTPS de EduTools; roles admin y asesor.
+47 requests, 208 assertions: **204 aprobadas y 4 fallas por tiempo**. No hubo fallas funcionales/contrato ni errores de limpieza.
 
-La colección de Roni se consolidó con token manipulado, acceso administrativo como asesor y protección de plantillas base. No se atribuyen nuevas ejecuciones a integrantes que no las realizaron.
+| Request | Tiempo | Umbral |
+|---|---|---|
+| AUTH-01 Login valido (200) | 3073 ms | <800 ms |
+| AUTH-06 Login asesor (200) | 1690 ms | <800 ms |
+| AUTH-02 Login con credenciales invalidas (401) | 1575 ms | <800 ms |
+| USR-06 Crear usuario temporal (201) | 1846 ms | <800 ms |
 
-24 requests, 114 assertions, 0 errores de transporte y 3 fallas de tiempo. Las restantes 111 assertions pasaron. El CRUD y los negativos 400/401/403/404 pasaron.
+Incluye CRUD completo de usuario temporal, roles admin/asesor, perfiles ajenos, negativas por endpoints consumidos, PUT del formulario Android, copia de plantilla y eliminación de fixtures. Se mantiene el umbral y el resultado global con fallas. Hallazgo: [#53](https://github.com/ISPC-TSDWAD/Mobile-Testing-Cyberseguridad-Dev-6/issues/53).
 
-Fallos de login: 1902 ms (admin), 1431 ms (asesor) y 1377 ms (credenciales inválidas), frente al criterio menor a 800 ms. Hallazgo de rendimiento, prioridad Media: revisar latencia y costo de login y acordar el SLA con el equipo. No se afirma que el backend sea la única causa sin separar red y servidor.
+Maquetador: **13/13** casos aprobados en servidor, con cuenta temporal propia y limpieza sin errores; [reporte sanitizado](../../tests/api/reporte_maquetador.json). Esta corrida complementa el caso omitido en la verificación inicial de Jonathan.
 
-Evidencia: [reporte sanitizado](../../tests/api/reporte_newman.json). Reproducir con el entorno privado según [README de API](../../tests/api/README.md) y `node tests/api/ejecutar_newman.cjs`. Las credenciales quedan fuera del reporte y de Git.
-
-Resultado global: **con fallas de SLA**, pendiente de gestión como Issue. El recurso de la corrida fue eliminado y el GET posterior confirmó 404.
+[Newman sanitizado](../../tests/api/reporte_newman.json). Ningún reporte incluye contraseñas, tokens, cuerpos privados ni headers.

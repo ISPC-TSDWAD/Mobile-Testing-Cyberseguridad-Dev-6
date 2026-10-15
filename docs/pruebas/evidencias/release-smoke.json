@@ -1,0 +1,27 @@
+{
+  "version": "0.2.0",
+  "variant": "release con copia de firma local para conservar datos",
+  "results": [
+    {
+      "case": "tema-claro",
+      "passed": true
+    },
+    {
+      "case": "tema-oscuro",
+      "passed": true
+    },
+    {
+      "case": "tema-sistema",
+      "passed": true
+    },
+    {
+      "case": "preferencia persiste tras reinicio",
+      "passed": true
+    }
+  ],
+  "cleanupErrors": 0,
+  "pending": [
+    "Vista previa HTML, enlace y recurso sin contenido: recorrido interrumpido por cambio a Ajustes del sistema.",
+    "Equipo activo: cambio de código revisado, captura de release pendiente."
+  ]
+}

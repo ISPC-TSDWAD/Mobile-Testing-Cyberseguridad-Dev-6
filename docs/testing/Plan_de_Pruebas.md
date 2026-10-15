@@ -1,4 +1,4 @@
-# Plan de Pruebas — EduTools Mobile (Sprint 2)
+# Plan de Pruebas â€” EduTools Mobile (Sprint 2)
 
 Formato basado en IEEE 829. Responsable: Roni Duncan (Testing). Equipo DEV6.
 
@@ -94,8 +94,40 @@ Cada integrante aporta un test automatizado, un hallazgo de accesibilidad y un c
 
 ## 10. Estado verificado del 13/10/2026
 
-Equipo activo confirmado: Gonzalo, Jonathan, Gerardo y Roni. 87 tests JVM aprobados y 5 tests Espresso aprobados con AccessibilityChecks. Newman: 24 requests, 114 assertions, 3 fallas de SLA en login; resultado global con fallas. No se dan por completos los criterios de salida. Pendientes: revisión manual de accesibilidad, compatibilidad API 21, gestión del hallazgo de SLA, atribución de commits de Roni y publicación en main/Wiki.
+Equipo activo confirmado: Gonzalo, Jonathan, Gerardo y Roni. 87 tests JVM aprobados y 5 tests Espresso aprobados con AccessibilityChecks. Newman: 24 requests, 114 assertions, 3 fallas de SLA en login; resultado global con fallas. No se dan por completos los criterios de salida. Pendientes: revisiÃ³n manual de accesibilidad, compatibilidad API 21, gestiÃ³n del hallazgo de SLA, atribuciÃ³n de commits de Roni y publicaciÃ³n en main/Wiki.
 
-Actualización 14/10: 87 tests JVM y 7 instrumentados aprobados; recorrido automatizado de pantallas con fuente 200%, tres correcciones de accesibilidad y restauración de ajustes. Se mantiene pendiente la escucha de TalkBack, Scanner, tamaño de pantalla máximo y API 21. Ver informe actualizado.
+ActualizaciÃ³n 14/10: 87 tests JVM y 7 instrumentados aprobados; recorrido automatizado de pantallas con fuente 200%, tres correcciones de accesibilidad y restauraciÃ³n de ajustes. Se mantiene pendiente la escucha de TalkBack, Scanner, tamaÃ±o de pantalla mÃ¡ximo y API 21. Ver informe actualizado.
 
-GitHub, 14/10: el nuevo commit cc0c802 de Roni está vinculado a roniduncang-crypto. No se reescribe el historial anterior; queda pendiente su integración en main y verificar el requisito de aportes individuales.
+GitHub, 14/10: el nuevo commit cc0c802 de Roni estÃ¡ vinculado a roniduncang-crypto. No se reescribe el historial anterior; queda pendiente su integraciÃ³n en main y verificar el requisito de aportes individuales.
+
+## Estado de cierre — 14/10/2026
+
+- 113 tests JVM aprobados: 92 de lógica/modelos/preferencias y 21 de red con MockWebServer.
+- 21 instrumentados aprobados en Moto g85 Android 16: flujos Espresso, ATF en once pantallas y apertura/regreso del navegador con UI Automator.
+- Newman: 47 requests, 208 assertions, 4 fallas de SLA; 0 fallas funcionales/contrato y 0 fixtures pendientes.
+- Maquetador: 13/13 comprobaciones del servidor aprobadas, sin errores de limpieza.
+- Cobertura JVM: 339/1228 líneas (27.6%), sin excluir Activities ni adapters. Espresso no se suma a esta cobertura.
+- APK 0.2.0 release firmado, con R8 y reducción de recursos; clave privada fuera de Git.
+- Selector Claro/Oscuro/Sistema y previsualización integrados desde el PR #48. Equipo de Quiénes somos actualizado a los cuatro activos.
+
+Evidencias: [Espresso/ATF/sistema](../pruebas/evidencias/espresso-cierre-sprint2.html), [Newman](../../tests/api/reporte_newman.json), [maquetador](../../tests/api/reporte_maquetador.json), [matriz](Matriz_Trazabilidad.md) y [41 casos](Planilla_Test_Cases.csv).
+
+Límites: Scanner tiene evidencia de Home y el informe previo de Jonathan; falta completar el resto de pantallas de esta versión. Se capturó audio real de TalkBack en Home; falta completar y validar el flujo Login → Home → Recursos → Detalle. API 21 no se da por aprobada: se preparó una imagen oficial, pero no se logró iniciar el emulador sin aceleración en esta PC. TC-22 sin catálogos y TC-27 listado vacío siguen pendientes en entorno controlado. La reunión de Review/Retrospective y el video requieren participación real del equipo.
+
+La latencia queda registrada en [#53](https://github.com/ISPC-TSDWAD/Mobile-Testing-Cyberseguridad-Dev-6/issues/53). Se conserva el umbral orientativo de 800 ms; el resultado global de Newman sigue con fallas de rendimiento.
+
+## Estado de cierre — 14/10/2026
+
+- 113 tests JVM aprobados: 92 de lógica/modelos/preferencias y 21 de red con MockWebServer.
+- 21 instrumentados aprobados en Moto g85 Android 16: flujos Espresso, ATF en once pantallas y apertura/regreso del navegador con UI Automator.
+- Newman: 47 requests, 208 assertions, 4 fallas de SLA; 0 fallas funcionales/contrato y 0 fixtures pendientes.
+- Maquetador: 13/13 comprobaciones del servidor aprobadas, sin errores de limpieza.
+- Cobertura JVM: 339/1228 líneas (27.6%), sin excluir Activities ni adapters. Espresso no se suma a esta cobertura.
+- APK 0.2.0 release firmado, con R8 y reducción de recursos; clave privada fuera de Git.
+- Selector Claro/Oscuro/Sistema y previsualización integrados desde el PR #48. Equipo de Quiénes somos actualizado a los cuatro activos.
+
+Evidencias: [Espresso/ATF/sistema](../pruebas/evidencias/espresso-cierre-sprint2.html), [Newman](../../tests/api/reporte_newman.json), [maquetador](../../tests/api/reporte_maquetador.json), [matriz](Matriz_Trazabilidad.md) y [41 casos](Planilla_Test_Cases.csv).
+
+Límites: Scanner tiene evidencia de Home y el informe previo de Jonathan; falta completar el resto de pantallas de esta versión. Se capturó audio real de TalkBack en Home; falta completar y validar el flujo Login → Home → Recursos → Detalle. API 21 no se da por aprobada: se preparó una imagen oficial, pero no se logró iniciar el emulador sin aceleración en esta PC. TC-22 sin catálogos y TC-27 listado vacío siguen pendientes en entorno controlado. La reunión de Review/Retrospective y el video requieren participación real del equipo.
+
+La latencia queda registrada en [#53](https://github.com/ISPC-TSDWAD/Mobile-Testing-Cyberseguridad-Dev-6/issues/53). Se conserva el umbral orientativo de 800 ms; el resultado global de Newman sigue con fallas de rendimiento.

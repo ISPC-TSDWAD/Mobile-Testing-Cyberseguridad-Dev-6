@@ -12,12 +12,10 @@ La aplicación móvil consume la misma API REST en Django construida durante el 
 
 ## Equipo DEV6
 
-| Integrante | Rol | Responsabilidad en el Sprint 1 |
+| Integrante | Rol | Responsabilidad del equipo |
 |:---|:---|:---|
 | Gonzalo Velasco | Scrum Master · Developer | Módulo de recursos, modelos de datos y gestión de la Wiki |
 | Jonathan Guillén | Líder Técnico · Developer | Configuración del proyecto, manifiesto, seguridad de red y code reviews |
-| Ale Corva | Developer | Navegación base, pantalla de acceso y menú principal |
-| Daniela Salvo | Technical Writer & Designer | Módulo de usuarios, design tokens y ANEXO II de capturas |
 | Gerardo Romero | Developer | Multimedia, contacto, institucional e iconografía |
 | Roni Duncan Gonzales Martínez | QA Tester | Plan de Pruebas, accesibilidad y compatibilidad con API 21 |
 
@@ -180,10 +178,10 @@ El detalle completo de políticas y la fundamentación de la elección de JWT es
 Con JDK 17 y Android SDK 34 configurados en `local.properties` (archivo local, sin versionar):
 
 ```bash
-./gradlew testDebugUnitTest jacocoTestReport lintDebug assembleDebug assembleDebugAndroidTest
+./gradlew testDebugUnitTest jacocoTestReport lintDebug assembleDebug assembleDebugAndroidTest assembleRelease
 ```
 
-En Windows usar `.\gradlew.bat`. La verificación del 14/10/2026 ejecutó **113 tests JVM, con 0 fallas** (incluye el selector de tema, la vista previa de recursos y el contrato de la copia de plantillas). La verificación del 14/10/2026 ejecutó además 7 tests instrumentados en Moto g85 Android 16, con 0 fallas; la escucha de TalkBack y API 21 siguen pendientes (ver [evidencia Espresso](docs/pruebas/EVIDENCIA_ESPRESSO.md)).
+En Windows usar `.\gradlew.bat`. La verificación del 14/10/2026 ejecutó **113 tests JVM, con 0 fallas** (incluye el selector de tema, la vista previa de recursos y el contrato de la copia de plantillas). La verificación del 14/10/2026 ejecutó además 21 tests instrumentados en Moto g85 Android 16, con 0 fallas; la escucha de TalkBack y API 21 siguen pendientes (ver [evidencia Espresso](docs/pruebas/EVIDENCIA_ESPRESSO.md)).
 
 Reportes generados:
 
@@ -208,3 +206,9 @@ main       ← versión estable al cierre de cada Sprint (lo que se corrige)
 
 **ISPC** · Tecnicatura Superior en Desarrollo Web y Aplicaciones Digitales · Proyecto ABP — Aplicación Móvil
 Actualización de documentación del sprint 2.
+
+## Cierre del Sprint 2
+
+La versión 0.2.0 incorpora ofuscación R8 y reducción de recursos. El APK firmado está preparado para su publicación tras integrar el cierre en main. [Empaquetado](docs/pruebas/EMPAQUETADO.md).
+
+Evidencia consolidada: 113 tests JVM, 21 instrumentados, 47 requests Newman (4 fallas de latencia) y 13 comprobaciones del rol maquetador. El [informe de cierre](docs/testing/CIERRE_SPRINT2.md) detalla los resultados y pendientes, incluida la Review, Retrospective y el video grupal.
