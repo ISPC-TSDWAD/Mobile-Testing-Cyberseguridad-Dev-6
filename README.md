@@ -170,7 +170,7 @@ El detalle completo de políticas y la fundamentación de la elección de JWT es
 | Correcciones de seguridad del backend | [docs/seguridad/CORRECCIONES_BACKEND.md](docs/seguridad/CORRECCIONES_BACKEND.md) |
 | Pruebas unitarias de la app | [docs/pruebas/PRUEBAS_UNITARIAS.md](docs/pruebas/PRUEBAS_UNITARIAS.md) |
 | Backend, modelo relacional y script SQL | [ModPWeb--Dev6](https://github.com/ISPC-TSDWAD/ModPWeb--Dev6) |
-| Descarga de la aplicación (release) | Pendiente de publicación; el APK debug se genera en `app/build/outputs/apk/debug/app-debug.apk` |
+| Descarga de la aplicación (release) | [EduTools Mobile 0.2.0: APK firmado y SHA-256](https://github.com/ISPC-TSDWAD/Mobile-Testing-Cyberseguridad-Dev-6/releases/tag/v0.2.0-sprint2) |
 | Revisión y pendientes de entrega Sprint 2 | [docs/pruebas/REVISION_SPRINT2.md](docs/pruebas/REVISION_SPRINT2.md) |
 
 ### Pruebas y reportes
@@ -209,6 +209,6 @@ Actualización de documentación del sprint 2.
 
 ## Cierre del Sprint 2
 
-La versión 0.2.0 incorpora ofuscación R8 y reducción de recursos. El APK firmado está preparado para su publicación tras integrar el cierre en main. [Empaquetado](docs/pruebas/EMPAQUETADO.md).
+La versión 0.2.0 incorpora ofuscación R8 y reducción de recursos. El [APK firmado y su SHA-256](https://github.com/ISPC-TSDWAD/Mobile-Testing-Cyberseguridad-Dev-6/releases/tag/v0.2.0-sprint2) están publicados; el cierre se integró en main mediante el PR #56. [Empaquetado](docs/pruebas/EMPAQUETADO.md).
 
 Evidencia consolidada: 113 tests JVM, 21 instrumentados, 47 requests Newman (4 fallas de latencia) y 13 comprobaciones del rol maquetador. El [informe de cierre](docs/testing/CIERRE_SPRINT2.md) detalla los resultados y pendientes, incluida la Review, Retrospective y el video grupal.
