@@ -1,0 +1,282 @@
+[
+  {
+    "resource-id": "",
+    "class": "android.widget.TextView",
+    "text": "EduTools",
+    "content-desc": "",
+    "clickable": "false",
+    "focusable": "false",
+    "bounds": "[40,138][285,218]",
+    "password": "false"
+  },
+  {
+    "resource-id": "ar.edu.ispc.edutools:id/tvBienvenida",
+    "class": "android.widget.TextView",
+    "text": "Hola, invitado",
+    "content-desc": "",
+    "clickable": "false",
+    "focusable": "false",
+    "bounds": "[40,288][1040,377]",
+    "password": "false"
+  },
+  {
+    "resource-id": "ar.edu.ispc.edutools:id/tvRol",
+    "class": "android.widget.TextView",
+    "text": "Rol: Administrador",
+    "content-desc": "",
+    "clickable": "false",
+    "focusable": "false",
+    "bounds": "[40,387][1040,450]",
+    "password": "false"
+  },
+  {
+    "resource-id": "ar.edu.ispc.edutools:id/tvTituloMenu",
+    "class": "android.widget.TextView",
+    "text": "¿Qué querés hacer?",
+    "content-desc": "",
+    "clickable": "false",
+    "focusable": "false",
+    "bounds": "[40,510][1040,590]",
+    "password": "false"
+  },
+  {
+    "resource-id": "ar.edu.ispc.edutools:id/cardRecursos",
+    "class": "android.widget.FrameLayout",
+    "text": "",
+    "content-desc": "",
+    "clickable": "true",
+    "focusable": "true",
+    "bounds": "[40,620][1040,889]",
+    "password": "false"
+  },
+  {
+    "resource-id": "",
+    "class": "android.widget.ImageView",
+    "text": "",
+    "content-desc": "Icono de recursos pedagógicos",
+    "clickable": "false",
+    "focusable": "false",
+    "bounds": "[80,704][180,804]",
+    "password": "false"
+  },
+  {
+    "resource-id": "",
+    "class": "android.widget.TextView",
+    "text": "Recursos pedagógicos",
+    "content-desc": "",
+    "clickable": "false",
+    "focusable": "false",
+    "bounds": "[220,660][1000,730]",
+    "password": "false"
+  },
+  {
+    "resource-id": "",
+    "class": "android.widget.TextView",
+    "text": "Explorar y cargar plantillas del repositorio",
+    "content-desc": "",
+    "clickable": "false",
+    "focusable": "false",
+    "bounds": "[220,730][1000,849]",
+    "password": "false"
+  },
+  {
+    "resource-id": "ar.edu.ispc.edutools:id/cardUsuarios",
+    "class": "android.widget.FrameLayout",
+    "text": "",
+    "content-desc": "",
+    "clickable": "true",
+    "focusable": "true",
+    "bounds": "[40,919][1040,1188]",
+    "password": "false"
+  },
+  {
+    "resource-id": "",
+    "class": "android.widget.ImageView",
+    "text": "",
+    "content-desc": "Icono de usuarios",
+    "clickable": "false",
+    "focusable": "false",
+    "bounds": "[80,1003][180,1103]",
+    "password": "false"
+  },
+  {
+    "resource-id": "",
+    "class": "android.widget.TextView",
+    "text": "Usuarios",
+    "content-desc": "",
+    "clickable": "false",
+    "focusable": "false",
+    "bounds": "[220,959][1000,1029]",
+    "password": "false"
+  },
+  {
+    "resource-id": "",
+    "class": "android.widget.TextView",
+    "text": "Gestionar asesores y maquetadores del equipo",
+    "content-desc": "",
+    "clickable": "false",
+    "focusable": "false",
+    "bounds": "[220,1029][1000,1148]",
+    "password": "false"
+  },
+  {
+    "resource-id": "ar.edu.ispc.edutools:id/cardMultimedia",
+    "class": "android.widget.FrameLayout",
+    "text": "",
+    "content-desc": "",
+    "clickable": "true",
+    "focusable": "true",
+    "bounds": "[40,1218][1040,1487]",
+    "password": "false"
+  },
+  {
+    "resource-id": "",
+    "class": "android.widget.ImageView",
+    "text": "",
+    "content-desc": "Icono de contenido multimedia",
+    "clickable": "false",
+    "focusable": "false",
+    "bounds": "[80,1302][180,1402]",
+    "password": "false"
+  },
+  {
+    "resource-id": "",
+    "class": "android.widget.TextView",
+    "text": "Guía multimedia",
+    "content-desc": "",
+    "clickable": "false",
+    "focusable": "false",
+    "bounds": "[220,1258][1000,1328]",
+    "password": "false"
+  },
+  {
+    "resource-id": "",
+    "class": "android.widget.TextView",
+    "text": "Video e imágenes de los estándares institucionales",
+    "content-desc": "",
+    "clickable": "false",
+    "focusable": "false",
+    "bounds": "[220,1328][1000,1447]",
+    "password": "false"
+  },
+  {
+    "resource-id": "ar.edu.ispc.edutools:id/cardContacto",
+    "class": "android.widget.FrameLayout",
+    "text": "",
+    "content-desc": "",
+    "clickable": "true",
+    "focusable": "true",
+    "bounds": "[40,1517][1040,1786]",
+    "password": "false"
+  },
+  {
+    "resource-id": "",
+    "class": "android.widget.ImageView",
+    "text": "",
+    "content-desc": "Icono de contacto",
+    "clickable": "false",
+    "focusable": "false",
+    "bounds": "[80,1601][180,1701]",
+    "password": "false"
+  },
+  {
+    "resource-id": "",
+    "class": "android.widget.TextView",
+    "text": "Contacto",
+    "content-desc": "",
+    "clickable": "false",
+    "focusable": "false",
+    "bounds": "[220,1557][1000,1627]",
+    "password": "false"
+  },
+  {
+    "resource-id": "",
+    "class": "android.widget.TextView",
+    "text": "Validar una consulta en el formulario de demostración",
+    "content-desc": "",
+    "clickable": "false",
+    "focusable": "false",
+    "bounds": "[220,1627][1000,1746]",
+    "password": "false"
+  },
+  {
+    "resource-id": "ar.edu.ispc.edutools:id/cardAcerca",
+    "class": "android.widget.FrameLayout",
+    "text": "",
+    "content-desc": "",
+    "clickable": "true",
+    "focusable": "true",
+    "bounds": "[40,1816][1040,2085]",
+    "password": "false"
+  },
+  {
+    "resource-id": "",
+    "class": "android.widget.ImageView",
+    "text": "",
+    "content-desc": "Icono de información del proyecto",
+    "clickable": "false",
+    "focusable": "false",
+    "bounds": "[80,1900][180,2000]",
+    "password": "false"
+  },
+  {
+    "resource-id": "",
+    "class": "android.widget.TextView",
+    "text": "Quiénes somos",
+    "content-desc": "",
+    "clickable": "false",
+    "focusable": "false",
+    "bounds": "[220,1856][1000,1926]",
+    "password": "false"
+  },
+  {
+    "resource-id": "",
+    "class": "android.widget.TextView",
+    "text": "Equipo DEV6 y propósito del proyecto",
+    "content-desc": "",
+    "clickable": "false",
+    "focusable": "false",
+    "bounds": "[220,1926][1000,2045]",
+    "password": "false"
+  },
+  {
+    "resource-id": "ar.edu.ispc.edutools:id/cardTema",
+    "class": "android.widget.FrameLayout",
+    "text": "",
+    "content-desc": "",
+    "clickable": "true",
+    "focusable": "true",
+    "bounds": "[40,2115][1040,2280]",
+    "password": "false"
+  },
+  {
+    "resource-id": "",
+    "class": "android.widget.ImageView",
+    "text": "",
+    "content-desc": "Icono de apariencia",
+    "clickable": "false",
+    "focusable": "false",
+    "bounds": "[80,2171][180,2271]",
+    "password": "false"
+  },
+  {
+    "resource-id": "",
+    "class": "android.widget.TextView",
+    "text": "Apariencia",
+    "content-desc": "",
+    "clickable": "false",
+    "focusable": "false",
+    "bounds": "[220,2155][1000,2225]",
+    "password": "false"
+  },
+  {
+    "resource-id": "ar.edu.ispc.edutools:id/tvTemaActual",
+    "class": "android.widget.TextView",
+    "text": "Tema: Oscuro",
+    "content-desc": "",
+    "clickable": "false",
+    "focusable": "false",
+    "bounds": "[220,2225][1000,2280]",
+    "password": "false"
+  }
+]

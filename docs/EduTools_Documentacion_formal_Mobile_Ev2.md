@@ -444,3 +444,12 @@ Registro visual del recorrido de navegabilidad de EduTools Mobile, capturado sob
 
 ---
 **FINAL DE LA DOCUMENTACIÓN OFICIAL DE SOFTWARE — EDUTOOLS MOBILE**
+
+
+# ANEXO III — Incremento Sprint 2 / Evidencia 3 (14/10/2026)
+
+El contenido anterior se conserva como historial de Evidencia 2. El incremento actual agrega autenticación JWT y CRUD remoto de Usuarios y Recursos, validaciones, cierre de sesión ante 401, tokens cifrados con respaldo en memoria para Android 5, tema Claro/Oscuro/Sistema persistente y previsualización HTML restringida con enlaces HTTPS confirmados en navegador externo. Contacto es un formulario de demostración que valida y no envía consultas. Equipo activo: Gonzalo, Jonathan, Gerardo y Roni; la pantalla institucional refleja esa integración.
+
+La API está desplegada en main 9d12b47 y su verificación inicial está en la Wiki. La evidencia posterior del maquetador complementa el caso omitido. La documentación actual de pruebas está en docs/testing/: plan, 41 casos, matriz por método/request, accesibilidad y resultados. La versión de empaquetado es 0.2.0; firma y secretos permanecen fuera de Git.
+
+Capturas y reportes del incremento se enlazan desde docs/testing/Informe_Accesibilidad.md y docs/pruebas/evidencias/. Los pendientes reales —video, ceremonias aún no celebradas y controles manuales no completados— se detallan en docs/testing/CIERRE_SPRINT2.md; no se consideran aprobados por figurar en este anexo.

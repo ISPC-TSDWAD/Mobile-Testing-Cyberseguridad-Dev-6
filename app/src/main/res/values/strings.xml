@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="recursos_lista_accesible">Lista de recursos pedagógicos</string>
+    <string name="usuarios_lista_accesible">Lista de usuarios</string>
 
     <string name="app_name">EduTools</string>
 
@@ -127,8 +129,8 @@
     <!-- ===== Acerca de ===== -->
     <string name="acerca_intro">EduTools centraliza los recursos del montaje de aulas virtuales y ofrece un sandbox que emula la hoja de estilos institucional.</string>
     <string name="acerca_equipo">Equipo DEV6</string>
-    <string name="acerca_integrantes">Jonathan Guillén · Ale Corva · Gonzalo Velasco · Daniela Salvo · Gerardo Romero · Roni Duncan Gonzales Martínez</string>
-    <string name="acerca_version">Versión 0.1.0 · ISPC</string>
+    <string name="acerca_integrantes">Jonathan Guillén · Gonzalo Velasco · Gerardo Romero · Roni Duncan Gonzales Martínez</string>
+    <string name="acerca_version">Versión 0.2.0 · ISPC</string>
 
     <!-- ===== Accesibilidad (contentDescription) ===== -->
     <string name="cd_logo">Logotipo de EduTools</string>

@@ -1,0 +1,339 @@
+INSTRUMENTATION_STATUS: class=ar.edu.ispc.edutools.AccesibilidadEstructuraTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=20
+INSTRUMENTATION_STATUS: stream=
+ar.edu.ispc.edutools.AccesibilidadEstructuraTest:
+INSTRUMENTATION_STATUS: test=home_titulosSeIdentificanComoEncabezados
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=ar.edu.ispc.edutools.AccesibilidadEstructuraTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=20
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=home_titulosSeIdentificanComoEncabezados
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: class=ar.edu.ispc.edutools.AccesibilidadEstructuraTest
+INSTRUMENTATION_STATUS: current=2
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=20
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=resultadosDeListados_tienenAnuncioPolite
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=ar.edu.ispc.edutools.AccesibilidadEstructuraTest
+INSTRUMENTATION_STATUS: current=2
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=20
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=resultadosDeListados_tienenAnuncioPolite
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: class=ar.edu.ispc.edutools.AccesibilidadPantallasTest
+INSTRUMENTATION_STATUS: current=3
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=20
+INSTRUMENTATION_STATUS: stream=
+ar.edu.ispc.edutools.AccesibilidadPantallasTest:
+INSTRUMENTATION_STATUS: test=login_sinErroresATF
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=ar.edu.ispc.edutools.AccesibilidadPantallasTest
+INSTRUMENTATION_STATUS: current=3
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=20
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=login_sinErroresATF
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: class=ar.edu.ispc.edutools.AccesibilidadPantallasTest
+INSTRUMENTATION_STATUS: current=4
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=20
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=perfil_sinErroresATF
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=ar.edu.ispc.edutools.AccesibilidadPantallasTest
+INSTRUMENTATION_STATUS: current=4
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=20
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=perfil_sinErroresATF
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: class=ar.edu.ispc.edutools.AccesibilidadPantallasTest
+INSTRUMENTATION_STATUS: current=5
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=20
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=detalle_sinErroresATF
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=ar.edu.ispc.edutools.AccesibilidadPantallasTest
+INSTRUMENTATION_STATUS: current=5
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=20
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=detalle_sinErroresATF
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: class=ar.edu.ispc.edutools.AccesibilidadPantallasTest
+INSTRUMENTATION_STATUS: current=6
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=20
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=registro_sinErroresATF
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=ar.edu.ispc.edutools.AccesibilidadPantallasTest
+INSTRUMENTATION_STATUS: current=6
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=20
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=registro_sinErroresATF
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: class=ar.edu.ispc.edutools.AccesibilidadPantallasTest
+INSTRUMENTATION_STATUS: current=7
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=20
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=usuarios_sinErroresATF
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=ar.edu.ispc.edutools.AccesibilidadPantallasTest
+INSTRUMENTATION_STATUS: current=7
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=20
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=usuarios_sinErroresATF
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: class=ar.edu.ispc.edutools.AccesibilidadPantallasTest
+INSTRUMENTATION_STATUS: current=8
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=20
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=multimedia_sinErroresATF
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=ar.edu.ispc.edutools.AccesibilidadPantallasTest
+INSTRUMENTATION_STATUS: current=8
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=20
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=multimedia_sinErroresATF
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: class=ar.edu.ispc.edutools.AccesibilidadPantallasTest
+INSTRUMENTATION_STATUS: current=9
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=20
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=acerca_sinErroresATF
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=ar.edu.ispc.edutools.AccesibilidadPantallasTest
+INSTRUMENTATION_STATUS: current=9
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=20
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=acerca_sinErroresATF
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: class=ar.edu.ispc.edutools.AccesibilidadPantallasTest
+INSTRUMENTATION_STATUS: current=10
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=20
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=contacto_sinErroresATF
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=ar.edu.ispc.edutools.AccesibilidadPantallasTest
+INSTRUMENTATION_STATUS: current=10
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=20
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=contacto_sinErroresATF
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: class=ar.edu.ispc.edutools.AccesibilidadPantallasTest
+INSTRUMENTATION_STATUS: current=11
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=20
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=home_sinErroresATF
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=ar.edu.ispc.edutools.AccesibilidadPantallasTest
+INSTRUMENTATION_STATUS: current=11
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=20
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=home_sinErroresATF
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: class=ar.edu.ispc.edutools.AccesibilidadPantallasTest
+INSTRUMENTATION_STATUS: current=12
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=20
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=formulario_sinErroresATF
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=ar.edu.ispc.edutools.AccesibilidadPantallasTest
+INSTRUMENTATION_STATUS: current=12
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=20
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=formulario_sinErroresATF
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: class=ar.edu.ispc.edutools.AccesibilidadPantallasTest
+INSTRUMENTATION_STATUS: current=13
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=20
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=recursos_sinErroresATF
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=ar.edu.ispc.edutools.AccesibilidadPantallasTest
+INSTRUMENTATION_STATUS: current=13
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=20
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=recursos_sinErroresATF
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: class=ar.edu.ispc.edutools.ContactoFlujoTest
+INSTRUMENTATION_STATUS: current=14
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=20
+INSTRUMENTATION_STATUS: stream=
+ar.edu.ispc.edutools.ContactoFlujoTest:
+INSTRUMENTATION_STATUS: test=contactoVacio_marcaLosCuatroCampos
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=ar.edu.ispc.edutools.ContactoFlujoTest
+INSTRUMENTATION_STATUS: current=14
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=20
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=contactoVacio_marcaLosCuatroCampos
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: class=ar.edu.ispc.edutools.ContactoFlujoTest
+INSTRUMENTATION_STATUS: current=15
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=20
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=contactoConEmailMalFormado_marcaErrorSoloEnCorreo
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=ar.edu.ispc.edutools.ContactoFlujoTest
+INSTRUMENTATION_STATUS: current=15
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=20
+INSTRUMENTATION_STATUS: stack=androidx.test.espresso.NoActivityResumedException: No activities in stage RESUMED. Did you forget to launch the activity. (test.getActivity() or similar)?
+	at dalvik.system.VMStack.getThreadStackTrace(Native Method)
+	at java.lang.Thread.getStackTrace(Thread.java:2849)
+	at androidx.test.espresso.base.EspressoExceptionHandler.handleSafely(EspressoExceptionHandler.java:34)
+	at androidx.test.espresso.base.EspressoExceptionHandler.handleSafely(EspressoExceptionHandler.java:26)
+	at androidx.test.espresso.base.DefaultFailureHandler$TypedFailureHandler.handle(DefaultFailureHandler.java:158)
+	at androidx.test.espresso.base.DefaultFailureHandler.handle(DefaultFailureHandler.java:120)
+	at androidx.test.espresso.ViewInteraction.waitForAndHandleInteractionResults(ViewInteraction.java:385)
+	at androidx.test.espresso.ViewInteraction.desugaredPerform(ViewInteraction.java:212)
+	at androidx.test.espresso.ViewInteraction.perform(ViewInteraction.java:140)
+	at ar.edu.ispc.edutools.screens.ContactoScreen.escribir(ContactoScreen.java:53)
+	at ar.edu.ispc.edutools.screens.ContactoScreen.completar(ContactoScreen.java:22)
+	at ar.edu.ispc.edutools.ContactoFlujoTest.contactoConEmailMalFormado_marcaErrorSoloEnCorreo(ContactoFlujoTest.java:37)
+
+INSTRUMENTATION_STATUS: stream=
+Error in contactoConEmailMalFormado_marcaErrorSoloEnCorreo(ar.edu.ispc.edutools.ContactoFlujoTest):
+androidx.test.espresso.NoActivityResumedException: No activities in stage RESUMED. Did you forget to launch the activity. (test.getActivity() or similar)?
+	at dalvik.system.VMStack.getThreadStackTrace(Native Method)
+	at java.lang.Thread.getStackTrace(Thread.java:2849)
+	at androidx.test.espresso.base.EspressoExceptionHandler.handleSafely(EspressoExceptionHandler.java:34)
+	at androidx.test.espresso.base.EspressoExceptionHandler.handleSafely(EspressoExceptionHandler.java:26)
+	at androidx.test.espresso.base.DefaultFailureHandler$TypedFailureHandler.handle(DefaultFailureHandler.java:158)
+	at androidx.test.espresso.base.DefaultFailureHandler.handle(DefaultFailureHandler.java:120)
+	at androidx.test.espresso.ViewInteraction.waitForAndHandleInteractionResults(ViewInteraction.java:385)
+	at androidx.test.espresso.ViewInteraction.desugaredPerform(ViewInteraction.java:212)
+	at androidx.test.espresso.ViewInteraction.perform(ViewInteraction.java:140)
+	at ar.edu.ispc.edutools.screens.ContactoScreen.escribir(ContactoScreen.java:53)
+	at ar.edu.ispc.edutools.screens.ContactoScreen.completar(ContactoScreen.java:22)
+	at ar.edu.ispc.edutools.ContactoFlujoTest.contactoConEmailMalFormado_marcaErrorSoloEnCorreo(ContactoFlujoTest.java:37)
+
+INSTRUMENTATION_STATUS: test=contactoConEmailMalFormado_marcaErrorSoloEnCorreo
+INSTRUMENTATION_STATUS_CODE: -2
+INSTRUMENTATION_STATUS: class=ar.edu.ispc.edutools.ContactoFlujoTest
+INSTRUMENTATION_STATUS: current=16
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=20
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=contactoValido_conservaConsultaEnPantallaSinEnviar
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=ar.edu.ispc.edutools.ContactoFlujoTest
+INSTRUMENTATION_STATUS: current=16
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=20
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=contactoValido_conservaConsultaEnPantallaSinEnviar
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: class=ar.edu.ispc.edutools.LoginFlujoTest
+INSTRUMENTATION_STATUS: current=17
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=20
+INSTRUMENTATION_STATUS: stream=
+ar.edu.ispc.edutools.LoginFlujoTest:
+INSTRUMENTATION_STATUS: test=loginVacio_marcaErrorEnUsuarioYContrasena_yNoAvanza
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=ar.edu.ispc.edutools.LoginFlujoTest
+INSTRUMENTATION_STATUS: current=17
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=20
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=loginVacio_marcaErrorEnUsuarioYContrasena_yNoAvanza
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: class=ar.edu.ispc.edutools.LoginFlujoTest
+INSTRUMENTATION_STATUS: current=18
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=20
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=loginSoloConUsuario_marcaErrorSoloEnContrasena
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=ar.edu.ispc.edutools.LoginFlujoTest
+INSTRUMENTATION_STATUS: current=18
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=20
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=loginSoloConUsuario_marcaErrorSoloEnContrasena
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: class=ar.edu.ispc.edutools.RecursoFormFlujoTest
+INSTRUMENTATION_STATUS: current=19
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=20
+INSTRUMENTATION_STATUS: stream=
+ar.edu.ispc.edutools.RecursoFormFlujoTest:
+INSTRUMENTATION_STATUS: test=tituloVacio_marcaErrorYConservaFormulario
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=ar.edu.ispc.edutools.RecursoFormFlujoTest
+INSTRUMENTATION_STATUS: current=19
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=20
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=tituloVacio_marcaErrorYConservaFormulario
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: class=ar.edu.ispc.edutools.RegistroFlujoTest
+INSTRUMENTATION_STATUS: current=20
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=20
+INSTRUMENTATION_STATUS: stream=
+ar.edu.ispc.edutools.RegistroFlujoTest:
+INSTRUMENTATION_STATUS: test=registroConContrasenasDistintas_marcaErrorEnLaRepeticion
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=ar.edu.ispc.edutools.RegistroFlujoTest
+INSTRUMENTATION_STATUS: current=20
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=20
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=registroConContrasenasDistintas_marcaErrorEnLaRepeticion
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_RESULT: stream=
+
+Time: 76,467
+There was 1 failure:
+1) contactoConEmailMalFormado_marcaErrorSoloEnCorreo(ar.edu.ispc.edutools.ContactoFlujoTest)
+androidx.test.espresso.NoActivityResumedException: No activities in stage RESUMED. Did you forget to launch the activity. (test.getActivity() or similar)?
+	at dalvik.system.VMStack.getThreadStackTrace(Native Method)
+	at java.lang.Thread.getStackTrace(Thread.java:2849)
+	at androidx.test.espresso.base.EspressoExceptionHandler.handleSafely(EspressoExceptionHandler.java:34)
+	at androidx.test.espresso.base.EspressoExceptionHandler.handleSafely(EspressoExceptionHandler.java:26)
+	at androidx.test.espresso.base.DefaultFailureHandler$TypedFailureHandler.handle(DefaultFailureHandler.java:158)
+	at androidx.test.espresso.base.DefaultFailureHandler.handle(DefaultFailureHandler.java:120)
+	at androidx.test.espresso.ViewInteraction.waitForAndHandleInteractionResults(ViewInteraction.java:385)
+	at androidx.test.espresso.ViewInteraction.desugaredPerform(ViewInteraction.java:212)
+	at androidx.test.espresso.ViewInteraction.perform(ViewInteraction.java:140)
+	at ar.edu.ispc.edutools.screens.ContactoScreen.escribir(ContactoScreen.java:53)
+	at ar.edu.ispc.edutools.screens.ContactoScreen.completar(ContactoScreen.java:22)
+	at ar.edu.ispc.edutools.ContactoFlujoTest.contactoConEmailMalFormado_marcaErrorSoloEnCorreo(ContactoFlujoTest.java:37)
+
+FAILURES!!!
+Tests run: 20,  Failures: 1
+
+
+INSTRUMENTATION_CODE: -1
